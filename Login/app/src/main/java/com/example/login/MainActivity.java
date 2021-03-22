@@ -1,3 +1,4 @@
+
 package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     EditText user,pass;
-    Button btnlogin,btnsignup;
+    Button btnlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,34 +33,43 @@ public class MainActivity extends AppCompatActivity {
 
         btnlogin = (Button) findViewById(R.id.button2);
         btnlogin.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v){
-                Query userQuery = dataref.child("username").orderByChild("user").equalTo(user.getText().toString());
-                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()){
-                            boolean checklogin = false;
-                            for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                                User usersnapshot = snapshot.getValue(User.class);
-                                if(usersnapshot.pass.equals(pass.getText().toString())) {
-                                    Toast.makeText(MainActivity.this,"Login Success",Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(MainActivity.this, AccessEmployee.class);
-                                    startActivity(intent);
-                                    checklogin = true;
+                boolean check = user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin");
+                if (user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin")){
+                    Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Query userQuery = dataref.child("username").orderByChild("user").equalTo(user.getText().toString());
+                    userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                boolean checklogin = false;
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    User usersnapshot = snapshot.getValue(User.class);
+                                    if (usersnapshot.pass.equals(pass.getText().toString())) {
+                                        Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(MainActivity.this, AccessEmployee.class);
+                                        startActivity(intent);
+                                        checklogin = true;
+                                    }
                                 }
-                            }
-                            if(checklogin == false)
-                                Toast.makeText(MainActivity.this,"Password wrong!!!",Toast.LENGTH_LONG).show();
+                                if (checklogin == false)
+                                    Toast.makeText(MainActivity.this, "Password wrong!!!", Toast.LENGTH_LONG).show();
+                            } else
+                                Toast.makeText(MainActivity.this, "User wrong!!!", Toast.LENGTH_LONG).show();
                         }
-                        else
-                            Toast.makeText(MainActivity.this,"User wrong!!!",Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+                }
             }
         });
+
     }
 }
