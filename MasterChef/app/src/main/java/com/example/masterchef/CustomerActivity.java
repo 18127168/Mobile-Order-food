@@ -7,7 +7,6 @@ import android.view.Menu;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.IgnoreExtraProperties;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -60,18 +59,5 @@ public class CustomerActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    @IgnoreExtraProperties
-    public static class User {
-        public String user,pass;
-        public User() {
-            this.user = "";
-            this.pass = "";
-        }
-        public User(String user,String pass){
-            this.user = user;
-            this.pass = pass;
-        }
     }
 }

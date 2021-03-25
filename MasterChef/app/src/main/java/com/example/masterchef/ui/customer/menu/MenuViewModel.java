@@ -10,10 +10,6 @@ public class MenuViewModel extends ViewModel {
 
     public MenuViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }
