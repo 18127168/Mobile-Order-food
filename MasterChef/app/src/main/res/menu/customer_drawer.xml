@@ -6,23 +6,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_menu"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_navmenu_mainmenu"
             android:title="Menu" />
         <item
             android:id="@+id/nav_pickedfood"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_navmenu_picked"
             android:title="Món đã chọn" />
         <item
+            android:id="@+id/nav_orderedfood"
+            android:icon="@drawable/ic_navmenu_orderedfood"
+            android:title="Món đã gọi" />
+        <item
             android:id="@+id/nav_swichtable"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_navmenu_switchtable"
             android:title="Chuyển bàn" />
         <item
             android:id="@+id/nav_jointable"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_navmenu_jointable"
             android:title="Gộp bàn" />
         <item
             android:id="@+id/nav_checkbill"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_navmenu_checkbill"
             android:title="Thanh Toán" />
     </group>
 </menu>

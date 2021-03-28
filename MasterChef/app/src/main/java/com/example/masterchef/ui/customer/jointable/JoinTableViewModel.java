@@ -10,10 +10,6 @@ public class JoinTableViewModel extends ViewModel {
 
     public JoinTableViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is JoinTable fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }

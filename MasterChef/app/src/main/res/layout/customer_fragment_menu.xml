@@ -8,6 +8,12 @@
     tools:context=".ui.customer.menu.MenuFragment"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSearch"
         android:layout_height="wrap_content"
@@ -23,7 +29,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_search_24"
+            android:src="@drawable/ic_mainmenu_search"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="20dp">
         </ImageView>
@@ -35,17 +41,16 @@
             android:padding="10dp"
             android:hint="Search your recipes"
             android:textColorHint="@color/white"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:background="@null"/>
 
     </androidx.cardview.widget.CardView>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

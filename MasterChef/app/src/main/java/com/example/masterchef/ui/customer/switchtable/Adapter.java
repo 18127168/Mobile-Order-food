@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.customer.menu;
+package com.example.masterchef.ui.customer.switchtable;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,22 +15,22 @@ import com.example.masterchef.R;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    String[] titles;
     int[] images;
-    int[] prices;
+    String[] titles;
+    int[] seats;
     LayoutInflater inflater;
 
-    public Adapter(Context context, int[] images, String[] titles, int[] prices){
+    public Adapter(Context context, int[] images, String[] titles, int[] seats){
         this.titles = titles;
         this.images = images;
-        this.prices = prices;
+        this.seats = seats;
         this.inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_main_menu, parent, false);
+        View view = inflater.inflate(R.layout.custom_table_menu, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imgFood.setImageResource(images[position]);
         holder.title.setText(titles[position]);
-        holder.price.setText( "$" + Integer.toString(prices[position]));
+        holder.seat.setText( "Số chỗ:" + Integer.toString(seats[position]));
     }
 
     @Override
@@ -49,15 +49,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgFood;
         TextView title;
-        TextView price;
+        TextView seat;
         Button choose_btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.menu_title);
-            imgFood = itemView.findViewById(R.id.menu_image);
-            price = itemView.findViewById(R.id.menu_price);
-            choose_btn = itemView.findViewById(R.id.menu_choose_btn);
+            title = itemView.findViewById(R.id.jointable_title);
+            imgFood = itemView.findViewById(R.id.jointable_image);
+            seat = itemView.findViewById(R.id.jointable_seat);
+            choose_btn = itemView.findViewById(R.id.jointable_choose_btn);
+            choose_btn.setText("Đổi");
         }
     }
 }
