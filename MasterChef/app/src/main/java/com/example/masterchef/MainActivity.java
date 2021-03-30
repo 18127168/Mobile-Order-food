@@ -52,9 +52,23 @@ public class MainActivity extends AppCompatActivity {
                                     User usersnapshot = snapshot.getValue(User.class);
                                     if (usersnapshot.pass.equals(pass.getText().toString())) {
                                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(MainActivity.this, StaffActivity.class);
-                                        startActivity(intent);
                                         checklogin = true;
+                                        if(usersnapshot.loai.equals("QuanLy")){ //thieu manager activity
+                                            Intent intent = new Intent(MainActivity.this, StaffActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if(usersnapshot.loai.equals("NhanVien")){//doi lai activity nhanvien
+                                            Intent intent = new Intent(MainActivity.this, StaffActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if(usersnapshot.loai.equals("DauBep")){ // doi lai activity daubep
+                                            Intent intent = new Intent(MainActivity.this, ChefActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        else if(usersnapshot.loai.equals("KhachHang")){//doi lai activity khachhang
+                                            Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                                            startActivity(intent);
+                                        }
                                     }
                                 }
                                 if (checklogin == false)
