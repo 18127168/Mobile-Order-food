@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.customer.jointable;
+package com.example.masterchef.ui.customer.menu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,24 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
-    int[] images;
     String[] titles;
-    int[] seats;
+    int[] images;
+    int[] prices;
     LayoutInflater inflater;
 
-    public Adapter(Context context, int[] images, String[] titles, int[] seats){
+    public MenuAdapter(Context context, int[] images, String[] titles, int[] prices){
         this.titles = titles;
         this.images = images;
-        this.seats = seats;
+        this.prices = prices;
         this.inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_table_menu, parent, false);
+        View view = inflater.inflate(R.layout.custom_adapter_customer_main_menu, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imgFood.setImageResource(images[position]);
         holder.title.setText(titles[position]);
-        holder.seat.setText( "Số chỗ:" + Integer.toString(seats[position]));
+        holder.price.setText( Integer.toString(prices[position]) + " đ");
     }
 
     @Override
@@ -48,16 +48,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgFood;
-        TextView title;
-        TextView seat;
+        TextView title, price;
         Button choose_btn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.jointable_title);
-            imgFood = itemView.findViewById(R.id.jointable_image);
-            seat = itemView.findViewById(R.id.jointable_seat);
-            choose_btn = itemView.findViewById(R.id.jointable_choose_btn);
+            title = itemView.findViewById(R.id.menu_title);
+            imgFood = itemView.findViewById(R.id.menu_image);
+            price = itemView.findViewById(R.id.menu_price);
+            choose_btn = itemView.findViewById(R.id.menu_choose_btn);
         }
     }
 }

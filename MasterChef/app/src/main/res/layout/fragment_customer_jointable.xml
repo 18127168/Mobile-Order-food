@@ -5,16 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.customer.menu.MenuFragment"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="GỘP BÀN"
+        android:textColor="@color/my_blue"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCategory"
+        android:id="@+id/jointable_recyclerCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

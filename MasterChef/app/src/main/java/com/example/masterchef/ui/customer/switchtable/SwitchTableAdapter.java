@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.ViewHolder> {
 
     int[] images;
     String[] titles;
     int[] seats;
     LayoutInflater inflater;
 
-    public Adapter(Context context, int[] images, String[] titles, int[] seats){
+    public SwitchTableAdapter(Context context, int[] images, String[] titles, int[] seats){
         this.titles = titles;
         this.images = images;
         this.seats = seats;
@@ -30,7 +30,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_table_menu, parent, false);
+        View view = inflater.inflate(R.layout.custom_adapter_customer_table_menu, parent, false);
         return new ViewHolder(view);
     }
 
@@ -48,8 +48,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgFood;
-        TextView title;
-        TextView seat;
+        TextView title, seat;
         Button choose_btn;
 
         public ViewHolder(@NonNull View itemView) {

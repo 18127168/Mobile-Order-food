@@ -4,32 +4,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
 
 public class PickedFoodFragment extends Fragment {
 
-    private PickedFoodViewModel slideshowViewModel;
+    private PickedFoodViewModel galleryViewModel;
+    public RecyclerView dataList;
+    String[] titles = {"Cá kèo nướng", "King crab", "Gỏi bò", "Tôm hùm", "Dê ré"};
+    int[] images = {R.drawable.food1, R.drawable.food2, R.drawable.food3, R.drawable.food4, R.drawable.food5};
+    int[] prices = {100000, 110000, 120000, 150000, 160000};
+    int[] numberfood = {1, 2, 3, 4, 5};
+    String[] note = {"Không cay","Không tỏi","","",""};
+
+    PickedFoodAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(PickedFoodViewModel.class);
-        View root = inflater.inflate(R.layout.customer_fragment_pickedfood, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        galleryViewModel =  new ViewModelProvider(this).get(PickedFoodViewModel.class);
+
+        View root = inflater.inflate(R.layout.fragment_customer_pickedfood, container, false);
+        dataList = root.findViewById(R.id.pickedfood_recyclerCategory);
+
+        adapter = new PickedFoodAdapter(getActivity(), images, titles, prices, numberfood, note);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
+        dataList.setLayoutManager(gridLayoutManager);
+        dataList.setAdapter(adapter);
+
         return root;
     }
 }

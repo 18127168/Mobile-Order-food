@@ -1,51 +1,31 @@
 package com.example.masterchef;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class ChefActivity extends AppCompatActivity {
     Button giamchef,tangchef;
     StorageReference listref =FirebaseStorage.getInstance().getReference();
-     FirebaseListAdapter<Food> adapter;
-     StorageReference storeImage;
+    FirebaseListAdapter<Food> adapter;
+    StorageReference storeImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -67,7 +47,7 @@ public class ChefActivity extends AppCompatActivity {
 
             }
         });
-         adapter = new FirebaseListAdapter<Food>(this, Food.class,R.layout.activity_chef_adapter_food,
+         adapter = new FirebaseListAdapter<Food>(this, Food.class,R.layout.custom_adapter_chef_order_menu_,
                  FirebaseDatabase.getInstance().getReference("User").child("Order").orderByChild("HoaDonSo")) {
             @Override
             protected void populateView(View v, Food model, int position) {

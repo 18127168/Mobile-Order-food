@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="289dp"
+            android:layout_height="275dp"
             android:orientation="vertical">
 
             <ImageView
@@ -36,7 +36,7 @@
                 android:layout_gravity="center"
                 android:text="Name"
                 android:textColor="@color/my_text_color"
-                android:textSize="24dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,12 +46,11 @@
                 android:layout_gravity="center"
                 android:text="Price"
                 android:textColor="@color/my_text_color"
-                android:textSize="24dp"
-                android:textStyle="bold" />
+                android:textSize="18dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -63,7 +62,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:text="Chọn món"
-                    android:textSize="16dp"
+                    android:textSize="14dp"
                     android:backgroundTint="@color/my_blue" />
 
 

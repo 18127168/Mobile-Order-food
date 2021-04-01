@@ -1,6 +1,5 @@
 package com.example.masterchef.ui.customer.jointable;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 

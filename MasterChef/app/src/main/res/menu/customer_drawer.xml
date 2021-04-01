@@ -13,10 +13,6 @@
             android:icon="@drawable/ic_navmenu_picked"
             android:title="Món đã chọn" />
         <item
-            android:id="@+id/nav_orderedfood"
-            android:icon="@drawable/ic_navmenu_orderedfood"
-            android:title="Món đã gọi" />
-        <item
             android:id="@+id/nav_swichtable"
             android:icon="@drawable/ic_navmenu_switchtable"
             android:title="Chuyển bàn" />
