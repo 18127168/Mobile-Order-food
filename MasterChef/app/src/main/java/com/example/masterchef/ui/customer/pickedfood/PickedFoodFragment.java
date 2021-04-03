@@ -38,6 +38,8 @@ public class PickedFoodFragment extends Fragment {
         dataList.setLayoutManager(gridLayoutManager);
         dataList.setAdapter(adapter);
 
+
+
         return root;
     }
 }

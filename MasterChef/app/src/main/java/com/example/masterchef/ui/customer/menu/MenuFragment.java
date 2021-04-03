@@ -26,6 +26,7 @@ public class MenuFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =  new ViewModelProvider(this).get(MenuViewModel.class);
 
+
         View root = inflater.inflate(R.layout.fragment_customer_menu, container, false);
         dataList = root.findViewById(R.id.menu_recyclerCategory);
 
