@@ -1,51 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e79a773-8b2a-4864-9045-51a8bd242fb8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/checkbill/CheckBillAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/pickedfood/PickedFoodAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/drawable/hint_border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/drawable/ic_picked_minus.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/drawable/ic_picked_plus.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_adapter_customer_checkbill_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_adapter_customer_picked_menu.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/fragment_customer_checkbill.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/fragment_customer_pickedfood.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/fragment_customer_switchtable.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/.idea/Login.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/.idea/modules/app/Login.app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ChefActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ChefActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/CustomerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/CustomerActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/checkbill/CheckBillFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/checkbill/CheckBillFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/checkbill/CheckBillViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/checkbill/CheckBillViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/JoinTableAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/JoinTableFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/JoinTableFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/JoinTableViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/jointable/JoinTableViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/MenuAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/MenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/MenuFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/MenuViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/menu/MenuViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/pickedfood/PickedFoodFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/pickedfood/PickedFoodFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/pickedfood/PickedFoodViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/pickedfood/PickedFoodViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/SwitchTableAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/SwitchTableFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/SwitchTableFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/SwitchTableViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/customer/switchtable/SwitchTableViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/drawable-v21/getin_border.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/drawable/getin_border.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/activity_chef_adapter_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_adapter_chef_order_menu_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/activity_customer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/app_bar_customer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/content_main_customer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_main_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_adapter_customer_main_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_table_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/custom_adapter_customer_table_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/customer_fragment_checkbill.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/customer_fragment_jointable.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/fragment_customer_jointable.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/customer_fragment_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/fragment_customer_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/customer_fragment_pickedfood.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/customer_fragment_switchtable.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/nav_header_customer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6e79a773-8b2a-4864-9045-51a8bd242fb8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,10 +34,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="102" key="FileChooserDialogImpl" timestamp="1617293290253">
+    <state x="449" y="102" key="FileChooserDialogImpl" timestamp="1617460932324">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616945733393" />
-    <state x="449" y="102" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617293290253" />
+    <state x="449" y="102" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617460932324" />
   </component>
 </project>
