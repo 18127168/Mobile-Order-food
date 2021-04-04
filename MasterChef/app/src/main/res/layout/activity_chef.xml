@@ -7,7 +7,19 @@
     android:orientation="vertical"
     android:background="@drawable/background"
     tools:context=".ChefActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.MasterChef.AppBarOverlay">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chef_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/my_blue"
+            app:popupTheme="@style/Theme.MasterChef.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="63dp">

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterChef">
         <activity android:name=".ChefActivity"></activity>
-        <activity android:name=".CustomerActivity"></activity>
+        <activity android:name=".CustomerActivity" ></activity>
         <activity android:name=".StaffActivity"></activity>
         <activity android:name=".AdminActivity"></activity>
         <activity android:name=".ManagerActivity"></activity>
