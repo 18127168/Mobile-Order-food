@@ -7,23 +7,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
+import com.example.masterchef.SelectedFood;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     String[] titles;
     int[] images;
     int[] prices;
+    Context contexts;
     LayoutInflater inflater;
 
     public MenuAdapter(Context context, int[] images, String[] titles, int[] prices){
         this.titles = titles;
         this.images = images;
         this.prices = prices;
+        this.contexts = context;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -39,6 +43,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         holder.imgFood.setImageResource(images[position]);
         holder.title.setText(titles[position]);
         holder.price.setText( Integer.toString(prices[position]) + " đ");
+        holder.choose_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((SelectedFood) contexts.getApplicationContext()).addSelectedFood(titles[position]);
+                Toast.makeText(contexts.getApplicationContext(), "Thêm món thành công", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     @Override
