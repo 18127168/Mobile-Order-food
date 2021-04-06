@@ -20,7 +20,7 @@ import java.util.List;
 
 public class DatabaseWork {
 
-    /*FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dataref = database.getReference("User");
     /*public void AddFoodToMenuAndToFirebase(Food food,int menuCuaThuMay, Context thisActivity){
         Query userQuery = dataref.child("Food").orderByChild("ID");
@@ -57,7 +57,9 @@ public class DatabaseWork {
             }
         });
 
-    }
+    }*/
+
+   //lay id cua cac mon an trong menu cua 1 ngay nao do.
     public MenuWithFoodInFireBase GetFoodInMenu(int ThuMay) {
         MenuWithFoodInFireBase result = new MenuWithFoodInFireBase();
         Query userQuery = dataref.child("Menu").orderByKey();
@@ -83,17 +85,72 @@ public class DatabaseWork {
 
         return result;
     }
-    //public List<Menu> GetFood{
 
-*/
+    //dua vao id lay ten mon trong thuc an
+    public Food GetFoodWithID(int ID){
+        Food result = new Food();
+        Query userQuery = dataref.child("Food").orderByChild("ID");
+        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                        Food foodSearch = postSnapshot.getValue(Food.class);
+                        if(foodSearch.getID() == ID){
+                            result.setID(foodSearch.getID());
+                            result.setFlagName(foodSearch.getFlagName());
+                            result.setTenmon(foodSearch.getTenmon());
+                            result.setTimeToFinish(foodSearch.getTimeToFinish());
+                            break;
+                        };
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return result;
+    }
+
+    //lay hoa don theo hoadonso
+    public List<HoaDon> GetHoaDon(int hoadonso){
+        List<HoaDon> result = new ArrayList<>();
+        Query userQuery = dataref.child("HoaDon").orderByChild("hoaDonSo");
+        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                        HoaDon hoadon = postSnapshot.getValue(HoaDon.class);
+                        if(hoadon.getHoaDonSo()== hoadonso){
+                            result.add(hoadon);
+                            break;
+                        };
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return result;
+    }
+
+
 
 }
 class MenuWithFoodInFireBase{
-    /*public List<Integer> listFoodInMenu;
+    public List<Integer> listFoodInMenu;
     MenuWithFoodInFireBase(){
         listFoodInMenu = new ArrayList<>();
     }
     MenuWithFoodInFireBase(List<Integer> list){
         listFoodInMenu = list;
-    }*/
+    }
 }

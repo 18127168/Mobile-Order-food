@@ -64,9 +64,9 @@ public class ChefActivity extends AppCompatActivity {
 
             }
         });
-        //DatabaseWork db = new DatabaseWork();
-        //MenuWithFoodInFireBase ac ;
-        //ac = (MenuWithFoodInFireBase) db.GetFoodInMenu(2);
+        DatabaseWork db = new DatabaseWork();
+        MenuWithFoodInFireBase ac ;
+        ac = (MenuWithFoodInFireBase) db.GetFoodInMenu(2);
         adapter = new FirebaseListAdapter<HoaDon>(this, HoaDon.class,R.layout.custom_adapter_chef_order_menu_,
                 FirebaseDatabase.getInstance().getReference("User").child("HoaDon").orderByChild("HoaDonSo")) {
             @Override
@@ -76,7 +76,7 @@ public class ChefActivity extends AppCompatActivity {
                 userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        //if (dataSnapshot.exists())
+                        if (dataSnapshot.exists())
                         {
                             Food foodCheckTheoIDCuaHoaDon;
                             for (DataSnapshot snapshot : dataSnapshot.getChildren())
@@ -219,19 +219,25 @@ public class ChefActivity extends AppCompatActivity {
 class Food{
     private String FlagName;
     private String Tenmon;
-    private int TimeToFinish,ID;
+    private int TimeToFinish,ID,giatien;
     public Food(){
         this.FlagName = "";
         this.Tenmon = "";
         this.TimeToFinish = 0;
         this.ID = 0;
+        this.giatien = 0;
     }
-    public Food(String flagname,String tenmon,int timetofinish,int ID){
+    public Food(String flagname,String tenmon,int timetofinish,int ID,int giatien){
         this.FlagName = flagname;
         this.Tenmon = tenmon;
         this.TimeToFinish = timetofinish;
         this.ID= ID;
+        this.giatien = giatien;
     }
+    public void setgiatien(int a){
+        giatien = a;
+    }
+    public int getGiatien(){return giatien;}
     public void setID(int a){
         ID = a;
     }
