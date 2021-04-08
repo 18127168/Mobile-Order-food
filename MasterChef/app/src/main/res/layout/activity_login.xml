@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="270dp"
         android:layout_weight="2"
         android:orientation="vertical">
 
@@ -26,9 +26,8 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/logo">
-                </ImageView>
+                    android:layout_height="267dp"
+                    android:src="@drawable/logo"></ImageView>
 
             </LinearLayout>
 
@@ -38,14 +37,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="355dp"
         android:layout_weight="1"
-        android:weightSum="3"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="3">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="5dp"
             android:layout_weight="1"
             android:gravity="center">
 
@@ -59,14 +58,14 @@
                 android:layout_marginRight="50dp"
                 android:layout_weight="1"
                 android:text="Login"
-                android:textSize="38dp"
-                android:textColor="@color/my_text_color" />
+                android:textColor="@color/my_text_color"
+                android:textSize="38dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="11dp"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical">
 
@@ -88,7 +87,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical">
 
@@ -109,11 +108,33 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/serverLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/border"
+                android:hint="Server"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="@color/my_hint_text_color"
+                android:textSize="20sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="114dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">

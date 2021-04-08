@@ -1,6 +1,8 @@
 package com.example.masterchef;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,15 +18,14 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    EditText user,pass;
-    Button btnlogin;
+    public static EditText user,pass,server;
+    public Button btnlogin;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference dataref = database.getReference("User");
+        server = (EditText) findViewById(R.id.serverLogin);
         user = (EditText) findViewById(R.id.user);
         pass = (EditText) findViewById(R.id.pass);
 
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference dataref = database.getReference(server.getText().toString());
                     Query userQuery = dataref.child("username").orderByChild("user").equalTo(user.getText().toString());
                     userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

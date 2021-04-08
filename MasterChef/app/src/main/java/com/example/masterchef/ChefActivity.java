@@ -64,11 +64,11 @@ public class ChefActivity extends AppCompatActivity {
 
             }
         });
-        DatabaseWork db = new DatabaseWork();
-        MenuWithFoodInFireBase ac ;
-        ac = (MenuWithFoodInFireBase) db.GetFoodInMenu(2);
+        //DatabaseWork db = new DatabaseWork();
+        //MenuWithFoodInFireBase ac ;
+        //ac = (MenuWithFoodInFireBase) db.GetFoodInMenu(2);
         adapter = new FirebaseListAdapter<HoaDon>(this, HoaDon.class,R.layout.custom_adapter_chef_order_menu_,
-                FirebaseDatabase.getInstance().getReference("User").child("HoaDon").orderByChild("HoaDonSo")) {
+                FirebaseDatabase.getInstance().getReference(MainActivity.server.getText().toString()).child("HoaDon").orderByChild("HoaDonSo")) {
             @Override
             protected void populateView(View v, HoaDon model, int position) {
                 HoaDon check = model;
@@ -227,11 +227,11 @@ class Food{
         this.ID = 0;
         this.giatien = 0;
     }
-    public Food(String flagname,String tenmon,int timetofinish,int ID,int giatien){
+    public Food(String flagname,String tenmon,int timetofinish,int giatien){
         this.FlagName = flagname;
         this.Tenmon = tenmon;
         this.TimeToFinish = timetofinish;
-        this.ID= ID;
+        this.ID= 1;
         this.giatien = giatien;
     }
     public void setgiatien(int a){
