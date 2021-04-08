@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_staff_tables"
+            android:icon="@drawable/ic_nav_menu_tables"
+            android:title="Bàn" />
+        <item
+            android:id="@+id/nav_staff_foods"
+            android:icon="@drawable/ic_nav_menu_foods"
+            android:title="Các món ăn" />
+        <item
+            android:id="@+id/nav_staff_attendance"
+            android:icon="@drawable/ic_nav_menu_timekeeping"
+            android:title="Điểm danh" />
+
+    </group>
+</menu>

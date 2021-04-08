@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_LONG).show();
                                         checklogin = true;
                                         if(usersnapshot.loai.equals("QuanLy")){ //thieu manager activity
-                                            Intent intent = new Intent(MainActivity.this, StaffActivity.class);
+                                            Intent intent = new Intent(MainActivity.this, ManagerActivity.class);
                                             startActivity(intent);
                                         }
                                         else if(usersnapshot.loai.equals("NhanVien")){//doi lai activity nhanvien
