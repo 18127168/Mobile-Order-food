@@ -15,7 +15,6 @@ import com.example.masterchef.R;
 
 public class MenuFragment extends Fragment {
 
-    private MenuViewModel galleryViewModel;
     public RecyclerView dataList;
     String[] titles = {"Cá kèo nướng", "King crab", "Gỏi bò", "Tôm hùm", "Dê ré"};
     int[] images = {R.drawable.food1, R.drawable.food2, R.drawable.food3, R.drawable.food4, R.drawable.food5};
@@ -24,9 +23,9 @@ public class MenuFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =  new ViewModelProvider(this).get(MenuViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_customer_menu, container, false);
+
         dataList = root.findViewById(R.id.menu_recyclerCategory);
 
         adapter = new MenuAdapter(getActivity(), images, titles, prices);

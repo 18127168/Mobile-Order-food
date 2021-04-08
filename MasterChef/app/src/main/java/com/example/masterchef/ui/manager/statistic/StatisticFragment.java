@@ -28,9 +28,7 @@ public class StatisticFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root =  inflater.inflate(R.layout.manager_fragment_statistic, container, false);
-
         BarChart revenueChart = root.findViewById(R.id.revenueChart);
-
         ArrayList<BarEntry> revenue = new ArrayList<>();
         revenue.add(new BarEntry(1, 100));
         revenue.add(new BarEntry(2, 400));
@@ -86,15 +84,11 @@ public class StatisticFragment extends Fragment {
         barDataSet3.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet3.setValueTextColor(Color.BLACK);
         barDataSet3.setValueTextSize(10f);
-
         BarData barData3 = new BarData(barDataSet3);
-
         profitChart.setFitBars(true);
         profitChart.setData(barData3);
         profitChart.getDescription().setText("Profit Chart");
         profitChart.animateY(2000);
-
-
         return root;
     }
 }

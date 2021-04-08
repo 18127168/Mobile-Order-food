@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
-import com.example.masterchef.ui.customer.menu.MenuAdapter;
-import com.example.masterchef.ui.customer.menu.MenuViewModel;
 
 public class TablesFragment extends Fragment {
 

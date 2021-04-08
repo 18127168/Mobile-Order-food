@@ -1,36 +1,53 @@
 package com.example.masterchef;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChefActivity extends AppCompatActivity {
     Button giamchef,tangchef;
     StorageReference listref =FirebaseStorage.getInstance().getReference();
-    FirebaseListAdapter<Food> adapter;
+    FirebaseListAdapter<HoaDon> adapter;
     StorageReference storeImage;
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference dataref = database.getReference("User");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef);
+        Toolbar toolbar = findViewById(R.id.chef_toolbar);
+        setSupportActionBar(toolbar);
+
         final ListView listView = (ListView) findViewById(R.id.listChefFood);
 
         giamchef = (Button) findViewById(R.id.giamchef);
@@ -47,97 +64,150 @@ public class ChefActivity extends AppCompatActivity {
 
             }
         });
-         adapter = new FirebaseListAdapter<Food>(this, Food.class,R.layout.custom_adapter_chef_order_menu_,
-                 FirebaseDatabase.getInstance().getReference("User").child("Order").orderByChild("HoaDonSo")) {
+        DatabaseWork db = new DatabaseWork();
+        MenuWithFoodInFireBase ac;
+        ac = (MenuWithFoodInFireBase) db.GetFoodInMenu(2);
+        adapter = new FirebaseListAdapter<HoaDon>(this, HoaDon.class,R.layout.custom_adapter_chef_order_menu_,
+                FirebaseDatabase.getInstance().getReference("User").child("HoaDon").orderByChild("HoaDonSo")) {
             @Override
-            protected void populateView(View v, Food model, int position) {
+            protected void populateView(View v, HoaDon model, int position) {
+                HoaDon check = model;
+                Query userQuery = dataref.child("Food").orderByChild("ID").equalTo(model.getID());
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists())
+                        {
+                            Food foodCheckTheoIDCuaHoaDon;
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                            {
+                                foodCheckTheoIDCuaHoaDon = snapshot.getValue(Food.class);
+                                ViewHolder holder;
+                                holder = new ViewHolder();
+                                holder.flagView = (ImageView) v.findViewById(R.id.imageViewadapter);
+                                holder.BanView = (TextView) v.findViewById(R.id.banAdapter);
+                                holder.TenMonView = (TextView) v.findViewById(R.id.monanAdapter);
+                                holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiAdapter);
+                                holder.xong = (Button) v.findViewById(R.id.buttonXong);
+                                holder.xong.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        model.setTrangthai("Da xong");
+                                        Map<String, Object> postValues = new HashMap<String,Object>();
+                                        postValues.put(adapter.getRef(position).getKey(),model);
+                                        dataref.child("HoaDon").updateChildren(postValues);
+                                    }
+                                });
+                                holder.hetnguyenlieu = (Button) v.findViewById(R.id.buttonHetnguyenlieu);
+                                holder.hetnguyenlieu.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        model.setTrangthai("Thieu Nguyen Lieu");
+                                        Map<String, Object> postValues = new HashMap<String,Object>();
+                                        postValues.put(adapter.getRef(position).getKey(),model);
+                                        dataref.child("HoaDon").updateChildren(postValues);
+                                    }
+                                });
+                                v.setTag(holder);
+                                holder.TenMonView.setText(foodCheckTheoIDCuaHoaDon.getTenmon());
+                                holder.BanView.setText("Ban: " + model.getTable());
+                                holder.TinhtrangView.setText("Tinh trang: " + model.getTrangthai());
+                                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(foodCheckTheoIDCuaHoaDon.getFlagName());
+                                Glide.with(ChefActivity.this).using(new FirebaseImageLoader()).load(storeImage).into(holder.flagView);
 
-                ViewHolder holder;
-                    holder = new ViewHolder();
-                    holder.flagView = (ImageView) v.findViewById(R.id.imageViewadapter);
-                    holder.BanView = (TextView) v.findViewById(R.id.banAdapter);
-                    holder.TenMonView = (TextView) v.findViewById(R.id.monanAdapter);
-                    holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiAdapter);
-                    holder.xong = (Button) v.findViewById(R.id.buttonXong);
-                    holder.xong.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            model.setTrangthai("Da xong");
-                            FirebaseDatabase.getInstance()
-                                    .getReference("User").child("ChefComplete")
-                                    .push()
-                                    .setValue(model);
-                            adapter.getRef(position).removeValue();
+                            }
                         }
-                    });
-                    holder.hetnguyenlieu = (Button) v.findViewById(R.id.buttonHetnguyenlieu);
-                    holder.hetnguyenlieu.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            model.setTrangthai("Thieu Nguyen Lieu");
-                            FirebaseDatabase.getInstance()
-                                    .getReference("User").child("ThieuNguyenLieu")
-                                    .push()
-                                    .setValue(model);
-                            adapter.getRef(position).removeValue();
-                        }
-                    });
-                    v.setTag(holder);
-                holder.TenMonView.setText(model.getTenmon());
-                holder.BanView.setText("Ban: " + model.getTable());
-                holder.TinhtrangView.setText("Tinh trang: " + model.getTrangthai());
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(model.getFlagName());
-                Glide.with(ChefActivity.this).using(new FirebaseImageLoader()).load(storeImage).into(holder.flagView);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
             }
         };
+         /*adapter = new FirebaseListAdapter<HoaDon>(this, HoaDon.class,R.layout.custom_adapter_chef_order_menu_,
+                 dataref.child("HoaDon").orderByChild("HoaDonSo")) {
+            @Override
+            protected void populateView(View v, HoaDon model, int position) {
+                HoaDon check = model;
+                Query userQuery = dataref.child("Food").orderByChild("ID").equalTo(model.getID());
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //if (dataSnapshot.exists())
+                        {
+                            Food foodCheckTheoIDCuaHoaDon;
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                            {
+                                foodCheckTheoIDCuaHoaDon = snapshot.getValue(Food.class);
+                                ViewHolder holder;
+                                holder = new ViewHolder();
+                                holder.flagView = (ImageView) v.findViewById(R.id.imageViewadapter);
+                                holder.BanView = (TextView) v.findViewById(R.id.banAdapter);
+                                holder.TenMonView = (TextView) v.findViewById(R.id.monanAdapter);
+                                holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiAdapter);
+                                holder.xong = (Button) v.findViewById(R.id.buttonXong);
+                                holder.xong.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        model.setTrangthai("Da xong");
+                                        Map<String, Object> postValues = new HashMap<String,Object>();
+                                        postValues.put(adapter.getRef(position).getKey(),model);
+                                        dataref.child("HoaDon").updateChildren(postValues);
+                                    }
+                                });
+                                holder.hetnguyenlieu = (Button) v.findViewById(R.id.buttonHetnguyenlieu);
+                                holder.hetnguyenlieu.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        model.setTrangthai("Thieu Nguyen Lieu");
+                                        Map<String, Object> postValues = new HashMap<String,Object>();
+                                        postValues.put(adapter.getRef(position).getKey(),model);
+                                        dataref.child("HoaDon").updateChildren(postValues);
+                                    }
+                                });
+                                v.setTag(holder);
+                                holder.TenMonView.setText(foodCheckTheoIDCuaHoaDon.getTenmon());
+                                holder.BanView.setText("Ban: " + model.getTable());
+                                holder.TinhtrangView.setText("Tinh trang: " + model.getTrangthai());
+                                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(foodCheckTheoIDCuaHoaDon.getFlagName());
+                                Glide.with(ChefActivity.this).using(new FirebaseImageLoader()).load(storeImage).into(holder.flagView);
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+                }
+        };*/
 
         listView.setAdapter(adapter);
 
     }
 
-    private FirebaseListAdapter<Food> sortTangListFood(FirebaseListAdapter<Food> ques){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem exit_action = menu.findItem(R.id.action_logout);
 
-        /*Collections.sort(ques, new Comparator<Food>() {
+        exit_action.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public int compare(Food o1, Food o2) {
-                if (o1.getHoaDonSo() == o2.getHoaDonSo()){
-                    if (o1.getTimeToFinish() < o2.getTimeToFinish()) {
-                        return -1;
-                    } else {
-                        if (o1.getTimeToFinish() == o2.getTimeToFinish()) {
-                            return 0;
-                        } else {
-                            return 1;
-                        }
-                    }
-                }
-                else if(o1.getHoaDonSo() <o2.getHoaDonSo()){ return -1;}
-                else { return 1;}
-            }
-        });*/
-        return ques;
-    }
-    private List<Food> sortGiamListFood(List<Food> ques){
-        Collections.sort(ques, new Comparator<Food>() {
-            @Override
-            public int compare(Food o1, Food o2) {
-                if (o1.getHoaDonSo() == o2.getHoaDonSo()){
-                    if (o1.getTimeToFinish() < o2.getTimeToFinish()) {
-                        return 1;
-                    } else {
-                        if (o1.getTimeToFinish() == o2.getTimeToFinish()) {
-                            return 0;
-                        } else {
-                            return -1;
-                        }
-                    }
-                }
-                else if(o1.getHoaDonSo() <o2.getHoaDonSo()){ return -1;}
-                else { return 1;}
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(ChefActivity.this, MainActivity.class);
+                startActivity(intent);
+                return false;
             }
         });
-        return ques;
+
+        return true;
     }
+
+
+
     static class ViewHolder {
         ImageView flagView;
         TextView BanView;
@@ -146,48 +216,4 @@ public class ChefActivity extends AppCompatActivity {
         Button xong,hetnguyenlieu;
     }
 }
-class Food{
-    private String FlagName;
-    private String Tenmon,Trangthai;
-    private int Table,TimeToFinish,HoaDonSo;
-    public Food(){
-        this.FlagName = "";
-        this.Table = 0;
-        this.Tenmon = "";
-        this.Trangthai = "";
-        this.TimeToFinish = 0;
-        this.HoaDonSo = 0;
-    }
-    public Food(String flagname,int table,String tenmon,String trangthai,int timetofinish,int donthux){
-        this.FlagName = flagname;
-        this.Table = table;
-        this.Tenmon = tenmon;
-        this.Trangthai = trangthai;
-        this.TimeToFinish = timetofinish;
-        this.HoaDonSo = donthux;
-    }
-    public void setFlagName(String a){
-        FlagName = a;
-    }
-    public String getFlagName(){return FlagName;}
-    public void setTable(int a){
-        Table=a;
-    }
-    public int getTable(){return Table;}
-    public void setTenmon(String a){
-    Tenmon = a;
-    }
-    public String getTenmon(){return Tenmon;}
-    public void setTrangthai(String a){
-        Trangthai = a;
-    }
-    public String getTrangthai(){return Trangthai;}
-    public void setTimeToFinish(int a){
-        TimeToFinish = a;
-    }
-    public int getTimeToFinish(){return TimeToFinish;}
-    public void setHoaDonSo(int a){
-        HoaDonSo = a;
-    }
-    public int getHoaDonSo(){return HoaDonSo;}
-}
+
