@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:text="STT"
+            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            >
+        </TextView>
+        <TextView
+            android:text="Mã"
+            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            >
+        </TextView>
+        <TextView
+            android:text="Ngày áp dụng"
+            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            >
+        </TextView>
+        <TextView
+            android:text="Mô tả"
+            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            >
+        </TextView>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/discount_rcv"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

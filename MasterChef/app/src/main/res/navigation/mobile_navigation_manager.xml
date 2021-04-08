@@ -17,8 +17,8 @@
 
     <fragment
         android:id="@+id/nav_staff"
-        android:name="com.example.masterchef.ui.manager.statistic.StatisticFragment"
-        tools:layout="@layout/manager_fragment_staff" />
+        android:name="com.example.masterchef.ui.manager.Managestaff.MangestaffFragment"
+        tools:layout="@layout/manager_fragment_managestaff" />
 
     <fragment
         android:id="@+id/nav_stock"
@@ -27,10 +27,10 @@
 
     <fragment
         android:id="@+id/nav_menu_edit"
-        android:name="com.example.masterchef.ui.manager.statistic.StatisticFragment"
-        tools:layout="@layout/manager_fragment_menu" />
+        android:name="com.example.masterchef.ui.manager.Managemenu.MangemenuFragment"
+        tools:layout="@layout/manager_fragment_managemenu" />
     <fragment
         android:id="@+id/nav_promotion"
-        android:name="com.example.masterchef.ui.manager.statistic.StatisticFragment"
-        tools:layout="@layout/manager_fragment_promotion" />
+        android:name="com.example.masterchef.ui.manager.discount.ManagediscountFragment"
+        tools:layout="@layout/manager_fragment_discount" />
 </navigation>
