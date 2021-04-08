@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.customer.menu;
+package com.example.masterchef.ui.staff.tables;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,24 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.R;
 
-public class MenuFragment extends Fragment {
+public class OptionFragment extends Fragment {
 
+    private TablesViewModel galleryViewModel;
     public RecyclerView dataList;
     String[] titles = {"Cá kèo nướng", "King crab", "Gỏi bò", "Tôm hùm", "Dê ré"};
     int[] images = {R.drawable.food1, R.drawable.food2, R.drawable.food3, R.drawable.food4, R.drawable.food5};
     int[] prices = {100000, 120000, 125000, 200000, 250000};
-    MenuAdapter adapter;
+    OptionAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        galleryViewModel =  new ViewModelProvider(this).get(TablesViewModel.class);
 
-        View root = inflater.inflate(R.layout.fragment_customer_menu, container, false);
+        View root = inflater.inflate(R.layout.fragment_staff_tables_option, container, false);
+        dataList = root.findViewById(R.id.option_recyclerCategory);
 
-        dataList = root.findViewById(R.id.menu_recyclerCategory);
+        adapter = new OptionAdapter(getActivity(), images, titles, prices);
 
-        adapter = new MenuAdapter(getActivity(), images, titles, prices);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         dataList.setLayoutManager(gridLayoutManager);
         dataList.setAdapter(adapter);
 

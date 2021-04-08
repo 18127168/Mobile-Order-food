@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_manager"
+    app:startDestination="@+id/nav_staff_tables">
+
+    <fragment
+        android:id="@+id/nav_staff_tables"
+        android:name="com.example.masterchef.ui.staff.tables.TablesFragment"
+        tools:layout="@layout/fragment_staff_tables" />
+
+    <fragment
+        android:id="@+id/nav_staff_foods"
+        android:name="com.example.masterchef.ui.staff.tables.TablesFragment"
+        tools:layout="@layout/fragment_staff_tables" />
+
+</navigation>

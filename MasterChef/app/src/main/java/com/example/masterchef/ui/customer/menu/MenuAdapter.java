@@ -68,6 +68,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             imgFood = itemView.findViewById(R.id.menu_image);
             price = itemView.findViewById(R.id.menu_price);
             choose_btn = itemView.findViewById(R.id.menu_choose_btn);
+
         }
     }
 }

@@ -1,13 +1,13 @@
-package com.example.masterchef.ui.customer.menu;
+package com.example.masterchef.ui.staff.tables;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MenuViewModel extends ViewModel {
+public class TablesViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public MenuViewModel() {
+    public TablesViewModel() {
         mText = new MutableLiveData<>();
     }
 

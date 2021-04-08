@@ -1,7 +1,9 @@
 package com.example.masterchef;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +53,17 @@ public class ManagerActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem exit_action = menu.findItem(R.id.action_logout);
+
+        exit_action.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(ManagerActivity.this, MainActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
         return true;
     }
 
