@@ -5,17 +5,12 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_staff_tables"
-            android:icon="@drawable/ic_nav_menu_tables"
-            android:title="Bàn" />
-        <item
             android:id="@+id/nav_staff_foods"
             android:icon="@drawable/ic_nav_menu_foods"
-            android:title="Các món ăn" />
+            android:title="Danh sách món ăn phục vụ" />
         <item
-            android:id="@+id/nav_staff_attendance"
-            android:icon="@drawable/ic_nav_menu_timekeeping"
-            android:title="Điểm danh" />
-
+            android:id="@+id/nav_staff_tables"
+            android:icon="@drawable/ic_nav_menu_tables"
+            android:title="Trợ giúp khách hàng" />
     </group>
 </menu>

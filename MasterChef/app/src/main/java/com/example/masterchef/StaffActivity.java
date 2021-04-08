@@ -8,8 +8,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,7 +41,7 @@ public class StaffActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_staff_tables, R.id.nav_staff_foods, R.id.nav_staff_attendance)
+                R.id.nav_staff_tables, R.id.nav_staff_foods)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_staff);
@@ -51,6 +53,18 @@ public class StaffActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem exit_action = menu.findItem(R.id.action_logout);
+
+        exit_action.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(StaffActivity.this, MainActivity.class);
+
+                startActivity(intent);
+                return false;
+            }
+        });
+
         return true;
     }
 

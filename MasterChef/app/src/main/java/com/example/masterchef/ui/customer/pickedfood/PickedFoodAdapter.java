@@ -46,16 +46,18 @@ public class PickedFoodAdapter extends RecyclerView.Adapter<PickedFoodAdapter.Vi
         holder.price.setText(prices[position] + " đ");
         holder.number.setText(Integer.toString(numberfoods[position]));
         if (!notes[position].equals("")) { holder.note.setText(notes[position]); }
-        holder.minusBtn.setOnClickListener(new View.OnClickListener() {
+        holder.plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                numberfoods[position] += 1;
+                holder.number.setText(Integer.toString(numberfoods[position]));
             }
         });
         holder.minusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (numberfoods[position] > 0) { numberfoods[position] -= 1; }
+                holder.number.setText(Integer.toString(numberfoods[position]));
             }
         });
     }
@@ -68,8 +70,7 @@ public class PickedFoodAdapter extends RecyclerView.Adapter<PickedFoodAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title, price;
         EditText number, note;
-        ImageView image;
-        Button minusBtn, plusBtn;
+        ImageView image, minusBtn, plusBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

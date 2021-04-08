@@ -52,7 +52,7 @@ public class CheckBillFragment extends Fragment {
         for (int i = 0; i < titles.length; i++){ sum += prices[i]*numberfoods[i]; }
 
         totalcost.setText(Integer.toString(sum));
-        discount_price.setText(sum*10/100);
+        discount_price.setText(Integer.toString(sum*10/100));
         VAT.setText(Integer.toString(sum*10/100));
         billcost.setText(Integer.toString(sum + sum*10/100));
 
