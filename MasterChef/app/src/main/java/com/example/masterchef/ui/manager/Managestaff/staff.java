@@ -3,6 +3,7 @@ public class staff {
     private String stt;
     private String name;
     private String type;
+
     public staff(String stt, String name, String type){
         this.stt=stt;
         this.name=name;

@@ -1,51 +1,65 @@
 package com.example.masterchef;
 
 import android.app.Application;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectedFood extends Application {
 
-    public class Food{
-        String IdFood;
-        int quanity;
+    public static class Food{
+        int IdFood;
+        int quantity;
+        String note;
 
-        public Food(String Food, int num) {
+        public Food(int Food, int num) {
             IdFood = Food;
-            quanity = num;
+            quantity = num;
+            note = "";
         }
+
+        public int getQuantity() { return quantity; }
+
+        public int getIdFood(){ return IdFood; }
+
+        public String getNote() { return note; }
+
+        public void increaseQuantity() { this.quantity += 1; }
+
+        public void decreaseQuantity() { if (this.quantity > 0)     this.quantity -= 1; }
     }
 
-    private List<Food> Foods;
+    public static List<Food> Foods = new ArrayList<>();
 
-    public List<Food> getSelectedFood() {
-        return Foods;
-    }
+    //public List<Food> getSelectedFood() { return Foods; }
 
-    public boolean decreaseStock(String food) {
+    public static void addSelectedFood(int food) {
+        boolean duplicate = false;
+
         for (int i = 0; i < Foods.size(); i++){
-            if (Foods.get(i).IdFood.equals(food)) {
-                if (Foods.get(i).quanity == 1) {
-                    return true;
-                } else {
-                    Foods.get(i).quanity -= 1;
-                }
+            if (Foods.get(i).IdFood == food) {
+                Foods.get(i).quantity += 1;
+                duplicate = true;
             }
-        }
-
-        return false;
-    }
-
-    public void addSelectedFood(String food) {
-        boolean duplicate = true;
-
-        for (int i = 0; i < Foods.size(); i++){
-            if (Foods.get(i).IdFood.equals(food))
-                Foods.get(i).quanity += 1;
         }
 
         if (!duplicate) {
             Food NewFood = new Food(food, 1);
             Foods.add(NewFood);
+        }
+    }
+
+    public static void setNote(int ID, String cusNote){
+        for (int i = 0; i < Foods.size(); i++){
+            if (Foods.get(i).IdFood == ID)
+                Foods.get(i).note = cusNote;
+        }
+    }
+
+    public static void setQuantity(int ID, int quantity) {
+        for (int i = 0; i < Foods.size(); i++){
+            if (Foods.get(i).IdFood == ID)
+                Foods.get(i).quantity = quantity;
         }
     }
 }
