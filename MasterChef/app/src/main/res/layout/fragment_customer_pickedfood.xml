@@ -22,7 +22,19 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pickedfood_recyclerCategory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_margin="10dp"
+        android:layout_width="140dp"
+        android:layout_gravity="center"
+        android:layout_height="49dp"
+        android:background="@drawable/getin_border"
+        android:backgroundTint="@color/my_blue"
+        android:text="Đặt món"
+        android:textSize="20dp"
+        app:backgroundTint="@color/my_blue" />
 
 </LinearLayout>

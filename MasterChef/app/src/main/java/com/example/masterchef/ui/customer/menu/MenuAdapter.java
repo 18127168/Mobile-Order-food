@@ -89,8 +89,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 holder.choose_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(contexts.getApplicationContext(), "Đã thêm món", Toast.LENGTH_LONG);
                         SelectedFood.addSelectedFood(IDFoodInMenus.get(position));
-                        Toast.makeText(contexts.getApplicationContext(), "Thêm món thành công", Toast.LENGTH_LONG);
                     }
                 });
 

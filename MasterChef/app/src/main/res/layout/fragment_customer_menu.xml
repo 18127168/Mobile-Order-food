@@ -50,7 +50,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="70dp"
             android:padding="10dp"
-            android:hint="Search your recipes"
+            android:hint="Search..."
             android:textColorHint="@color/white"
             android:gravity="center_vertical"
             android:background="@null"/>
