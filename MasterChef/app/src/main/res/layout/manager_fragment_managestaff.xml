@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Họ tên người cần tìm"
             android:layout_margin="2dp"
+            android:textSize="20sp"
             android:paddingLeft="20dp"
             >
         </TextView>
@@ -40,57 +41,66 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="thêm"
+        android:layout_marginTop="15dp"
+                        >
+
+        <ImageView
             android:id="@+id/btn_them"
-            >
-        </Button>
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:src="@drawable/ic_baseline_add_24">
+
+        </ImageView>
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="7"
         android:orientation="horizontal"
         >
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent"
             android:text="STT"
             >
         </TextView>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:paddingLeft="5sp"
+            android:gravity="center_horizontal"
+            android:layout_height="match_parent"
             android:text="Tên"
             >
         </TextView>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
             android:text="Loại Nhân viên"
             >
         </TextView>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
             android:text="Tùy chỉnh"
             >
         </TextView>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/manager_staff_lv"
             >
         </ListView>

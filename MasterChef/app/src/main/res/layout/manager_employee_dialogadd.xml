@@ -2,66 +2,164 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:layout_margin="10dp"
     android:background="#fff"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
+    android:weightSum="10"
     android:paddingTop="10dp">
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:gravity="center"
-       android:text="Đăng nhập hệ thống"
+       android:gravity="center_horizontal"
+       android:text="Thêm Nhân viên"
        >
    </TextView>
-    <EditText
-        android:layout_marginTop="20dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text1"
-        android:hint="STT"
-        >
-
-    </EditText>
-    <EditText
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text2"
-        android:hint="Name"
-        >
-    </EditText>
-    <EditText
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text3"
-        android:hint="Type"
-        >
-    </EditText>
+        android:layout_height="0dp"
+        android:layout_weight="8">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="10"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:padding="10sp"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/text11"
+            android:background="@drawable/button"
+            android:hint="User"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/text9"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/button"
+            android:hint="pass"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/text10"
+            android:hint="SDT"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_height="60dp"
+            android:id="@+id/text1"
+            android:hint="ban"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button"
+            android:layout_height="60dp"
+            android:id="@+id/text2"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="CMND"
+            >
+        </EditText>
+        <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/button"
+                android:layout_height="60dp"
+                android:id="@+id/text3"
+                android:gravity="center_vertical|center_horizontal"
+                android:hint="Dân tộc"
+                >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/text4"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/button"
+            android:hint="Địa chỉ"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/text5"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/button"
+            android:hint="Họ tên"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/text6"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/button"
+            android:hint="Loại"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/text7"
+            android:hint="Ngày sinh"
+            android:background="@drawable/button"
+            >
+        </EditText>
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/text8"
+            android:hint="Ngày vào"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/button"
+            >
+        </EditText>
+
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         >
         <Button
 
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_height="40dp"
             android:id="@+id/btnd"
+            android:layout_marginLeft="20dp"
             android:text="Đồng ý"
             >
-
         </Button>
 
         <Button
             android:id="@+id/btnh"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_height="40dp"
+            android:layout_marginLeft="80dp"
             android:text="Hủy"></Button>
 
     </LinearLayout>

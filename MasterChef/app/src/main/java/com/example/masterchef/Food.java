@@ -1,6 +1,6 @@
 package com.example.masterchef;
 
-class Food{
+public class Food{
     private String FlagName;
     private String Tenmon;
     private int TimeToFinish,ID,giatien;

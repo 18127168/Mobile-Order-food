@@ -63,31 +63,34 @@ public class DatabaseWork {
     }*/
 
    //lay id cua cac mon an trong menu cua 1 ngay nao do.
-    public MenuWithFoodInFireBase GetFoodInMenu(int ThuMay) {
-        MenuWithFoodInFireBase result = new MenuWithFoodInFireBase();
-        Query userQuery = dataref.child("Menu").orderByKey();
-        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                        MenuWithFoodInFireBase menu = postSnapshot.getValue(MenuWithFoodInFireBase.class);
-                        if(postSnapshot.getKey().equals(""+ThuMay)){
-                            result.listFoodInMenu = menu.listFoodInMenu;
-                            break;
-                        };
-                    }
-                }
-            }
+   public List<Integer> GetFoodInMenu(int ThuMay) {
+       List<Integer> result = new ArrayList<>();
+       Query userQuery = dataref.child("Menu").orderByKey();
+       userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if(snapshot.exists()){
+                   for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                       List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
+                       if(postSnapshot.getKey().equals(""+ThuMay)){
+                           for(int i=0;i<menuofthisday.size();i++) {
+                               String temp = menuofthisday.get(i) + "";
+                               result.add(Integer.parseInt(temp));
+                           }
+                           break;
+                       };
+                   }
+               }
+           }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+           @Override
+           public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+           }
+       });
 
-        return result;
-    }
+       return result;
+   }
     //dua vao id lay ten mon trong thuc an
     public Food GetFoodWithID(int ID){
         Food result = new Food();
@@ -236,5 +239,6 @@ public class DatabaseWork {
             }
         });
     }
+    //
 
 }

@@ -32,7 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChefActivity extends AppCompatActivity {
+public class
+ChefActivity extends AppCompatActivity {
     Button giamchef,tangchef;
     StorageReference listref =FirebaseStorage.getInstance().getReference();
     FirebaseListAdapter<HoaDon> adapter;
