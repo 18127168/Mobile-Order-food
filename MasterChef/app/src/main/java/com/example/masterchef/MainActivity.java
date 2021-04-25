@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                boolean check = user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin");
                 if (user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin")){
                     Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                     startActivity(intent);
