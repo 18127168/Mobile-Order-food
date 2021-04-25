@@ -37,16 +37,18 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Context context;
     private Food foodData;
+    private DatabaseReference refCurrent;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dataref = database.getReference(server.getText().toString());
     StorageReference storeImage;
 
-    public AdapterHienCacMonAnTrongHoaDon(Context aContext,  String[] listData,  String[] listSoluong,  String[] listHoanThanh) {
+    public AdapterHienCacMonAnTrongHoaDon(Context aContext,  String[] listData,  String[] listSoluong,  String[] listHoanThanh,DatabaseReference linkRef) {
         this.context = aContext;
         this.listIDMonAn = listData;
         this.ListSoluong = listSoluong;
         this.ListHoanThanh = listHoanThanh;
         layoutInflater = LayoutInflater.from(aContext);
+        this.refCurrent = linkRef;
     }
 
     @Override
@@ -100,7 +102,19 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
                         int intofSoLuong = Integer.parseInt(Soluong);
                         if(intofHoanThanh < intofSoLuong){
                             intofHoanThanh += 1;
-                            HoanThanh = String.valueOf(intofHoanThanh);
+                            ListHoanThanh[position] = ""+intofHoanThanh;
+                            String newStringHoanThanh ="";
+                            for(int i=0;i<ListHoanThanh.length;i++){
+                                newStringHoanThanh += ListHoanThanh[i];
+                                if(i!= ListHoanThanh.length-1)
+                                    newStringHoanThanh += ",";
+                            }
+                            refCurrent.child("Hoanthanh").setValue(newStringHoanThanh);
+
+                            notifyDataSetChanged();
+                            if(checkBillFinish()){
+                                refCurrent.child("trangthai").setValue("Đã Hoàn Thành");
+                            }
                         }
                     }
                 });
@@ -122,5 +136,12 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
         TextView MonAnView;
         TextView SoluonghoanthanhView;
         Button plus;
+    }
+    public boolean checkBillFinish(){
+        for(int i=0;i<ListHoanThanh.length;i++){
+            if(Integer.parseInt(ListHoanThanh[i]) != Integer.parseInt(ListSoluong[i]))
+                return false;
+        }
+        return true;
     }
 }

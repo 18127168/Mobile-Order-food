@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/Ban"
-            android:layout_width="134dp"
+            android:layout_width="86dp"
             android:layout_height="37dp"
             android:gravity="center"
             android:text="Bàn: 1"

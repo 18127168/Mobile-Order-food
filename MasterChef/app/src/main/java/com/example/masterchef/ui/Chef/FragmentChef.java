@@ -44,6 +44,7 @@ import static com.example.masterchef.R.layout.fragment_listhoadon;
 
 public class FragmentChef extends Fragment {
     FirebaseListAdapter<HoaDon> adapter;
+
     Query query;
     public ListView listView;
     View compactactivity;
@@ -51,7 +52,8 @@ public class FragmentChef extends Fragment {
         View root =  inflater.inflate(fragment_listhoadon, container, false);
         compactactivity = root;
         listView = (ListView) root.findViewById(R.id.listChefFood);
-        query = FirebaseDatabase.getInstance().getReference(MainActivity.server.getText().toString()).child("HoaDon").orderByChild("HoaDonSo");
+
+        query = FirebaseDatabase.getInstance().getReference(MainActivity.server.getText().toString()).child("HoaDon").orderByChild("trangthai").equalTo(0);
         adapter = new FirebaseListAdapter<HoaDon>(getActivity(), HoaDon.class, R.layout.customer_adapter_chef_hoadon,query) {
             @Override
             protected void populateView(View v, HoaDon model, int position) {
@@ -64,44 +66,17 @@ public class FragmentChef extends Fragment {
                 v.setTag(holder);
                 holder.HoaDonSoView.setText("Hóa Đơn Số : "+model.getHoaDonSo());
                 holder.BanView.setText("Ban: " + model.getTable());
-                holder.TinhtrangView.setText("Tinh trang: " + model.getTrangthai());
+                String trangthai;
+                if(model.getTrangthai() == 0) trangthai = "Đã Gọi";
+                else trangthai = "Đã Hoàn Thành";
+                holder.TinhtrangView.setText("Tinh trang: " + trangthai);
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        replaceFragmentContent(new FragMentCacMonAnTrongHoaDon(model),root.getContext());
+                        replaceFragmentContent(new FragMentCacMonAnTrongHoaDon(model,adapter.getRef(position)),root.getContext());
                     }
                 });
-        /*  Query userQuery = dataref.child("Food").orderByChild("ID").equalTo(model.getID());
-                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists())
-                        {
-                            Food foodCheckTheoIDCuaHoaDon;
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                            {
-                                foodCheckTheoIDCuaHoaDon = snapshot.getValue(Food.class);
-                                ViewHolder holder;
-                                holder = new ViewHolder();
-                                holder.BanView = (TextView) v.findViewById(R.id.banViewHoaDonAdapter);
-                                holder.HoaDonSoView = (TextView) v.findViewById(R.id.hoadonsoViewHoaDonAdapter);
-                                holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiViewHoaDonAdapter);
-
-                                v.setTag(holder);
-                                holder.HoaDonSoView.setText(foodCheckTheoIDCuaHoaDon.getTenmon());
-                                holder.BanView.setText("Ban: " + model.getTable());
-                                holder.TinhtrangView.setText("Tinh trang: " + model.getTrangthai());
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });*/
             }
-
         };
         listView.setAdapter(adapter);
         return root;

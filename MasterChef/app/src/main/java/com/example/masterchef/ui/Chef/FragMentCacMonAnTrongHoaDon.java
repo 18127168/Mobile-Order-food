@@ -19,6 +19,7 @@ import com.example.masterchef.HoaDon;
 import com.example.masterchef.MainActivity;
 import com.example.masterchef.R;
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
@@ -31,14 +32,14 @@ import static com.example.masterchef.R.layout.fragment_cac_mon_an_trong_hoa_don;
 import static com.example.masterchef.R.layout.fragment_listhoadon;
 
 public class FragMentCacMonAnTrongHoaDon extends Fragment {
-        FirebaseListAdapter<HoaDon> adapter;
-        Query query;
         public ListView listView;
         public TextView ban,tinhtrang;
+        public DatabaseReference refCurrent;
         View compactactivity;
         public HoaDon data;
-        public FragMentCacMonAnTrongHoaDon(HoaDon model){
+        public FragMentCacMonAnTrongHoaDon(HoaDon model, DatabaseReference linkofHoaDon){
             this.data=model;
+            this.refCurrent=linkofHoaDon;
         }
         public View onCreateView(LayoutInflater inflater, @NonNull ViewGroup container, Bundle savedInstanceState) {
             View root =  inflater.inflate(fragment_cac_mon_an_trong_hoa_don, container, false);
@@ -48,11 +49,14 @@ public class FragMentCacMonAnTrongHoaDon extends Fragment {
             tinhtrang = (TextView) root.findViewById(R.id.tinhtrang);
 
             ban.setText("Bàn: "+data.getTable());
-            tinhtrang.setText("Tinh trang: " + data.getTrangthai());
+            String trangthai;
+            if(data.getTrangthai() == 0) trangthai = "Đã Gọi";
+            else trangthai = "Đã Hoàn Thành";
+            tinhtrang.setText("Tinh trang: " + trangthai);
             String[] listIDMonAn = data.getID().split(",");
             String[] listSoLuong = data.getSoLuong().split(",");
             String[] listHoanThanh = data.getHoanthanh().split(",");
-            listView.setAdapter(new AdapterHienCacMonAnTrongHoaDon(getActivity(),listIDMonAn,listSoLuong,listHoanThanh));
+            listView.setAdapter(new AdapterHienCacMonAnTrongHoaDon(getActivity(),listIDMonAn,listSoLuong,listHoanThanh,refCurrent));
             return root;
         }
 

@@ -1,28 +1,34 @@
 package com.example.masterchef;
 
 public class HoaDon{
-    private String Trangthai,Hoanthanh,SoLuong,ID;
-    private int HoaDonSo,Table;
+    private String Hoanthanh,SoLuong,ID,Date;
+    private int HoaDonSo,Table,Trangthai;
     public HoaDon(){
         this.HoaDonSo = 0;
-        this.Trangthai = "";
+        this.Trangthai = 0;
         this.Table = 0;
         this.ID = "";
         this.Hoanthanh = "";
         this.SoLuong = "";
+        this.Date = "";
     }
-    public HoaDon(String trangthai,int table,int Hoadonso,String ID,String Hoanthanh,String Soluong){
+    public HoaDon(int trangthai,int table,int Hoadonso,String ID,String Hoanthanh,String Soluong,String Date){
         this.Trangthai = trangthai;
         this.Table = table;
         this.HoaDonSo = Hoadonso;
         this.ID = ID;
         this.Hoanthanh = Hoanthanh;
         this.SoLuong = Soluong;
+        this.Date = Date;
     }
     public void setID(String a){
         ID = a;
     }
     public String getID(){return ID;}
+    public void setDate(String a){
+        Date = a;
+    }
+    public String getDate(){return Date;}
 
     public void setSoLuong(String a){
         SoLuong = a;
@@ -32,10 +38,10 @@ public class HoaDon{
         Hoanthanh = a;
     }
     public String getHoanthanh(){return Hoanthanh;}
-    public void setTrangthai(String a){
+    public void setTrangthai(int a){
         Trangthai = a;
     }
-    public String getTrangthai(){return Trangthai;}
+    public int getTrangthai(){return Trangthai;}
     public void setTable(int a){
         Table = a;
     }
