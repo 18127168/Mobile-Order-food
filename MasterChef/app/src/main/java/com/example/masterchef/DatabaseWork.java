@@ -106,6 +106,7 @@ public class DatabaseWork {
                             result.setFlagName(foodSearch.getFlagName());
                             result.setTenmon(foodSearch.getTenmon());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
+                            result.setgiatien(foodSearch.getGiatien());
                             break;
                         };
                     }
@@ -119,6 +120,7 @@ public class DatabaseWork {
         });
         return result;
     }
+
     //lay hoa don theo hoadonso
     public List<HoaDon> GetHoaDon(int hoadonso){
         List<HoaDon> result = new ArrayList<>();

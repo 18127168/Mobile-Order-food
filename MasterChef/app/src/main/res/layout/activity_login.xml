@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="4"
+    android:weightSum="5"
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical">
 
@@ -26,8 +26,9 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="267dp"
-                    android:src="@drawable/logo"></ImageView>
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo">
+                </ImageView>
 
             </LinearLayout>
 
@@ -37,14 +38,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="355dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:weightSum="3">
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:weightSum="4"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             >
@@ -54,32 +55,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
                 android:layout_weight="1"
                 android:text="Login"
-                android:textColor="@color/my_text_color"
-                android:textSize="38dp" />
+                android:textSize="38dp"
+                android:textColor="@color/my_text_color" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="11dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical">
 
             <EditText
-                android:id="@+id/user"
+                android:id="@+id/serverLogin"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
                 android:background="@drawable/border"
-                android:hint="Username"
+                android:hint="Server"
+                android:textColor="@color/black"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColorHint="@color/my_hint_text_color"></EditText>
@@ -88,7 +86,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center|center_horizontal|center_vertical">
+
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/border"
+                android:hint="Username"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="@color/my_hint_text_color"></EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical">
 
@@ -97,9 +116,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
+                android:textColor="@color/black"
                 android:background="@drawable/border"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -109,33 +127,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="81dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/serverLogin"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/border"
-                android:hint="Server"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColorHint="@color/my_hint_text_color"
-                android:textSize="20sp" />
-        </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="114dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">

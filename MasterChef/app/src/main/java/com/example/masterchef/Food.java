@@ -4,6 +4,7 @@ public class Food{
     private String FlagName;
     private String Tenmon;
     private int TimeToFinish,ID,giatien;
+
     public Food(){
         this.FlagName = "";
         this.Tenmon = "";
@@ -11,6 +12,7 @@ public class Food{
         this.ID = 0;
         this.giatien = 0;
     }
+
     public Food(String flagname,String tenmon,int timetofinish,int ID,int giatien){
         this.FlagName = flagname;
         this.Tenmon = tenmon;

@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TABLES"
+            android:text="SERVE"
             android:textColor="@color/my_blue"
             android:textSize="25dp"
             android:layout_gravity="center"
@@ -35,47 +35,11 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menu_recyclerCategory"
+            android:id="@+id/serve_recyclerCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
         </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/option_layout"
-        android:visibility="invisible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HEHE"
-            android:textColor="@color/my_blue"
-            android:textSize="25dp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingTop="20dp" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/option_recyclerCategory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-        </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
     </LinearLayout>
 
 

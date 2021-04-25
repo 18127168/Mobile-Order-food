@@ -7,10 +7,15 @@
         <item
             android:id="@+id/nav_staff_foods"
             android:icon="@drawable/ic_nav_menu_foods"
-            android:title="Danh sách món ăn phục vụ" />
+            android:title="Phục vụ" />
         <item
             android:id="@+id/nav_staff_tables"
             android:icon="@drawable/ic_nav_menu_tables"
             android:title="Trợ giúp khách hàng" />
+
+        <item
+            android:id="@+id/nav_staff_requirement"
+            android:icon="@drawable/ic_nav_menu_tables"
+            android:title="Yêu cầu cần xử lý" />
     </group>
 </menu>

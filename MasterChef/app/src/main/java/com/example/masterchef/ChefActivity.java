@@ -35,7 +35,7 @@ import java.util.Map;
 public class
 ChefActivity extends AppCompatActivity {
     Button giamchef,tangchef;
-    StorageReference listref =FirebaseStorage.getInstance().getReference();
+    StorageReference listref = FirebaseStorage.getInstance().getReference();
     FirebaseListAdapter<HoaDon> adapter;
     StorageReference storeImage;
 

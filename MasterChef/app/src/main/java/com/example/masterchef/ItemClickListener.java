@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.staff.tables;
+package com.example.masterchef;
 
 import android.view.View;
 
