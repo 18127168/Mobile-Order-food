@@ -9,12 +9,14 @@ class HoaDon{
         this.Table = 0;
         this.ID = 0;
     }
+
     public HoaDon(String trangthai,int table,int Hoadonso,int ID){
         this.Trangthai = trangthai;
         this.Table = table;
         this.HoaDonSo = Hoadonso;
         this.ID= ID;
     }
+
     public void setID(int a){
         ID = a;
     }

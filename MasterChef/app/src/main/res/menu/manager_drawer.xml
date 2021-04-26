@@ -28,5 +28,9 @@
             android:id="@+id/nav_promotion"
             android:icon="@drawable/ic_navmenu_promotion"
             android:title="Khuyến mãi" />
+        <item
+            android:id="@+id/nav"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Quản lý tài khoản" />
     </group>
 </menu>

@@ -20,6 +20,7 @@ public class Food{
         this.ID= ID;
         this.giatien = giatien;
     }
+
     public void setgiatien(int a){
         giatien = a;
     }

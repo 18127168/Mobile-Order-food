@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,8 +83,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listTitles.add(menuFood.getTenmon());
 
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
-                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
+                storeImage = FirebaseStorage.getInstance()
+                        .getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/")
+                        .child(menuFood.getFlagName());
+                Glide.with(contexts.getApplicationContext())
+                        .using(new FirebaseImageLoader())
+                        .load(storeImage)
+                        .into(holder.imgFood);
                 holder.title.setText(menuFood.getTenmon());
                 holder.price.setText(menuFood.getGiatien() + " đ");
 
