@@ -26,6 +26,33 @@ public class DatabaseWork {
     Context context; // activity now
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dataref = database.getReference(server);
+
+    // lay id cua ban
+    public List<Tables> GetTables() {
+        List<Tables> tables = new ArrayList<>();
+        Query query = dataref.child("username");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        if (dataSnapshot.hasChild("ban")) {
+                            Tables table = new Tables();
+                            table.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
+                            table.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
+                            tables.add(table);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  tables;
+    }
   
 
    //lay id cua cac mon an trong menu cua 1 ngay nao do. //done // i check it and it work // cn = 1
