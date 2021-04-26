@@ -27,7 +27,7 @@ public class DatabaseWork {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dataref = database.getReference(server);
 
-    // lay id cua ban
+    // lay thong tin ban
     public List<Tables> GetTables() {
         List<Tables> tables = new ArrayList<>();
         Query query = dataref.child("username");
@@ -52,6 +52,46 @@ public class DatabaseWork {
             }
         });
         return  tables;
+    }
+
+    // lay ds mon an can phuc vu
+    public List<ServeItem> ListServe() {
+        List<ServeItem> list = new ArrayList<>();
+        Query query = dataref.child("HoaDon");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        String stt = dataSnapshot.child("trangthai").getValue().toString();
+                        if (stt.equals("0") || stt.equals("1")) {
+                            HoaDon bill = dataSnapshot.getValue(HoaDon.class);
+                            String[] Foods = bill.getID().split(",");
+                            String[] HoanThanh = bill.getHoanthanh().split(",");
+                            String[] PhucVu = bill.getPhucVu().split(",");
+
+                            for (int i = 0; i < Foods.length; i++) {
+                                int compare= Integer.parseInt(HoanThanh[i]) - Integer.parseInt(PhucVu[i]);
+                                if (compare > 0) {
+                                    ServeItem serveItem = new ServeItem();
+                                    serveItem.setTable(bill.getTable());
+                                    serveItem.setBill(bill.getHoaDonSo());
+                                    serveItem.setFood(Integer.parseInt(Foods[i]));
+                                    serveItem.setQuantity(compare);
+                                    list.add(serveItem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  list;
     }
   
 

@@ -1,7 +1,7 @@
 package com.example.masterchef;
 
 public class HoaDon{
-    private String Hoanthanh,SoLuong,ID,Date;
+    private String Hoanthanh,SoLuong,ID,Date, PhucVu;
     private int HoaDonSo,Table,Trangthai;
     public HoaDon(){
         this.HoaDonSo = 0;
@@ -11,8 +11,9 @@ public class HoaDon{
         this.Hoanthanh = "";
         this.SoLuong = "";
         this.Date = "";
+        this.PhucVu = "";
     }
-    public HoaDon(int trangthai,int table,int Hoadonso,String ID,String Hoanthanh,String Soluong,String Date){
+    public HoaDon(int trangthai,int table,int Hoadonso,String ID,String Hoanthanh,String Soluong,String Date, String PhucVu){
         this.Trangthai = trangthai;
         this.Table = table;
         this.HoaDonSo = Hoadonso;
@@ -20,6 +21,7 @@ public class HoaDon{
         this.Hoanthanh = Hoanthanh;
         this.SoLuong = Soluong;
         this.Date = Date;
+        this.PhucVu = PhucVu;
     }
     public void setID(String a){
         ID = a;
@@ -50,4 +52,9 @@ public class HoaDon{
         HoaDonSo = a;
     }
     public int getHoaDonSo(){return HoaDonSo;}
+
+    public String getPhucVu() {return PhucVu;}
+    public void setPhucVu(String pv) {
+        this.PhucVu = pv;
+    }
 }
