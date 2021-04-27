@@ -78,6 +78,12 @@ public class DatabaseWork {
                                     serveItem.setBill(bill.getHoaDonSo());
                                     serveItem.setFood(Integer.parseInt(Foods[i]));
                                     serveItem.setQuantity(compare);
+                                    serveItem.setRef(dataSnapshot.getRef());
+
+                                    String[] cmp = PhucVu;
+                                    cmp[i] = HoanThanh[i];
+                                    serveItem.setComplete(cmp);
+
                                     list.add(serveItem);
                                 }
                             }

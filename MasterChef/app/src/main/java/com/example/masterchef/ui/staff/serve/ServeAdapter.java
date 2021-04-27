@@ -1,14 +1,17 @@
 package com.example.masterchef.ui.staff.serve;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -52,6 +55,15 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.ViewHolder> 
         holder.bill_number.setText("Bill Number: " + String.valueOf(ListServe.get(position).getBill()));
 //        int num = Integer.parseInt(ListServe.get(position).getHoanthanh()) - Integer.parseInt(ListServe.get(position).getPhucVu());
         holder.item_quantity.setText("Quantity: " + String.valueOf(ListServe.get(position).getQuantity()));
+        holder.done_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.serve_item_layout.removeAllViews();
+                Toast.makeText(contexts, "Food has been served to custmers", Toast.LENGTH_SHORT).show();
+                String newServe = ListServe.get(position).getComplete();
+                ListServe.get(position).getRef().child("PhucVu").setValue(newServe);
+            }
+        });
     }
 
     @Override
@@ -59,9 +71,11 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.ViewHolder> 
         return ListServe.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView imgFood;
         TextView title, item_quantity, table_serve, bill_number;
+        Button done_btn;
+        ConstraintLayout serve_item_layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,7 +84,16 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.ViewHolder> 
             item_quantity = (TextView) itemView.findViewById(R.id.quantity);
             table_serve = itemView.findViewById(R.id.table_serve);
             bill_number = itemView.findViewById(R.id.bill_number);
+            done_btn = itemView.findViewById(R.id.done_btn);
+            serve_item_layout = (ConstraintLayout) itemView.findViewById(R.id.serve_tab);
+
+        }
+
+        @Override
+        public void onClick(View v) {
 
         }
     }
+
+
 }
