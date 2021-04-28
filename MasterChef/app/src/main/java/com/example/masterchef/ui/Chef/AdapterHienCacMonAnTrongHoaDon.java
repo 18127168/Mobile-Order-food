@@ -111,10 +111,11 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
                             }
                             refCurrent.child("Hoanthanh").setValue(newStringHoanThanh);
 
-                            notifyDataSetChanged();
                             if(checkBillFinish()){
-                                refCurrent.child("trangthai").setValue("Đã Hoàn Thành");
+                                refCurrent.child("trangthai").setValue(1);
                             }
+
+                            notifyDataSetChanged();
                         }
                     }
                 });

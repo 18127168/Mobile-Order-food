@@ -33,7 +33,7 @@ import static com.example.masterchef.R.layout.fragment_listhoadon;
 
 public class FragMentCacMonAnTrongHoaDon extends Fragment {
         public ListView listView;
-        public TextView ban,tinhtrang;
+        public TextView ban,tinhtrang,notes;
         public DatabaseReference refCurrent;
         View compactactivity;
         public HoaDon data;
@@ -47,7 +47,8 @@ public class FragMentCacMonAnTrongHoaDon extends Fragment {
             listView = (ListView) root.findViewById(R.id.list_cac_mon_an_cua_1_ban);
             ban = (TextView) root.findViewById(R.id.Ban);
             tinhtrang = (TextView) root.findViewById(R.id.tinhtrang);
-
+            notes = (TextView) root.findViewById(R.id.notes);
+            notes.setText("Ghi Chú: " + data.getnotes());
             ban.setText("Bàn: "+data.getTable());
             String trangthai;
             if(data.getTrangthai() == 0) trangthai = "Đã Gọi";

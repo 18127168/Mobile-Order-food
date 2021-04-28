@@ -56,5 +56,13 @@
         android:text="Tình trạng: Đang làm"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/notesHoaDon"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:paddingLeft="15sp"
+        android:text="Notes: abc"
+        android:textSize="16sp" />
+
 
 </LinearLayout>

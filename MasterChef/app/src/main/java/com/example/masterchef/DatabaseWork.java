@@ -74,7 +74,7 @@ public class DatabaseWork {
                                 int compare= Integer.parseInt(HoanThanh[i]) - Integer.parseInt(PhucVu[i]);
                                 if (compare > 0) {
                                     ServeItem serveItem = new ServeItem();
-                                    serveItem.setTable(bill.getTable());
+                                    //serveItem.setTable(bill.getTable());
                                     serveItem.setBill(bill.getHoaDonSo());
                                     serveItem.setFood(Integer.parseInt(Foods[i]));
                                     serveItem.setQuantity(compare);
