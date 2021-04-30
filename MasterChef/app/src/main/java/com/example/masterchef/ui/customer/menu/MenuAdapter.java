@@ -70,9 +70,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 holder.dialog.show();
             }
         });
-
         Food menuFood = databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataref=database.getReference("User");
         Query userQuery = dataref.child("Food").orderByChild("ID");

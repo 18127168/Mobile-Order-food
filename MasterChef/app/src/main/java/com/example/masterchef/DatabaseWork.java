@@ -29,7 +29,7 @@ public class DatabaseWork {
 
     // lay thong tin ban
     public List<Tables> GetTables() {
-        List<Tables> tables = new ArrayList<>();
+        List<Tables> tabl = new ArrayList<>();
         Query query = dataref.child("username");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -37,10 +37,10 @@ public class DatabaseWork {
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         if (dataSnapshot.hasChild("ban")) {
-                            Tables table = new Tables();
-                            table.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
-                            table.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
-                            tables.add(table);
+                            Tables e = new Tables();
+                            e.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
+                            e.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
+                            tabl.add(e);
                         }
                     }
                 }
@@ -51,7 +51,7 @@ public class DatabaseWork {
 
             }
         });
-        return  tables;
+        return  tabl;
     }
 
     // lay ds mon an can phuc vu
@@ -143,6 +143,7 @@ public class DatabaseWork {
                             result.setID(foodSearch.getID());
                             result.setFlagName(foodSearch.getFlagName());
                             result.setTenmon(foodSearch.getTenmon());
+                            result.setgiatien(foodSearch.getGiatien());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
                             break;
                         };

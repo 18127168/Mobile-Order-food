@@ -48,7 +48,7 @@ public class MenuFragment extends Fragment {
         dataList = root.findViewById(R.id.menu_recyclerCategory);
 
         EditText searchBar = root.findViewById(R.id.menu_search_bar);
-        searchBar.addTextChangedListener(new TextWatcher() {
+        /*searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
@@ -87,7 +87,7 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        });
+        });*/
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
