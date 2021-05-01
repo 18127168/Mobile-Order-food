@@ -9,19 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.masterchef.Food;
 import com.example.masterchef.R;
 
-public class CheckBillAdapter extends RecyclerView.Adapter<CheckBillAdapter.ViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
 
-    String[] titles;
-    int[] prices;
-    int[] numberfoods;
+public class CheckBillAdapter extends RecyclerView.Adapter<CheckBillAdapter.ViewHolder> {
+    List<Food> listFoods;
+    List<Integer> listNumberFoods;
     LayoutInflater inflater;
 
-    public CheckBillAdapter(Context context, String[] titles, int[] prices, int[] numberfoods){
-        this.titles = titles;
-        this.prices = prices;
-        this.numberfoods = numberfoods;
+    public CheckBillAdapter(Context context, List<Food> listFoods, List<Integer> listNumberFoods){
+        this.listFoods = listFoods;
+        this.listNumberFoods = listNumberFoods;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -34,15 +35,15 @@ public class CheckBillAdapter extends RecyclerView.Adapter<CheckBillAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(titles[position]);
-        holder.price.setText(Integer.toString(prices[position]));
-        holder.numberfood.setText(Integer.toString(numberfoods[position]));
-        holder.sumprice.setText(Integer.toString(prices[position]*numberfoods[position]));
+        holder.title.setText(listFoods.get(position).getTenmon());
+        holder.price.setText(Integer.toString(listFoods.get(position).getGiatien()) + "đ");
+        holder.numberfood.setText(Integer.toString(listNumberFoods.get(position)));
+        holder.sumprice.setText(Integer.toString(listFoods.get(position).getGiatien()*listNumberFoods.get(position)) + "đ");
     }
 
     @Override
     public int getItemCount(){
-        return titles.length;
+        return listFoods.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,5 +57,11 @@ public class CheckBillAdapter extends RecyclerView.Adapter<CheckBillAdapter.View
             numberfood = itemView.findViewById(R.id.checkbill_number);
             sumprice = itemView.findViewById(R.id.checkbill_sumprice);
         }
+    }
+
+    public void setEmptyListFoods(){ this.listFoods = new ArrayList<>(); }
+    public void setFoods(List<Food> listFoods, List<Integer> listNumberFoods){
+        this.listFoods = listFoods;
+        this.listNumberFoods = listNumberFoods;
     }
 }

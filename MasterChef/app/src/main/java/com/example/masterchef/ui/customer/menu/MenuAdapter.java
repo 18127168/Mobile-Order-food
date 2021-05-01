@@ -40,6 +40,7 @@ import java.util.List;
 import com.example.masterchef.ItemClickListener;
 
 import static androidx.core.content.ContextCompat.getDrawable;
+import static com.example.masterchef.MainActivity.server;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     LayoutInflater inflater;
@@ -73,10 +74,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             }
         });
 
-        Food menuFood = databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
+        Food menuFood = databaseWork.GetFoodWithID(Integer.parseInt(IDFoodInMenus.get(position) + ""));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference dataref=database.getReference("User");
+        DatabaseReference dataref = database.getReference(server.getText().toString());
         Query userQuery = dataref.child("Food").orderByChild("ID");
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -96,8 +97,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 holder.choose_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(contexts.getApplicationContext(), "Đã thêm món", Toast.LENGTH_LONG);
-                        SelectedFood.addSelectedFood(IDFoodInMenus.get(position));
+                        holder.choose_btn.setBackgroundColor(contexts.getResources().getColor(R.color.my_red));
+                        holder.choose_btn.setText("Đã Chọn");
+                        SelectedFood.addSelectedFood(Integer.parseInt(IDFoodInMenus.get(position) + ""));
                     }
                 });
 

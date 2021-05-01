@@ -12,6 +12,13 @@ public class SelectedFood extends Application {
         int quantity;
         String note;
 
+        public Food() {
+            IdFood = 0;
+            quantity = 0;
+            note = "";
+        }
+
+
         public Food(int Food, int num) {
             IdFood = Food;
             quantity = num;
@@ -31,7 +38,9 @@ public class SelectedFood extends Application {
 
     public static List<Food> Foods = new ArrayList<>();
 
-    //public List<Food> getSelectedFood() { return Foods; }
+    public static void clearSelectedFood(){
+        Foods = new ArrayList<>();
+    }
 
     public static void addSelectedFood(int food) {
         boolean duplicate = false;

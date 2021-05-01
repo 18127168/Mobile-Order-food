@@ -64,45 +64,10 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView6"
+    <FrameLayout
+        android:id="@+id/fragment_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Danh Sách"
-        android:textSize="30sp" />
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/tangchef"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tăng" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/giamchef"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Giảm" />
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/listChefFood"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-    </ListView>
 
 </LinearLayout>

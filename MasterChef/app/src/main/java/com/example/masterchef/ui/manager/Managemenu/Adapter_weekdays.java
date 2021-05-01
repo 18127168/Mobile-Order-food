@@ -42,7 +42,7 @@ public class Adapter_weekdays extends RecyclerView.Adapter<Adapter_weekdays.Menu
         GridLayoutManager gridLayoutManager=new GridLayoutManager(mcontext,2);
         holder.recyclerView.setLayoutManager(gridLayoutManager);
         Adapter_menu adaptermenu =new Adapter_menu();
-        adaptermenu.setData(menu_categorical.getMenus());
+        //adaptermenu.setData(menu_categorical.getMenus());
         holder.recyclerView.setAdapter(adaptermenu);
     }
 

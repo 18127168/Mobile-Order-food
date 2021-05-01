@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     public static EditText user,pass,server;
+    public static String IDTable;
     public Button btnlogin;
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
-                boolean check = user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin");
                 if (user.getText().toString().equals("admin")  && pass.getText().toString().equals("admin")){
                     Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                     startActivity(intent);
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                         else if(usersnapshot.loai.equals("KhachHang")){//doi lai activity khachhang
+                                            IDTable = String.valueOf(usersnapshot.ban);
                                             Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                                             startActivity(intent);
                                         }
