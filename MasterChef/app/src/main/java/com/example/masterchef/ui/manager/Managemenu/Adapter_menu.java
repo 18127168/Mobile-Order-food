@@ -45,79 +45,53 @@ import java.util.IdentityHashMap;
 import java.util.List;
 
 public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewholder> {
-    private List<Menu> mmenu;
-    ArrayList<String> listTitles;
+
+    LayoutInflater inflater;
     Context contexts;
+    List<Integer> listIDFoodInMenu;
     DatabaseWork databaseWork=new DatabaseWork();
-    List<Integer> IDFoodInMenus;
     StorageReference storeImage;
-    public void setData(Context context,List<Integer> IDFoodInMenu){//,List<Integer> IDFoodInMenus,Context context){
-        this.IDFoodInMenus= IDFoodInMenus;
-        this.contexts=context;
-        listTitles = new ArrayList<>();
-        notifyDataSetChanged();
-    }
+
+   public Adapter_menu(Context context,  List<Integer> listIDFoodInMenu){
+       this.inflater = LayoutInflater.from(context);
+       this.contexts = context;
+       this.listIDFoodInMenu = listIDFoodInMenu;
+   }
+
     @NonNull
     @Override
     public Adapter_menu.Menuviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.manager_adapter_managemenu,parent,false);
+        View view= inflater.inflate(R.layout.manager_adapter_managemenu,parent,false);
         return new Adapter_menu.Menuviewholder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull Adapter_menu.Menuviewholder holder, int position) {
-        Menu menu=mmenu.get(position);
-        if(menu==null){
-            return;
-        }
-        Food menuFood = databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
+        Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataref=database.getReference("User");
         Query userQuery = dataref.child("Food").orderByChild("ID");
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listTitles.add(menuFood.getTenmon());
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
+                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(food.getFlagName());
                 Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
-                holder.title.setText(menuFood.getTenmon());
-                holder.price.setText(menuFood.getGiatien() + " đ");
+                holder.title.setText(food.getTenmon());
+                holder.price.setText(food.getGiatien() + " đ");
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        //holder.imgFood.setImageResource(menu.getResourceid());
-        //holder.tv1.setText(menu.getName());
-        /*Food menufood=databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference dataref=database.getReference("User");
-        Query userquery=dataref.child("Food").orderByChild("ID");
-        userquery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menufood.getFlagName());
-                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
 
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
 
     }
 
     @Override
     public int getItemCount() {
-        if(mmenu!=null){
-            return mmenu.size();
-        }
-        return 0;
+        return listIDFoodInMenu.size();
     }
 
     public class Menuviewholder extends RecyclerView.ViewHolder{
@@ -128,8 +102,6 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
             title = itemView.findViewById(R.id.menu_title);
             imgFood = itemView.findViewById(R.id.menu_image);
             price = itemView.findViewById(R.id.menu_price);
-            //choose_btn = itemView.findViewById(R.id.menu_choose_btn);
-            //tv2=itemView.findViewById(R.id.menu_tv2);
         }
 
     }

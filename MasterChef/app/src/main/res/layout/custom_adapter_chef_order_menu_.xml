@@ -30,16 +30,16 @@
 
     <Button
         android:id="@+id/buttonincrease"
-        android:layout_width="wrap_content"
+        android:layout_width="59dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
-        android:layout_marginLeft="10sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginLeft="30sp"
         android:layout_marginTop="0sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginRight="10sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginRight="30sp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="+"
-        android:textSize="10sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

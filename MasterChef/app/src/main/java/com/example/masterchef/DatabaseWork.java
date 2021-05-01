@@ -26,6 +26,79 @@ public class DatabaseWork {
     Context context; // activity now
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dataref = database.getReference(server);
+
+    // lay thong tin ban
+    public List<Tables> GetTables() {
+        List<Tables> tabl = new ArrayList<>();
+        Query query = dataref.child("username");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        if (dataSnapshot.hasChild("ban")) {
+                            Tables e = new Tables();
+                            e.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
+                            e.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
+                            tabl.add(e);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  tabl;
+    }
+
+    // lay ds mon an can phuc vu
+    public List<ServeItem> ListServe() {
+        List<ServeItem> list = new ArrayList<>();
+        Query query = dataref.child("HoaDon");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        String stt = dataSnapshot.child("trangthai").getValue().toString();
+                        if (stt.equals("0") || stt.equals("1")) {
+                            HoaDon bill = dataSnapshot.getValue(HoaDon.class);
+                            String[] Foods = bill.getID().split(",");
+                            String[] HoanThanh = bill.getHoanthanh().split(",");
+                            String[] PhucVu = bill.getPhucVu().split(",");
+
+                            for (int i = 0; i < Foods.length; i++) {
+                                int compare= Integer.parseInt(HoanThanh[i]) - Integer.parseInt(PhucVu[i]);
+                                if (compare > 0) {
+                                    ServeItem serveItem = new ServeItem();
+                                    //serveItem.setTable(bill.getTable());
+                                    serveItem.setBill(bill.getHoaDonSo());
+                                    serveItem.setFood(Integer.parseInt(Foods[i]));
+                                    serveItem.setQuantity(compare);
+                                    serveItem.setRef(dataSnapshot.getRef());
+
+                                    String[] cmp = PhucVu;
+                                    cmp[i] = HoanThanh[i];
+                                    serveItem.setComplete(cmp);
+
+                                    list.add(serveItem);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  list;
+    }
   
 
    //lay id cua cac mon an trong menu cua 1 ngay nao do. //done // i check it and it work // cn = 1

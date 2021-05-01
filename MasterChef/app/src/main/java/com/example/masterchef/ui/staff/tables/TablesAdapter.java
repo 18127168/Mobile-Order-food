@@ -13,21 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.ItemClickListener;
 import com.example.masterchef.R;
+import com.example.masterchef.Tables;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.ui.staff.tables.TablesAdapter.ViewHolder> {
 
-    String[] titles;
-    int[] images;
-    int[] seats;
+    List<Tables> tables = new ArrayList<>();
     View root;
     LayoutInflater inflater;
 
 
 
-    public TablesAdapter(Context context, View v, int[] images, String[] titles, int[] seats){
-        this.titles = titles;
-        this.images = images;
-        this.seats = seats;
+    public TablesAdapter(Context context, View v, List<Tables> tables){
+        this.tables = tables;
         this.root = v;
         this.inflater = LayoutInflater.from(context);
     }
@@ -41,9 +41,8 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imgFood.setImageResource(images[position]);
-        holder.title.setText(titles[position]);
-        holder.seat.setText("Seats: " + Integer.toString(seats[position]));
+        holder.id.setText("TABLE " + tables.get(position).getId());
+        holder.seat.setText("Seats: " + (tables.get(position).getSeats()));
 
 
 
@@ -60,21 +59,17 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
 
     @Override
     public int getItemCount(){
-        return titles.length;
+        return tables.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
-        ImageView imgFood;
-        TextView title, seat;
+        TextView id, seat;
 
         private ItemClickListener itemClickListener;
 
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.menu_title);
-            imgFood = itemView.findViewById(R.id.menu_image);
+            id = itemView.findViewById(R.id.menu_title);
             seat = itemView.findViewById(R.id.menu_seat);
 
 

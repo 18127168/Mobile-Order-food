@@ -38,10 +38,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:paddingLeft="15sp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
     <ListView
         android:id="@+id/list_cac_mon_an_cua_1_ban"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#00000000"
         android:dividerHeight="10dp" />
+
 </LinearLayout>

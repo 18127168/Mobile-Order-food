@@ -9,4 +9,6 @@
     <string name="col1">Name</string>
     <string name="col2">Name</string>
     <string name="col3">Name</string>
+    <string name="ok" />
+    <string name="cancel" />
 </resources>
