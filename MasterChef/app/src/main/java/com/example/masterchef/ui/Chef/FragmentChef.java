@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.Chef;
+package com.example.masterchef.ui.chef;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import com.example.masterchef.ChefActivity;
 import com.example.masterchef.HoaDon;
 import com.example.masterchef.MainActivity;
 import com.example.masterchef.R;
+import com.example.masterchef.ui.chef.FragMentCacMonAnTrongHoaDon;
 import com.example.masterchef.ui.staff.serve.ServeAdapter;
 import com.example.masterchef.ui.staff.serve.ServeViewModel;
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -67,7 +68,7 @@ public class FragmentChef extends Fragment {
                 v.setTag(holder);
                 holder.HoaDonSoView.setText("Hóa Đơn Số : "+model.getHoaDonSo());
                 holder.BanView.setText("Ban: " + model.getTable());
-                holder.NotesHoaDon.setText("Ghi chú: " + model.getnotes());
+                holder.NotesHoaDon.setText("Ghi chú: " + model.getNotes());
                 String trangthai;
                 if(model.getTrangthai() == 0) trangthai = "Đã Gọi";
                 else trangthai = "Đã Hoàn Thành";

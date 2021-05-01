@@ -1,8 +1,6 @@
-package com.example.masterchef.ui.Chef;
+package com.example.masterchef.ui.chef;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
