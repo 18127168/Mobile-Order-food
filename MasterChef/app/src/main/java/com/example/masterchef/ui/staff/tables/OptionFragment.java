@@ -15,7 +15,6 @@ import com.example.masterchef.R;
 
 public class OptionFragment extends Fragment {
 
-    private TablesViewModel galleryViewModel;
     public RecyclerView dataList;
     String[] titles = {"Cá kèo nướng", "King crab", "Gỏi bò", "Tôm hùm", "Dê ré"};
     int[] images = {R.drawable.food1, R.drawable.food2, R.drawable.food3, R.drawable.food4, R.drawable.food5};
@@ -24,7 +23,6 @@ public class OptionFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =  new ViewModelProvider(this).get(TablesViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_staff_tables_option, container, false);
         dataList = root.findViewById(R.id.option_recyclerCategory);

@@ -1,14 +1,14 @@
 package com.example.masterchef;
 
 public class HoaDon{
-    private String Hoanthanh,SoLuong,ID,Date, notes, PhucVu, Table;
-    private int HoaDonSo, Trangthai;
+    private String Hoanthanh, SoLuong, ID,Date, notes, PhucVu;
+    private int Table, HoaDonSo, Trangthai;
     boolean ThanhToan;
 
     public HoaDon(){
         this.HoaDonSo = 0;
         this.Trangthai = 0;
-        this.Table = "-1";
+        this.Table = -1;
         this.ID = "";
         this.notes = "";
         this.Hoanthanh = "";
@@ -18,7 +18,7 @@ public class HoaDon{
         this.ThanhToan = false;
     }
 
-    public HoaDon(int trangthai,String table,int Hoadonso,String ID,String Hoanthanh,String Soluong,String Date, String note, String PhucVu){
+    public HoaDon(int trangthai,int table,int Hoadonso,String ID,String Hoanthanh,String Soluong,String Date, String note, String PhucVu){
         this.Trangthai = trangthai;
         this.Table = table;
         this.HoaDonSo = Hoadonso;
@@ -37,7 +37,7 @@ public class HoaDon{
     public void setHoanthanh(String a){ Hoanthanh = a; }
     public void setNotes(String a) { notes = a; }
     public void setTrangthai(int a){ Trangthai = a; }
-    public void setTable(String a){ Table = a; }
+    public void setTable(int a){ Table = a; }
     public void setPhucVu(String phucVu) { PhucVu = phucVu; }
     public void setHoaDonSo(int a){ HoaDonSo = a; }
     public void setThanhToan(boolean a) { ThanhToan = a; }
@@ -49,7 +49,7 @@ public class HoaDon{
     public String getHoanthanh(){return Hoanthanh;}
     public String getPhucVu() { return PhucVu; }
     public int getTrangthai(){return Trangthai;}
-    public String getTable(){return Table;}
+    public int getTable(){return Table;}
     public int getHoaDonSo(){ return HoaDonSo; }
     public boolean getThanhToan() {return ThanhToan; };
 }

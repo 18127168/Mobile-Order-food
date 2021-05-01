@@ -104,7 +104,7 @@ public class CheckBillFragment extends Fragment {
 
                     for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                         HoaDon hoadon = postSnapshot.getValue(HoaDon.class);
-                        if(hoadon.getTable().contains(IDTable) && hoadon.getThanhToan() == false){
+                        if( (hoadon.getTable() == IDTable) && hoadon.getThanhToan() == false){
                             listIDBills.add(hoadon.getHoaDonSo());
                             firstTime = false;
 

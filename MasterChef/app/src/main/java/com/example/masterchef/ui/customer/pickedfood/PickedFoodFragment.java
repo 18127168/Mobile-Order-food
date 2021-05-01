@@ -73,7 +73,6 @@ public class PickedFoodFragment extends Fragment {
                         }
 
                         List<SelectedFood.Food> tempList = adapter.getListIDsFoodInMenuWithQuantity();
-
                         String listIDFood = "", listNumFood = "", listNoteFood = "", listNumFinishedFood = "", listNumServedFood = "";
                         for (int i = 0; i < tempList.size(); i++){
                             if (i != 0) {
