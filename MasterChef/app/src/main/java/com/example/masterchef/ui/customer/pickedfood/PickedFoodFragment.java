@@ -107,8 +107,8 @@ public class PickedFoodFragment extends Fragment {
                         hoaDon.setTrangthai(0);
                         hoaDon.setPhucVu(listNumServedFood);
 
-                        DatabaseReference dtReferenceef =FirebaseDatabase.getInstance().getReference().child("User").child("HoaDon");
-                        dtReferenceef.push().setValue(hoaDon);
+                        DatabaseReference dtReferenceef = FirebaseDatabase.getInstance().getReference().child("User").child("HoaDon");
+                        dtReferenceef.child(id + "").setValue(hoaDon);
 
                         SelectedFood.clearSelectedFood();
                         listIDsFoodInMenuWithQuantity = new ArrayList<>();

@@ -115,7 +115,6 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
                          dtReferenceef.push().setValue(hoaDon);
 
                          SelectedFood.clearSelectedFood();
-
                      }
                      @Override
                      public void onCancelled(@NonNull DatabaseError error) {
