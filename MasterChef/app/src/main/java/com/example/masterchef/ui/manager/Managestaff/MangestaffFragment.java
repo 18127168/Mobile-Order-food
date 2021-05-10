@@ -129,8 +129,7 @@ public class MangestaffFragment extends Fragment {
                            // EditText Stt=(EditText)dialog.findViewById(R.id.text1);
 
 
-                            String B=ban.getText().toString().trim();
-                            int Ban=Integer.parseInt(B);
+                            int Ban=Integer.parseInt(ban.getText().toString().trim());
                             String Cmnd=cmnd.getText().toString().trim();
                             String Dantoc=dantoc.getText().toString().trim();
                             String Diachi=diachi.getText().toString().trim();

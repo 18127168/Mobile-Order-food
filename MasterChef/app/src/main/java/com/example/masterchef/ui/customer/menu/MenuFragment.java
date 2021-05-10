@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.example.masterchef.MainActivity.server;
+
 
 public class MenuFragment extends Fragment {
 
@@ -70,7 +72,7 @@ public class MenuFragment extends Fragment {
                 }
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference dataref = database.getReference("User");
+                DatabaseReference dataref = database.getReference(server.getText().toString());
                 Query userQuery = dataref.child("Food").orderByChild("ID");
                 userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -94,9 +96,9 @@ public class MenuFragment extends Fragment {
         listIDFoodInMenu = databaseWork.GetFoodInMenu(day);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference dataref = database.getReference("User");
+        DatabaseReference dataref = database.getReference(server.getText().toString());
         Query userQuery = dataref.child("Food").orderByChild("ID");
-        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter = new MenuAdapter(getActivity(), listIDFoodInMenu);

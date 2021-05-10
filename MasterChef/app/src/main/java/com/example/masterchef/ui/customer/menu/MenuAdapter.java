@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,7 @@ import java.util.List;
 import com.example.masterchef.ItemClickListener;
 
 import static androidx.core.content.ContextCompat.getDrawable;
+import static com.example.masterchef.MainActivity.server;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     LayoutInflater inflater;
@@ -70,25 +73,32 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 holder.dialog.show();
             }
         });
-        Food menuFood = databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
+
+        Food menuFood = databaseWork.GetFoodWithID(Integer.parseInt(IDFoodInMenus.get(position) + ""));
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference dataref=database.getReference("User");
+        DatabaseReference dataref = database.getReference(server.getText().toString());
         Query userQuery = dataref.child("Food").orderByChild("ID");
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listTitles.add(menuFood.getTenmon());
 
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
-                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
+                storeImage = FirebaseStorage.getInstance()
+                        .getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/")
+                        .child(menuFood.getFlagName());
+                Glide.with(contexts.getApplicationContext())
+                        .using(new FirebaseImageLoader())
+                        .load(storeImage)
+                        .into(holder.imgFood);
                 holder.title.setText(menuFood.getTenmon());
                 holder.price.setText(menuFood.getGiatien() + " đ");
 
                 holder.choose_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(contexts.getApplicationContext(), "Đã thêm món", Toast.LENGTH_LONG);
-                        SelectedFood.addSelectedFood(IDFoodInMenus.get(position));
+                        holder.choose_btn.setBackgroundColor(contexts.getResources().getColor(R.color.my_red));
+                        holder.choose_btn.setText("Đã Chọn");
+                        SelectedFood.addSelectedFood(Integer.parseInt(IDFoodInMenus.get(position) + ""));
                     }
                 });
 

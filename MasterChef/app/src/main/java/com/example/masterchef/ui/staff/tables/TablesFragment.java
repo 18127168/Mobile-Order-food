@@ -27,69 +27,7 @@ import java.util.List;
 
 public class TablesFragment extends Fragment {
 
-    private TablesViewModel galleryViewModel;
     public RecyclerView dataList;
-//    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};//    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-////    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-////    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};//    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-////    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-////    int[] seats = {4, 4, 6, 8, 10};//    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-////    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-////    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-    //    String[] table_id= {"Bàn 1", "Bàn 2", "Bàn 3", "Bàn 4", "Bàn 5"};
-//    int[] images = {R.drawable.table1, R.drawable.table2, R.drawable.table3, R.drawable.table1, R.drawable.table3};
-//    int[] seats = {4, 4, 6, 8, 10};
-
-
-
-
 
     List<Integer> table_id = new ArrayList<>();
     List<Integer> seats = new ArrayList<>();
@@ -100,7 +38,6 @@ public class TablesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =  new ViewModelProvider(this).get(TablesViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_staff_tables, container, false);
         dataList = root.findViewById(R.id.menu_recyclerCategory);
@@ -124,8 +61,6 @@ public class TablesFragment extends Fragment {
 
             }
         });
-
-
 
         return root;
     }

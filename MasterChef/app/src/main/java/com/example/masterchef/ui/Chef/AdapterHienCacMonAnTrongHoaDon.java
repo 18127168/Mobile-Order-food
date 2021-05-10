@@ -1,8 +1,6 @@
-package com.example.masterchef.ui.Chef;
+package com.example.masterchef.ui.chef;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +23,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static com.example.masterchef.MainActivity.server;
 

@@ -4,7 +4,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
     public String user,pass,hoten,ngaysinh,cmnd,sdt,loai,dantoc,ngayvao,diachi;
-    public int ban;
+    int ban;
     public User() {
         this.user = "";
         this.pass = "";

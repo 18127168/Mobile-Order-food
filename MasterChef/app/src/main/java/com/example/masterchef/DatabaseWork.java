@@ -143,6 +143,8 @@ public class DatabaseWork {
                             result.setID(foodSearch.getID());
                             result.setFlagName(foodSearch.getFlagName());
                             result.setTenmon(foodSearch.getTenmon());
+                            result.setSoluongnguyenlieu(foodSearch.getSoluongnguyenlieu());
+                            result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
                             result.setgiatien(foodSearch.getGiatien());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
                             result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
@@ -267,20 +269,4 @@ public class DatabaseWork {
             }
         });
     }
-    // add hoadon
-    public void AddHoaDon(HoaDon hoadon){
-        Query userQuery = dataref.child("HoaDon").orderByChild("hoaDonSo");
-        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String userId = dataref.push().getKey();
-                dataref.child(userId).setValue(hoadon);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-    }
-    //
-
 }
