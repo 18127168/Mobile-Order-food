@@ -145,6 +145,8 @@ public class DatabaseWork {
                             result.setTenmon(foodSearch.getTenmon());
                             result.setgiatien(foodSearch.getGiatien());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
+                            result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
+                            result.setSoluongnguyenlieu(foodSearch.getSoluongnguyenlieu());
                             break;
                         };
                     }
