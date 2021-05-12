@@ -2,44 +2,25 @@ package com.example.masterchef.ui.Chef;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.example.masterchef.ChefActivity;
 import com.example.masterchef.HoaDon;
 import com.example.masterchef.MainActivity;
 import com.example.masterchef.R;
-import com.example.masterchef.ui.staff.serve.ServeAdapter;
-import com.example.masterchef.ui.staff.serve.ServeViewModel;
 import com.firebase.ui.database.FirebaseListAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
-
-import static com.example.masterchef.R.layout.customer_adapter_chef_hoadon;
 import static com.example.masterchef.R.layout.fragment_listhoadon;
 
 public class FragmentChef extends Fragment {
@@ -63,11 +44,9 @@ public class FragmentChef extends Fragment {
                 holder.BanView = (TextView) v.findViewById(R.id.banViewHoaDonAdapter);
                 holder.HoaDonSoView = (TextView) v.findViewById(R.id.hoadonsoViewHoaDonAdapter);
                 holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiViewHoaDonAdapter);
-                holder.NotesHoaDon = (TextView) v.findViewById(R.id.notesHoaDon);
                 v.setTag(holder);
                 holder.HoaDonSoView.setText("Hóa Đơn Số : "+model.getHoaDonSo());
                 holder.BanView.setText("Ban: " + model.getTable());
-                holder.NotesHoaDon.setText("Ghi chú: " + model.getnotes());
                 String trangthai;
                 if(model.getTrangthai() == 0) trangthai = "Đã Gọi";
                 else trangthai = "Đã Hoàn Thành";
@@ -97,6 +76,5 @@ public class FragmentChef extends Fragment {
         TextView BanView;
         TextView HoaDonSoView;
         TextView TinhtrangView;
-        TextView NotesHoaDon;
     }
 }

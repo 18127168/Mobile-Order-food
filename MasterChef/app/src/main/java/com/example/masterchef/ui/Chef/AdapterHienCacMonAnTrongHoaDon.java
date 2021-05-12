@@ -1,8 +1,6 @@
 package com.example.masterchef.ui.Chef;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import static com.example.masterchef.MainActivity.server;
 
 public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
-    private String[] listIDMonAn,ListSoluong,ListHoanThanh;
+    private String[] listIDMonAn,ListSoluong,ListHoanThanh,listNotes;
     private LayoutInflater layoutInflater;
     private Context context;
     private Food foodData;
@@ -42,10 +36,11 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
     DatabaseReference dataref = database.getReference(server.getText().toString());
     StorageReference storeImage;
 
-    public AdapterHienCacMonAnTrongHoaDon(Context aContext,  String[] listData,  String[] listSoluong,  String[] listHoanThanh,DatabaseReference linkRef) {
+    public AdapterHienCacMonAnTrongHoaDon(Context aContext,  String[] listData,  String[] listSoluong,  String[] listHoanThanh,String[] listnotes,DatabaseReference linkRef) {
         this.context = aContext;
         this.listIDMonAn = listData;
         this.ListSoluong = listSoluong;
+        this.listNotes = listnotes;
         this.ListHoanThanh = listHoanThanh;
         layoutInflater = LayoutInflater.from(aContext);
         this.refCurrent = linkRef;
@@ -75,6 +70,7 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
             holder.flagView = (ImageView) convertView.findViewById(R.id.imageViewadapter);
             holder.SoluonghoanthanhView = (TextView) convertView.findViewById(R.id.hoanthanh);
             holder.plus = (Button) convertView.findViewById(R.id.buttonincrease);
+            holder.ghichu = (TextView) convertView.findViewById(R.id.ghichu);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -82,6 +78,7 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
         String ID = listIDMonAn[position];
         String Soluong = ListSoluong[position];
         String HoanThanh = ListHoanThanh[position];
+        String notes = listNotes[position];
         convertView.setTag(holder);
         Query userQuery = dataref.child("Food").orderByChild("ID").equalTo(Integer.parseInt(ID));
         View finalConvertView = convertView;
@@ -93,6 +90,7 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
                             foodData =  postSnapshot.getValue(Food.class);
                         }
                     }
+                holder.ghichu.setText("Ghi chú: " + notes );
                 holder.MonAnView.setText(foodData.getTenmon());
                 holder.SoluonghoanthanhView.setText(HoanThanh + " / " + Soluong);
                 holder.plus.setOnClickListener(new View.OnClickListener() { //tru nguyen lieu thi viet trong nay
@@ -137,6 +135,7 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
         TextView MonAnView;
         TextView SoluonghoanthanhView;
         Button plus;
+        TextView ghichu;
     }
     public boolean checkBillFinish(){
         for(int i=0;i<ListHoanThanh.length;i++){

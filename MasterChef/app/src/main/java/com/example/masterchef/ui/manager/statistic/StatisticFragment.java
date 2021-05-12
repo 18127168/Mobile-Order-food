@@ -130,6 +130,7 @@ public class StatisticFragment extends Fragment {
         revenueChart.setFitBars(true);
         revenueChart.setData(barData);
         revenueChart.getDescription().setText("Đơn vị: Triệu VND");
+        revenueChart.getDescription().setTextSize(15);
         revenueChart.animateY(2000);
 
         BarDataSet barDataSet2 = new BarDataSet(cost, "Chi phí");
@@ -142,6 +143,7 @@ public class StatisticFragment extends Fragment {
         costChart.setFitBars(true);
         costChart.setData(barData2);
         costChart.getDescription().setText("Đơn vị: Triệu VND");
+        costChart.getDescription().setTextSize(15);
         costChart.animateY(2000);
 
         BarDataSet barDataSet3 = new BarDataSet(profit, "Lợi nhuận");
@@ -152,6 +154,7 @@ public class StatisticFragment extends Fragment {
         profitChart.setFitBars(true);
         profitChart.setData(barData3);
         profitChart.getDescription().setText("Đơn vị: Triệu VND");
+        profitChart.getDescription().setTextSize(15);
         profitChart.animateY(2000);
     }
 }

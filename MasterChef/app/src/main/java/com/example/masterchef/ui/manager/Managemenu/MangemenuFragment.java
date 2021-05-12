@@ -11,12 +11,22 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.masterchef.DatabaseWork;
+import com.example.masterchef.Food;
 import com.example.masterchef.R;
+import com.example.masterchef.ui.customer.menu.MenuAdapter;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -26,11 +36,11 @@ import java.util.List;
 
 public class MangemenuFragment extends Fragment {
     private RecyclerView recyclerView;
+    private RecyclerView recyclerView1;
     List<Integer> listIDFoodInMenu = new ArrayList<>();
     DatabaseWork databaseWork = new DatabaseWork();
     ArrayList<String> listTitles = new ArrayList<>();
-    private ListView listemploy;
-    private Button btnthem, btnxoa, btnsua, btn;
+    Adapter_menu adapter1;
     private String tem1;
     private Adapter_weekdays categoryAdapterWeekdays;
     StorageReference storeImage;
@@ -43,26 +53,7 @@ public class MangemenuFragment extends Fragment {
         categoryAdapterWeekdays =new Adapter_weekdays(getActivity());
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        categoryAdapterWeekdays.setData(getListcategory());
         recyclerView.setAdapter(categoryAdapterWeekdays);
         return root;
-    }
-    private List<category> getListcategory(){ //Menu_category
-        List<category> list=new ArrayList<>();
-        List<Menu> listmenu=new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
-        listIDFoodInMenu = databaseWork.GetFoodInMenu(day);
-        
-        listmenu.add(new Menu(R.drawable.food1,"Món ăn 1"));
-        listmenu.add(new Menu(R.drawable.food2,"Món ăn 2"));
-        listmenu.add(new Menu(R.drawable.food3,"Món ăn 3"));
-        listmenu.add(new Menu(R.drawable.food4,"Món ăn 4"));
-
-        list.add(new category("thứ 2",listmenu));
-        list.add(new category("thứ 3",listmenu));
-        list.add(new category("thứ 4",listmenu));
-        list.add(new category("thứ 5",listmenu));
-        return list;
     }
 }

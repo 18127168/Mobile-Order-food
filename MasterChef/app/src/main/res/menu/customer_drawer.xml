@@ -17,10 +17,6 @@
             android:icon="@drawable/ic_navmenu_switchtable"
             android:title="Chuyển bàn" />
         <item
-            android:id="@+id/nav_jointable"
-            android:icon="@drawable/ic_navmenu_jointable"
-            android:title="Gộp bàn" />
-        <item
             android:id="@+id/nav_checkbill"
             android:icon="@drawable/ic_navmenu_checkbill"
             android:title="Thanh Toán" />

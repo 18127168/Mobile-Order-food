@@ -152,4 +152,10 @@ public class PickedFoodAdapter extends RecyclerView.Adapter<PickedFoodAdapter.Vi
             plusBtn = itemView.findViewById(R.id.pickedfood_plusBtn);
         }
     }
+
+    public List<SelectedFood.Food> getListIDsFoodInMenuWithQuantity() { return listIDsFoodInMenuWithQuantity; }
+
+    public void updateListIDsFoodInMenuWithQuantity(List<SelectedFood.Food> listIDsFoodInMenuWithQuantity) {
+        this.listIDsFoodInMenuWithQuantity = listIDsFoodInMenuWithQuantity;
+    }
 }

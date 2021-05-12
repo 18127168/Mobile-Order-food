@@ -1,8 +1,12 @@
 package com.example.masterchef.ui.manager.Managemenu;
+import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ import com.example.masterchef.DatabaseWork;
 import com.example.masterchef.Food;
 import com.example.masterchef.R;
 import com.example.masterchef.SelectedFood;
+import com.example.masterchef.ui.manager.Managestaff.Adapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,95 +46,171 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 
 public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewholder> {
-    private List<Menu> mmenu;
-    ArrayList<String> listTitles;
+
+    LayoutInflater inflater;
     Context contexts;
+    List<Integer> listIDFoodInMenu;
     DatabaseWork databaseWork=new DatabaseWork();
-    List<Integer> IDFoodInMenus;
     StorageReference storeImage;
-    public void setData(Context context,List<Integer> IDFoodInMenu){//,List<Integer> IDFoodInMenus,Context context){
-        this.IDFoodInMenus= IDFoodInMenus;
-        this.contexts=context;
-        listTitles = new ArrayList<>();
-        notifyDataSetChanged();
-    }
+
+   public Adapter_menu(Context context,  List<Integer> listIDFoodInMenu){
+       this.inflater = LayoutInflater.from(context);
+       this.contexts = context;
+       this.listIDFoodInMenu = listIDFoodInMenu;
+   }
+
     @NonNull
     @Override
     public Adapter_menu.Menuviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.manager_adapter_managemenu,parent,false);
+        View view= inflater.inflate(R.layout.manager_adapter_managemenu,parent,false);
         return new Adapter_menu.Menuviewholder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull Adapter_menu.Menuviewholder holder, int position) {
-        Menu menu=mmenu.get(position);
-        if(menu==null){
-            return;
-        }
-        Food menuFood = databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
+        Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataref=database.getReference("User");
         Query userQuery = dataref.child("Food").orderByChild("ID");
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listTitles.add(menuFood.getTenmon());
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
+                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(food.getFlagName());
                 Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
-                holder.title.setText(menuFood.getTenmon());
-                holder.price.setText(menuFood.getGiatien() + " đ");
+                holder.title.setText(food.getTenmon());
+                holder.price.setText(food.getGiatien() + " đ");
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        //holder.imgFood.setImageResource(menu.getResourceid());
-        //holder.tv1.setText(menu.getName());
-        /*Food menufood=databaseWork.GetFoodWithID(IDFoodInMenus.get(position));
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference dataref=database.getReference("User");
-        Query userquery=dataref.child("Food").orderByChild("ID");
-        userquery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menufood.getFlagName());
-                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
+            public void onClick(View v) {
+                //ood food = databaseWork.GetFoodWithID(position);F
+                Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
+                Dialog dialog=new Dialog(contexts);
+                dialog.setContentView(R.layout.manager_employ_edit_menu);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+                EditText flag=(EditText)dialog.findViewById(R.id.flag_name);
+                //EditText ID=(EditText)dialog.findViewById(R.id.id_menu_manager);
+                EditText Idnguyenlieu=(EditText)dialog.findViewById(R.id.ID_nguyen_lieu);
+                EditText tenmon=(EditText)dialog.findViewById(R.id.tenmon);
+                EditText timetofinish=(EditText)dialog.findViewById(R.id.time_to_finish);
+                EditText giatien=(EditText)dialog.findViewById(R.id.giatien);
+                EditText soluongnguyenlieu=(EditText)dialog.findViewById(R.id.sl_nguyen_lieu);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference dataref=database.getReference("User");
+                Query userQuery = dataref.child("Food").orderByChild("ID");
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String flagname=food.getFlagName().toString();
+                        String IdNguyenlieu=food.getIdnguyenlieu().toString();
+                        String Name=food.getTenmon().toString();
+                        int timefinish=food.getTimeToFinish();
+                        int price=food.getGiatien();
+                        int iD=food.getID();
+                        String slnl=food.getSoluongnguyenlieu().toString();
+                        flag.setText(flagname);
+                        //ID.setText(String.valueOf(iD));
+                        Idnguyenlieu.setText(IdNguyenlieu);
+                        tenmon.setText(Name);
+                        timetofinish.setText(String.valueOf(timefinish));
+                        giatien.setText(String.valueOf(price));
+                        soluongnguyenlieu.setText(slnl);
 
+                        Button btnhuy=(Button) dialog.findViewById(R.id.btnh);
+                        btnhuy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                        Button btndongy=(Button)dialog.findViewById(R.id.btnd);
+                        btndongy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                DatabaseReference dataref=database.getReference("User");
+                                Query userQuery = dataref.child("Food").orderByChild("ID");
+                                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String flagname=flag.getText().toString().trim();
+                                        //int Ban=Integer.parseInt(B);
+                                       // String id=ID.getText().toString().trim();
+                                        String idnguyenlieu=Idnguyenlieu.getText().toString().trim();
+                                        String name=tenmon.getText().toString().trim();
+                                        String time=timetofinish.getText().toString().trim();
+                                        String prices=giatien.getText().toString().trim();
+                                        String slnguyenlieu=soluongnguyenlieu.getText().toString().trim();
+                                        HashMap hashMap=new HashMap();
+                                        hashMap.put("FlagName",flagname);
+                                        //hashMap.put("ID",iD);
+                                        hashMap.put("Idnguyenlieu",IdNguyenlieu);
+                                        hashMap.put("Tenmon",Name);
+                                        hashMap.put("TimeToFinish",timefinish);
+                                        hashMap.put("giatien",price);
+                                        hashMap.put("soluongnguyenlieu",slnl);
+                                        Query query=FirebaseDatabase.getInstance().getReference("User").child("Food").orderByChild("FlagName").equalTo(food.getFlagName().toString());
+                                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for(DataSnapshot dataSnapshot1 :snapshot.getChildren()){
+                                                    dataSnapshot1.getRef().updateChildren(hashMap);
+                                                }
+                                            }
 
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                        Adapter_menu.this.notifyDataSetChanged();
+                                        dialog.dismiss();
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
+        });
     }
-
     @Override
     public int getItemCount() {
-        if(mmenu!=null){
-            return mmenu.size();
-        }
-        return 0;
+        return listIDFoodInMenu.size();
     }
 
-    public class Menuviewholder extends RecyclerView.ViewHolder{
+    public class Menuviewholder extends RecyclerView.ViewHolder
+    {
+
         private ImageView imgFood;
         TextView title,price;
+        Button btn_edit;
         public Menuviewholder(@NonNull View itemView){
             super(itemView);
             title = itemView.findViewById(R.id.menu_title);
             imgFood = itemView.findViewById(R.id.menu_image);
             price = itemView.findViewById(R.id.menu_price);
-            //choose_btn = itemView.findViewById(R.id.menu_choose_btn);
-            //tv2=itemView.findViewById(R.id.menu_tv2);
+            btn_edit=itemView.findViewById(R.id.btn_edit_adapter_menu);
         }
 
     }

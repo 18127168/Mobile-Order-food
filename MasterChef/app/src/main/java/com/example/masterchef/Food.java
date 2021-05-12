@@ -1,7 +1,5 @@
 package com.example.masterchef;
 
-import java.util.HashMap;
-
 public class Food{
     private String FlagName;
     private String Tenmon;
@@ -31,24 +29,14 @@ public class Food{
     public String getIdnguyenlieu(){return Idnguyenlieu;}
     public void setSoluongnguyenlieu(String a){this.soluongnguyenlieu = a;}
     public String getSoluongnguyenlieu(){return soluongnguyenlieu;}
-    public void setgiatien(int a){
-        giatien = a;
-    }
+    public void setgiatien(int a){ giatien = a; }
     public int getGiatien(){return giatien;}
-    public void setID(int a){
-        ID = a;
-    }
+    public void setID(int a){ ID = a; }
     public int getID(){return ID;}
-    public void setFlagName(String a){
-        FlagName = a;
-    }
+    public void setFlagName(String a){ FlagName = a; }
     public String getFlagName(){return FlagName;}
-    public void setTenmon(String a){
-    Tenmon = a;
-    }
+    public void setTenmon(String a){ Tenmon = a; }
     public String getTenmon(){return Tenmon;}
-    public void setTimeToFinish(int a){
-        TimeToFinish = a;
-    }
+    public void setTimeToFinish(int a){ TimeToFinish = a; }
     public int getTimeToFinish(){return TimeToFinish;}
 }

@@ -7,16 +7,17 @@
     android:orientation="vertical"
     >
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thực đơn Thứ 2"
-        android:textStyle="bold"
-        android:gravity="center"
         android:id="@+id/name_category_tv"
-        android:background="@drawable/border"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_weekday"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Thực đơn Thứ 3"
+        android:textColor="@color/white"
         android:textSize="20dp"
-        >
-    </TextView>
+        android:layout_marginStart="75dp"
+        android:textStyle="bold"></TextView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

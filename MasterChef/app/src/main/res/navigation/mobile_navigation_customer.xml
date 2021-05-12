@@ -13,20 +13,15 @@
     <fragment
         android:id="@+id/nav_pickedfood"
         android:name="com.example.masterchef.ui.customer.pickedfood.PickedFoodFragment"
-        tools:layout="@layout/fragment_customer_jointable" />
+        tools:layout="@layout/fragment_customer_pickedfood" />
 
     <fragment
         android:id="@+id/nav_swichtable"
         android:name="com.example.masterchef.ui.customer.switchtable.SwitchTableFragment"
-        tools:layout="@layout/fragment_customer_pickedfood" />
-
-    <fragment
-        android:id="@+id/nav_jointable"
-        android:name="com.example.masterchef.ui.customer.jointable.JoinTableFragment"
-        tools:layout="@layout/fragment_customer_pickedfood" />
+        tools:layout="@layout/fragment_customer_switchtable" />
 
     <fragment
         android:id="@+id/nav_checkbill"
         android:name="com.example.masterchef.ui.customer.checkbill.CheckBillFragment"
-        tools:layout="@layout/fragment_customer_pickedfood" />
+        tools:layout="@layout/fragment_customer_checkbill" />
 </navigation>

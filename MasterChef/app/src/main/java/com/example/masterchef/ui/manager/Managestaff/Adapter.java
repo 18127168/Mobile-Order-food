@@ -52,7 +52,7 @@ public class Adapter extends ArrayAdapter<User> {
         String sdt_=getItem(position).getSdt();
         String user_=getItem(position).getUser();
         String pass_=getItem(position).getPass();
-        int ban_=getItem(position).getBan();
+        int ban_= getItem(position).getBan();
 
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference dataref=database.getReference("User").child("username");
