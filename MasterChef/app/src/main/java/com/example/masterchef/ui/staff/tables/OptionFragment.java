@@ -37,4 +37,5 @@ public class OptionFragment extends Fragment {
 
         return root;
     }
+
 }

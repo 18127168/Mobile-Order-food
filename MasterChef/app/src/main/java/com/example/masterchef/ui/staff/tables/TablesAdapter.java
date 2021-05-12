@@ -52,7 +52,7 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
 
                 AppCompatActivity staff_activity = (AppCompatActivity) root.getContext();
                 OptionFragment optionFragment = new OptionFragment();
-                staff_activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_staff, optionFragment).commit();
+                staff_activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_staff, optionFragment).addToBackStack(TablesFragment.class.getName()).commit();
             }
         });
     }
