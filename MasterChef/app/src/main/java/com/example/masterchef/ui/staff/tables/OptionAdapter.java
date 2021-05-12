@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.masterchef.DatabaseWork;
 import com.example.masterchef.Food;
+import com.example.masterchef.HoaDon;
 import com.example.masterchef.R;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +39,9 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
     List<Integer> IDFoodInMenus;
     DatabaseWork databaseWork = new DatabaseWork();
     LayoutInflater inflater;
+    HoaDon temp_order;
+    List<Integer> Selected_Foods;
+    List<Integer> Quantity_Foods;
 
 
     public OptionAdapter(Context context, List<Integer> IDFoods){
@@ -45,6 +49,10 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
         this.inflater = LayoutInflater.from(context);
         this.contexts = context;
         listTitles = new ArrayList<>();
+
+        this.temp_order = new HoaDon();
+        this.Selected_Foods = new ArrayList<>();
+        this.Quantity_Foods = new ArrayList<>();
     }
 
     @NonNull
@@ -85,6 +93,17 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
                         num++;
                         holder.item_quantity.setText(String.valueOf(num));
 
+                        if (holder.food_quantity == 0) {
+                            Selected_Foods.add(IDFoodInMenus.get(position));
+                            Quantity_Foods.add(1);
+                        }
+                        else {
+                            int tmp_num = Quantity_Foods.get(position);
+                            Quantity_Foods.set(position, tmp_num + 1);
+                        }
+
+                        holder.food_quantity++;
+
                     }
                 });
 
@@ -96,6 +115,16 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
                         if (num > 0) {
                             num--;
                             holder.item_quantity.setText(String.valueOf(num));
+
+                            if (holder.food_quantity == 1) {
+                                Selected_Foods.remove(position);
+                                Quantity_Foods.remove(position);
+                            }
+                            else {
+                                int tmp_num = Quantity_Foods.get(position);
+                                Quantity_Foods.set(position, tmp_num - 1);
+                            }
+                            holder.food_quantity--;
                         }
                     }
                 });
@@ -119,6 +148,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
         ImageView imgFood;
         TextView title, price, item_quantity, table_id;
         Button add_btn, minus_btn;
+        int id_food, food_quantity;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -130,27 +160,16 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
             minus_btn = itemView.findViewById(R.id.menu_minus_btn);
             table_id = itemView.findViewById(R.id.table_id);
 
-            add_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String s = item_quantity.getText().toString();
-                    int num = Integer.parseInt(s);
-                    num++;
-                    item_quantity.setText(String.valueOf(num));
-                }
-            });
+            food_quantity = Integer.parseInt(item_quantity.getText().toString());
 
-            minus_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String s = item_quantity.getText().toString();
-                    int num = Integer.parseInt(s);
-                    if (num > 0) {
-                        num--;
-                        item_quantity.setText(String.valueOf(num));
-                    }
-                }
-            });
+
         }
+    }
+
+    public List<Integer> GetSelectedFoods() {
+        return Selected_Foods;
+    }
+    public List<Integer> GetFoodQuantity() {
+        return Quantity_Foods;
     }
 }
