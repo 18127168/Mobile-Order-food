@@ -1,6 +1,7 @@
 package com.example.masterchef.ui.customer.checkbill;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
 import static com.example.masterchef.MainActivity.IDTable;
+import static com.example.masterchef.MainActivity.noHoaDon;
 import static com.example.masterchef.MainActivity.server;
 
 public class CheckBillFragment extends Fragment {
@@ -43,7 +45,6 @@ public class CheckBillFragment extends Fragment {
     List<Food> listFoods = new ArrayList<>();
     List<Integer> listNumberFoods = new ArrayList<>();
     List<Integer> listIDBills = new ArrayList<>();
-    DatabaseWork databaseWork = new DatabaseWork();
 
     CheckBillAdapter adapter;
 
@@ -64,13 +65,13 @@ public class CheckBillFragment extends Fragment {
             public void onClick(View v) {
                 setCompleteForBill();
 
-                adapter.setEmptyListFoods();
-                adapter.notifyDataSetChanged();
-
                 totalcost.setText("0 đ");
                 discount_price.setText("0 đ");
                 VAT.setText("0 đ");
                 billcost.setText("0 đ");
+
+                adapter.setEmptyListFoods();
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -86,9 +87,8 @@ public class CheckBillFragment extends Fragment {
         userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if(snapshot.exists()){
-
+                    noHoaDon = true;
                     listFoods = new ArrayList<>();
                     listNumberFoods = new ArrayList<>();
                     listIDBills = new ArrayList<>();
@@ -104,6 +104,7 @@ public class CheckBillFragment extends Fragment {
                     for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                         HoaDon hoadon = postSnapshot.getValue(HoaDon.class);
                         if( (hoadon.getTable() == IDTable) && hoadon.getThanhToan() == false){
+                            noHoaDon = false;
                             listIDBills.add(hoadon.getHoaDonSo());
 
                             String[] listSplitIDFood = hoadon.getID().split(",");
@@ -119,8 +120,10 @@ public class CheckBillFragment extends Fragment {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()) {
                                             for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                                                listFoods.add(postSnapshot.getValue(Food.class));
-                                                listNumberFoods.add(tempNumberFood);
+                                                if (!noHoaDon) {
+                                                    listFoods.add(postSnapshot.getValue(Food.class));
+                                                    listNumberFoods.add(tempNumberFood);
+                                                }
                                             }
                                         }
                                     }
@@ -171,7 +174,7 @@ public class CheckBillFragment extends Fragment {
                                     }
                                 });
                             }
-                        };
+                        }
                     }
                 }
             }

@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
     public static EditText user,pass,server;
     public static int IDTable;
+    public static boolean noHoaDon = true;
     public Button btnlogin;
     @SuppressLint("WrongViewCast")
     @Override
