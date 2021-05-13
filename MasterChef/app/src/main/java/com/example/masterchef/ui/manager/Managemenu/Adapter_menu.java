@@ -119,7 +119,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                         int timefinish=food.getTimeToFinish();
                         int price=food.getGiatien();
                         int iD=food.getID();
-                        String slnl=food.getSoluongnguyenlieu().toString();
+                        String slnl=food.getsoluongnguyenlieu().toString();
                         flag.setText(flagname);
                         //ID.setText(String.valueOf(iD));
                         Idnguyenlieu.setText(IdNguyenlieu);

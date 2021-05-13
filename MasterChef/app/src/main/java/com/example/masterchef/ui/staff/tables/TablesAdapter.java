@@ -24,8 +24,6 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
     View root;
     LayoutInflater inflater;
 
-
-
     public TablesAdapter(Context context, View v, List<Tables> tables){
         this.tables = tables;
         this.root = v;

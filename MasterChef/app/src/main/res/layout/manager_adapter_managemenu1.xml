@@ -16,7 +16,7 @@
         android:text="Thực đơn Thứ 3"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
         android:textStyle="bold"></TextView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
