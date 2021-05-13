@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.chef;
+package com.example.masterchef.ui.Chef;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import static com.example.masterchef.R.layout.fragment_cac_mon_an_trong_hoa_don;
 
 public class FragMentCacMonAnTrongHoaDon extends Fragment {
     public ListView listView;
-    public TextView ban,tinhtrang,notes;
+    public TextView ban,tinhtrang,date;
     public DatabaseReference refCurrent;
     View compactactivity;
     public HoaDon data;
@@ -31,9 +31,9 @@ public class FragMentCacMonAnTrongHoaDon extends Fragment {
         listView = (ListView) root.findViewById(R.id.list_cac_mon_an_cua_1_ban);
         ban = (TextView) root.findViewById(R.id.Ban);
         tinhtrang = (TextView) root.findViewById(R.id.tinhtrang);
-        notes = (TextView) root.findViewById(R.id.notes);
-        notes.setText("Ghi Chú: " + data.getNotes());
+        date = (TextView) root.findViewById(R.id.ngay);
         ban.setText("Bàn: "+data.getTable());
+        date.setText("Ngày: " + data.getDate());
         String trangthai;
         if(data.getTrangthai() == 0) trangthai = "Đã Gọi";
         else trangthai = "Đã Hoàn Thành";
@@ -41,13 +41,8 @@ public class FragMentCacMonAnTrongHoaDon extends Fragment {
         String[] listIDMonAn = data.getID().split(",");
         String[] listSoLuong = data.getSoLuong().split(",");
         String[] listHoanThanh = data.getHoanthanh().split(",");
-        listView.setAdapter(new AdapterHienCacMonAnTrongHoaDon(getActivity(),listIDMonAn,listSoLuong,listHoanThanh,refCurrent));
+        String[] listNotes = data.getNotes().split(";");
+        listView.setAdapter(new AdapterHienCacMonAnTrongHoaDon(getActivity(),listIDMonAn,listSoLuong,listHoanThanh,listNotes,refCurrent));
         return root;
-    }
-
-    static class ViewHolder {
-        TextView BanView;
-        TextView HoaDonSoView;
-        TextView TinhtrangView;
     }
 }

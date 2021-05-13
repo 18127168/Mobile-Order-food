@@ -1,6 +1,7 @@
 package com.example.masterchef.ui.staff.serve;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,13 +37,14 @@ public class ServeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_staff_serve, container, false);
         dataList = root.findViewById(R.id.serve_recyclerCategory);
 
-        List<ServeItem> ListServe = databaseWork.ListServe();
+
         Query query = FirebaseDatabase.getInstance().getReference("User").child("HoaDon");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.e("onDataChange ", "ok");
 
-
+                List<ServeItem> ListServe = databaseWork.ListServe(snapshot);
                 adapter = new ServeAdapter(getActivity(), ListServe);
 
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
