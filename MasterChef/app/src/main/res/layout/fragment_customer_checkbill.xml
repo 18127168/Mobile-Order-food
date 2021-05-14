@@ -151,7 +151,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Mã giảm giá"
+                        android:text="Mã"
                         android:gravity="center"
                         android:textSize="20dp"
                         android:textColor="@color/my_text_color"
@@ -171,6 +171,17 @@
                         android:background="@drawable/border"/>
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/checkbill_discount_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/getin_border"
+                    android:text="Áp dụng"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    app:backgroundTint="@color/my_blue" />
 
             </LinearLayout>
 
@@ -229,6 +240,7 @@
                         android:paddingLeft="10dp" />
 
                     <TextView
+                        android:id="@+id/text_checkbill_discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tiền giảm giá"

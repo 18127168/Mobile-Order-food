@@ -141,6 +141,7 @@ public class DatabaseWork {
                             result.setgiatien(foodSearch.getGiatien());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
                             result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
+                            result.setMoTa(foodSearch.getmoTa());
                             break;
                         }
                         ;
