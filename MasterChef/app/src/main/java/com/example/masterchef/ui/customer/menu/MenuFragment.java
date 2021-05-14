@@ -1,22 +1,15 @@
 package com.example.masterchef.ui.customer.menu;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -39,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static androidx.core.content.ContextCompat.getDrawable;
 import static com.example.masterchef.MainActivity.IDTable;
@@ -94,6 +86,7 @@ public class MenuFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Calendar calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_WEEK);
+                if (day == 1) day = 8;
                 listIDFoodInMenu = databaseWork.GetFoodInMenu(day);
 
                 Query userQuery = dataRef.child("Food").orderByChild("ID");

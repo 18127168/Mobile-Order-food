@@ -136,6 +136,24 @@ public class PickedFoodFragment extends Fragment {
                                         }
                                     });
                                 } else {
+                                    Dialog dialog = new Dialog(getActivity());
+                                    dialog.setContentView(R.layout.custom_dialog_customer_oder_annou);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                                        dialog.getWindow().setBackgroundDrawable(getDrawable(getActivity(), R.drawable.background));
+                                    }
+                                    dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                    dialog.setCancelable(false);
+
+                                    Button dialog_btn = dialog.findViewById(R.id.order_closeDialog_btn);
+                                    dialog_btn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    
+                                    dialog.show();
+
                                     int id = 1;
                                     if(snapshot2.exists()){
                                         for (DataSnapshot postSnapshot: snapshot2.getChildren()) { id++; }

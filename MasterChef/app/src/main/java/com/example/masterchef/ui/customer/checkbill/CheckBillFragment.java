@@ -1,5 +1,7 @@
 package com.example.masterchef.ui.customer.checkbill;
 
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.masterchef.DatabaseWork;
+import com.example.masterchef.Discount;
 import com.example.masterchef.Food;
 import com.example.masterchef.HoaDon;
 import com.example.masterchef.R;
@@ -32,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
+import static androidx.core.content.ContextCompat.getDrawable;
 import static com.example.masterchef.MainActivity.IDTable;
 import static com.example.masterchef.MainActivity.noHoaDon;
 import static com.example.masterchef.MainActivity.server;
@@ -39,13 +43,15 @@ import static com.example.masterchef.MainActivity.server;
 public class CheckBillFragment extends Fragment {
 
     public RecyclerView dataList;
-    TextView totalcost, VAT, billcost, discount_price;
+    TextView totalcost, VAT, billcost, discount_price, text_checkbill_discount;
     EditText discount_code;
-    Button checkbill_button;
+    Button checkbill_button, discount_button;
     List<Food> listFoods = new ArrayList<>();
     List<Integer> listNumberFoods = new ArrayList<>();
     List<Integer> listIDBills = new ArrayList<>();
-
+    static int discount = 0;
+    static String discount_codeeeee = "";
+    static int sum = 0;
     CheckBillAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,9 +62,69 @@ public class CheckBillFragment extends Fragment {
         discount_code = root.findViewById(R.id.checkbill_discount_code);
         totalcost = root.findViewById(R.id.checkbill_totalcost);
         discount_price = root.findViewById(R.id.checkbill_discount_price);
+        text_checkbill_discount = root.findViewById(R.id.text_checkbill_discount);
+        discount_button =  root.findViewById(R.id.checkbill_discount_button);
         VAT = root.findViewById(R.id.checkbill_VAT);
         billcost = root.findViewById(R.id.checkbill_billcost);
         checkbill_button = root.findViewById(R.id.checkbill_button);
+
+        discount_code.setText(discount_codeeeee);
+        if (discount != 0){
+            text_checkbill_discount.setText("Tiền giảm giá(" + discount + "%)");
+        }
+
+        discount_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference dataRef = database.getReference(server.getText().toString());
+                Query userQuery = dataRef.child("khuyenmai");
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+
+                                if (postSnapshot.getValue(Discount.class).getMakhuyenmai().equals(discount_code.getText().toString())){
+                                    discount_codeeeee = postSnapshot.getValue(Discount.class).getMakhuyenmai();
+                                    discount = postSnapshot.getValue(Discount.class).getMota();
+
+                                    text_checkbill_discount.setText("Tiền giảm giá(" + discount + "%)");
+
+                                    totalcost.setText(sum + " đ");
+                                    discount_price.setText(sum*discount/100 + " đ" );
+                                    VAT.setText((sum - sum*10/100)*10/100 + " đ");
+                                    billcost.setText(sum - (sum - sum*10/100)*10/100 + " đ");
+
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+        });
+
+        Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.custom_dialog_customer_checkbill_annou);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            dialog.getWindow().setBackgroundDrawable(getDrawable(getActivity(), R.drawable.background));
+        }
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+
+        Button dialog_btn = dialog.findViewById(R.id.checkbill_closeDialog_btn);
+        dialog_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         checkbill_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +136,12 @@ public class CheckBillFragment extends Fragment {
                 VAT.setText("0 đ");
                 billcost.setText("0 đ");
 
+                sum = 0;
+
                 adapter.setEmptyListFoods();
                 adapter.notifyDataSetChanged();
+
+                dialog.show();
             }
         });
 
@@ -158,15 +228,14 @@ public class CheckBillFragment extends Fragment {
                                         adapter.setFoods(listFoods, listNumberFoods);
                                         adapter.notifyDataSetChanged();
 
-                                        int sum = 0;
                                         for (int i = 0; i < listFoods.size(); i++){
                                             sum += listFoods.get(i).getGiatien()*listNumberFoods.get(i);
                                         }
 
-                                        totalcost.setText(Integer.toString(sum) + " đ");
-                                        discount_price.setText(Integer.toString(sum*10/100) + " đ" );
-                                        VAT.setText(Integer.toString((sum - sum*10/100)*10/100) + " đ");
-                                        billcost.setText(Integer.toString(sum - (sum - sum*10/100)*10/100) + " đ");
+                                        totalcost.setText(sum + " đ");
+                                        discount_price.setText(sum*discount/100 + " đ" );
+                                        VAT.setText((sum - sum*10/100)*10/100 + " đ");
+                                        billcost.setText(sum - (sum - sum*10/100)*10/100 + " đ");
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
