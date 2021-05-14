@@ -6,27 +6,32 @@
 
     >
     <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/discount_add"
+            android:src="@drawable/ic_baseline_add_24"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            >
+        </ImageView>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="5"
         >
-
         <TextView
-            android:text="STT"
+            android:text="Mã khuyen mai"
             android:textSize="20dp"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            >
-        </TextView>
-        <TextView
-            android:text="Mã"
-            android:textSize="20dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             >
         </TextView>
         <TextView
@@ -44,9 +49,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             >
         </TextView>
+
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/discount_rcv"

@@ -1,5 +1,6 @@
 package com.example.masterchef.ui.manager.Managemenu;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,30 +42,51 @@ public class Adapter_weekdays extends RecyclerView.Adapter<Adapter_weekdays.Menu
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_weekdays.Menu_categoricalViewholder holder, int position) {
-        List<Integer> listIDFoodInMenu;
-
-        if (position == 6) {
-            listIDFoodInMenu = databaseWork.GetFoodInMenu(1);
-            holder.textView.setText("Thực đơn Chủ Nhật");
+    public void onBindViewHolder(@NonNull Adapter_weekdays.Menu_categoricalViewholder holder, int position) { if (position == 6)
+        {
+            holder.textView.setText("Thực đơn chu nhat");
         }
         else {
-            listIDFoodInMenu = databaseWork.GetFoodInMenu(position + 2);
-            holder.textView.setText("Thực đơn Thứ " + (position + 2));//thuc don thu 2
+            holder.textView.setText("Thực đơn Thứ " + (position + 2));
         }
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataref=database.getReference("User");
-        Query userQuery = dataref.child("Food");
-        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query userQuery = dataref.child("Menu").orderByKey();
+        userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                GridLayoutManager gridLayoutManager=new GridLayoutManager(mcontext,2);
+                List<Integer> listIDFoodInMenu = new ArrayList<>();
+                if(snapshot.exists()){
+                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                        if (position == 6) {
+                            if (postSnapshot.getKey().equals("" + (position + 2))) {
+                                List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
+                                for (int i = 0; i < menuofthisday.size(); i++)
+                                    listIDFoodInMenu.add(menuofthisday.get(i));
+                                break;
+                            }
+                            ;
+                        }
 
-                Adapter_menu adaptermenu =new Adapter_menu(mcontext, listIDFoodInMenu);
-                holder.recyclerView.setLayoutManager(gridLayoutManager);
-                holder.recyclerView.setAdapter(adaptermenu);
+                    }
+
+                    Query userQuery = dataref.child("Menu").orderByKey();
+                    userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            GridLayoutManager gridLayoutManager=new GridLayoutManager(mcontext,2);
+
+                            Adapter_menu adaptermenu =new Adapter_menu(mcontext, listIDFoodInMenu, (position+2));
+                            holder.recyclerView.setLayoutManager(gridLayoutManager);
+                            holder.recyclerView.setAdapter(adaptermenu);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
 
             @Override
@@ -72,6 +94,7 @@ public class Adapter_weekdays extends RecyclerView.Adapter<Adapter_weekdays.Menu
 
             }
         });
+
     }
 
     @Override

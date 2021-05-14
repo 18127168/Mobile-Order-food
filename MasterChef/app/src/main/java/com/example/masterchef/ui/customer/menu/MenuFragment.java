@@ -50,47 +50,6 @@ public class MenuFragment extends Fragment {
         dataList = root.findViewById(R.id.menu_recyclerCategory);
 
         EditText searchBar = root.findViewById(R.id.menu_search_bar);
-        /*searchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
-            }
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // TODO Auto-generated method stub
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                String keyword = searchBar.getText().toString();
-
-                ArrayList<Integer> tempListIDFood = new ArrayList<>();
-
-                for (int i = 0; i < listTitles.size(); i++){
-                    if(listTitles.get(i).contains(keyword)){
-                        tempListIDFood.add(listIDFoodInMenu.get(i));
-                    }
-                }
-
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference dataref = database.getReference(server.getText().toString());
-                Query userQuery = dataref.child("Food").orderByChild("ID");
-                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        adapter = new MenuAdapter(getActivity(), tempListIDFood);
-
-                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
-                        dataList.setLayoutManager(gridLayoutManager);
-                        dataList.setAdapter(adapter);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-            }
-        });*/
-
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         listIDFoodInMenu = databaseWork.GetFoodInMenu(day);
@@ -102,7 +61,6 @@ public class MenuFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter = new MenuAdapter(getActivity(), listIDFoodInMenu);
-
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
                 dataList.setLayoutManager(gridLayoutManager);
                 dataList.setAdapter(adapter);

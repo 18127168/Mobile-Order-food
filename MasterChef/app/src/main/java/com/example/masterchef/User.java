@@ -1,4 +1,6 @@
 package com.example.masterchef;
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties

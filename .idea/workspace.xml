@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e79a773-8b2a-4864-9045-51a8bd242fb8" name="Default Changelist" comment="" />
+    <list default="true" id="6e79a773-8b2a-4864-9045-51a8bd242fb8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managemenu/Adapter_menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managemenu/Adapter_menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managemenu/Adapter_weekdays.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managemenu/Adapter_weekdays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managestaff/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managestaff/Adapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managestaff/MangestaffFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/java/com/example/masterchef/ui/manager/Managestaff/MangestaffFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_adapter_managemenu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_adapter_managemenu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_adapter_managemenu1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_adapter_managemenu1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_fragment_managestaff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MasterChef/app/src/main/res/layout/manager_fragment_managestaff.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,10 +43,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="449" y="102" key="FileChooserDialogImpl" timestamp="1617886570684">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1620968433464">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616945733393" />
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620968433464" />
     <state x="449" y="102" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617886570684" />
   </component>
 </project>

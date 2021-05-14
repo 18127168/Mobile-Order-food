@@ -57,12 +57,14 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
     List<Integer> listIDFoodInMenu;
     DatabaseWork databaseWork=new DatabaseWork();
     StorageReference storeImage;
+    int thu;
 
-   public Adapter_menu(Context context,  List<Integer> listIDFoodInMenu){
-       this.inflater = LayoutInflater.from(context);
-       this.contexts = context;
-       this.listIDFoodInMenu = listIDFoodInMenu;
-   }
+    public Adapter_menu(Context context,  List<Integer> listIDFoodInMenu,int a){
+        this.inflater = LayoutInflater.from(context);
+        this.contexts = context;
+        this.listIDFoodInMenu = listIDFoodInMenu;
+        this.thu=a;
+    }
 
     @NonNull
     @Override
@@ -80,7 +82,9 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(food.getFlagName());
+                storeImage = FirebaseStorage.getInstance()
+                        .getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/")
+                        .child(food.getFlagName());
                 Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
                 holder.title.setText(food.getTenmon());
                 holder.price.setText(food.getGiatien() + " đ");
@@ -94,7 +98,6 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ood food = databaseWork.GetFoodWithID(position);F
                 Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
                 Dialog dialog=new Dialog(contexts);
                 dialog.setContentView(R.layout.manager_employ_edit_menu);
@@ -119,9 +122,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                         int timefinish=food.getTimeToFinish();
                         int price=food.getGiatien();
                         int iD=food.getID();
-                        String slnl=food.getSoluongnguyenlieu().toString();
+                       String slnl=food.getSoluongnguyenlieu().toString();
                         flag.setText(flagname);
-                        //ID.setText(String.valueOf(iD));
                         Idnguyenlieu.setText(IdNguyenlieu);
                         tenmon.setText(Name);
                         timetofinish.setText(String.valueOf(timefinish));
@@ -145,8 +147,6 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         String flagname=flag.getText().toString().trim();
-                                        //int Ban=Integer.parseInt(B);
-                                       // String id=ID.getText().toString().trim();
                                         String idnguyenlieu=Idnguyenlieu.getText().toString().trim();
                                         String name=tenmon.getText().toString().trim();
                                         String time=timetofinish.getText().toString().trim();
@@ -154,12 +154,10 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                                         String slnguyenlieu=soluongnguyenlieu.getText().toString().trim();
                                         HashMap hashMap=new HashMap();
                                         hashMap.put("FlagName",flagname);
-                                        //hashMap.put("ID",iD);
                                         hashMap.put("Idnguyenlieu",IdNguyenlieu);
                                         hashMap.put("Tenmon",Name);
                                         hashMap.put("TimeToFinish",timefinish);
                                         hashMap.put("giatien",price);
-                                        hashMap.put("soluongnguyenlieu",slnl);
                                         Query query=FirebaseDatabase.getInstance().getReference("User").child("Food").orderByChild("FlagName").equalTo(food.getFlagName().toString());
                                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
@@ -193,6 +191,132 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
 
             }
         });
+
+        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
+                Dialog dialog=new Dialog(contexts);
+                dialog.setContentView(R.layout.manager_employ_discount_delete);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+                Button btnhuy=(Button)dialog.findViewById(R.id.btn_manager_dongy_delte_discount);
+                Button btndongy=(Button)dialog.findViewById(R.id.btn_manager_huy_delte_discount);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference dataref=database.getReference("User");
+                Query userQuery = dataref.child("Food").orderByChild("ID");
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        btndongy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Query query=FirebaseDatabase.getInstance().getReference("User").child("Menu").child(""+thu);
+                                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        int i = 0;
+                                        List<Integer> listtem=new ArrayList<>();
+                                        boolean check=true;
+                                        for(DataSnapshot dataSnapshot1 :snapshot.getChildren()){
+
+                                            if(!check){
+                                                listtem.add(dataSnapshot1.getValue(Integer.class));
+                                                dataSnapshot1.getRef().removeValue();
+                                            }
+                                            else if(i==position){
+                                                check=false;
+                                                Log.e("heeeee",""+dataSnapshot1.getValue(Integer.class));
+                                                dataSnapshot1.getRef().removeValue();
+                                                listIDFoodInMenu.remove(position);
+                                            }
+                                            else {
+                                                i++;
+                                            }
+
+                                        }
+                                        for(int k=0;k<listtem.size();k++){
+                                            FirebaseDatabase.getInstance().getReference("User").child("Menu").child(""+thu).child(""+i).setValue(listtem.get(k));
+                                            i++;
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+
+                                dialog.dismiss();
+                            }
+                        });
+
+                        btnhuy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+        });
+        holder.btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
+                Dialog dialog=new Dialog(contexts);
+                dialog.setContentView(R.layout.manager_employ_add_menu_inthisday);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+                Button btnhuy=(Button)dialog.findViewById(R.id.btn_manager_huy_delte_food);
+                Button btndongy=(Button)dialog.findViewById(R.id.btn_manager_dongy_delte_food);
+                btnhuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                btndongy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference dataref=database.getReference("User");
+                        Query userQuery = dataref.child("Menu").orderByKey();
+                        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                List<Integer> listIDFoodInMenu = new ArrayList<>();
+                                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                                    if(postSnapshot.getKey().equals(""+(position+2)))
+                                    {
+                                        List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
+                                        //dataref.child("Menu").child(""+(position+2)).child(""+(menuofthisday.size()-1)).setValue()
+                                    };
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
+
     }
     @Override
     public int getItemCount() {
@@ -204,13 +328,15 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
 
         private ImageView imgFood;
         TextView title,price;
-        Button btn_edit;
+        ImageView btn_edit,btn_delete,btn_add;
         public Menuviewholder(@NonNull View itemView){
             super(itemView);
             title = itemView.findViewById(R.id.menu_title);
             imgFood = itemView.findViewById(R.id.menu_image);
             price = itemView.findViewById(R.id.menu_price);
             btn_edit=itemView.findViewById(R.id.btn_edit_adapter_menu);
+            btn_delete=itemView.findViewById(R.id.btn_delete_adapter_menu);
+            btn_add=itemView.findViewById(R.id.btn_add_menu_inthisday);
         }
 
     }

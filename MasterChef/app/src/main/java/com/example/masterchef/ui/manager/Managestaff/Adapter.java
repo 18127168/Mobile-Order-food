@@ -188,7 +188,6 @@ public class Adapter extends ArrayAdapter<User> {
                             }
                         });
                         Adapter.this.notifyDataSetChanged();
-
                         dialog.dismiss();
                     }
                 });
