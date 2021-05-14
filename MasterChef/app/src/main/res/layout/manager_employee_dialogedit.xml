@@ -1,249 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:layout_width="325dp"
     android:orientation="vertical"
-    android:weightSum="5"
+    android:weightSum="8"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:weightSum="8"
-        android:layout_weight="2"
+        android:layout_height="361dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_weight="5"
         android:orientation="horizontal"
-        >
+        android:paddingLeft="10dp"
+        android:weightSum="8">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:orientation="vertical"
-            android:weightSum="5"
-            >
+            android:weightSum="8">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:textSize="15dp"
-                android:gravity="center_vertical"
+                android:layout_marginTop="5dp"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="Họ tên"
-                android:layout_marginTop="5dp"
-                >
-            </TextView>
+                android:textSize="15dp"></TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="Ngày sinh"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                >
-            </TextView>
+                android:textSize="15dp"></TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
-                android:textSize="15dp"
-                android:gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="Loại nhân viên"
-                >
-            </TextView>
+                android:textSize="15dp"></TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="Số điện thoại"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                >
-            </TextView>
+                android:textSize="15dp"></TextView>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="Địa chỉ"
-                android:gravity="center_vertical"
-                android:textSize="15dp"
-                android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                >
-            </TextView>
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Địa chỉ"
+                android:textSize="15dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Tài Khoản"
+                android:textSize="15dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Mật Khẩu"
+                android:textSize="15dp"></TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
             android:layout_marginLeft="5dp"
+            android:layout_weight="6"
             android:orientation="vertical"
-            android:weightSum="5"
-            >
+            android:weightSum="8">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:text="Nguyễn Văn A"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/border"
-                android:layout_weight="1">
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Nguyễn Văn A"
+                android:id="@+id/hotenedit"></EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="24">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:id="@+id/ngaysinhedit"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="04/12/2000"
+                    android:textSize="15dp"></EditText>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="6"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+
+                    android:text="CMND"
+                    android:textSize="15dp"></TextView>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="123456789"
+                    android:id="@+id/cmndedit"
+                    android:textSize="15dp"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="24">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Phục vụ"
+                    android:textSize="15dp"
+                    android:id="@+id/loaiedit"></EditText>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="6"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:text="Dân tộc"
+                    android:textSize="15dp"
+                    ></TextView>
+
+                <EditText
+                    android:id="@+id/dantocedit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="Kinh"
+                    android:textSize="15dp"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="24">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="0358265477"
+                    android:id="@+id/sdtedit"
+                    android:textSize="15dp"></EditText>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="6"
+                    android:gravity="left"
+                    android:paddingLeft="5dp"
+                    android:text="Ngày vào"
+                    android:textSize="15dp"></TextView>
+
+                <EditText
+                    android:id="@+id/ngayvaoedit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="9"
+                    android:background="@drawable/border"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:text="10/10/2020"
+                    android:textSize="15dp"></EditText>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/diachiedit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/border">
+
+                </EditText>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <EditText
+                    android:id="@+id/taikhoanedit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/border">
+
+                </EditText>
+
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:layout_width="0dp"
+                android:id="@+id/matkhauedit"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:background="@drawable/border">
+
             </EditText>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:weightSum="3"
-                >
-                <EditText
-                    android:layout_width="0dp"
-
-                    android:layout_height="match_parent"
-                    android:text="04/12/2000"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:background="@drawable/border"
-                    android:textSize="15dp"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="25dp"
-                    android:layout_marginTop="5dp"
-                    android:text="CMND"
-
-                    android:textSize="15dp"
-                    android:layout_weight="1"
-                    >
-                </TextView>
-                <EditText
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="123456789"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/border"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:weightSum="3"
-                >
-                <EditText
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Phục vụ"
-                    android:gravity="center"
-                    android:background="@drawable/border"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-                <TextView
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="Dân tộc"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="25dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </TextView>
-                <EditText
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="Kinh"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:background="@drawable/border"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:weightSum="3"
-                >
-                <EditText
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="0358265477"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/border"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-                <TextView
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="Ngày vào"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="25dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </TextView>
-                <EditText
-                    android:layout_width="0dp"
-                    android:textSize="15dp"
-                    android:text="10/10/2020"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:background="@drawable/border"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-                </EditText>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:weightSum="1"
-                >
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    >
-
-                </EditText>
-
-            </LinearLayout>
-
+        </LinearLayout>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
@@ -252,15 +312,19 @@
             android:layout_height="50dp"
             android:text="thêm"
             android:textSize="15dp"
-            android:layout_marginTop="50dp">
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center">
         </Button>
         <Button
             android:id="@+id/dialog_delete"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
-            android:text="xóa"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+
+            android:layout_marginLeft="100dp"
+            android:text="Hủy"
             android:textSize="15dp">
 
         </Button>

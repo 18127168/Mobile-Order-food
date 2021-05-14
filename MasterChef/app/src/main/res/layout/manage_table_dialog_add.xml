@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:weightSum="10"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_weight="2"
+            android:id="@+id/addNhanVien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingLeft="20sp"
+            android:paddingTop="10sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="10sp"
+            android:text="Thêm Nhân viên"
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100sp"
+            android:layout_marginLeft="100sp"
+            android:layout_weight="2"
+            android:background="@drawable/border"
+            android:textColor="@color/my_blue"
+            android:gravity="center"
+            android:paddingLeft="20sp"
+            android:paddingTop="10sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="10sp"
+            android:text="Thêm Bàn" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:padding="10sp"
+            android:orientation="vertical"
+            >
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/userAddTable"
+                android:background="@drawable/button"
+                android:hint="User"
+
+                >
+            </EditText>
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/passAddTable"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="@drawable/button"
+                android:hint="pass"
+                >
+            </EditText>
+            <EditText
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:id="@+id/SobanAddTable"
+                android:hint="Số Bàn"
+                >
+            </EditText>
+
+            <EditText
+                android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button"
+            android:layout_height="60dp"
+            android:id="@+id/soChoNgoiAddTable"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="Số chỗ ngồi"
+                >
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:id="@+id/btnd_table"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="0sp"
+            android:layout_marginLeft="0sp"
+            android:text="Đồng ý"></Button>
+
+        <Button
+            android:id="@+id/btnh_table"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="50sp"
+            android:layout_marginLeft="50sp"
+            android:text="Hủy"></Button>
+
+    </LinearLayout>
+</LinearLayout>
