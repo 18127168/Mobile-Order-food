@@ -37,10 +37,12 @@ public class DatabaseWork {
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         if (dataSnapshot.hasChild("ban")) {
-                            Tables e = new Tables();
-                            e.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
-                            e.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
-                            tabl.add(e);
+                            if (Integer.parseInt(dataSnapshot.child("ban").getValue().toString()) != -1) {
+                                Tables e = new Tables();
+                                e.setId(Integer.parseInt(dataSnapshot.child("ban").getValue().toString()));
+                                e.setSeats(Integer.parseInt((dataSnapshot.child("seats").getValue().toString())));
+                                tabl.add(e);
+                            }
                         }
                     }
                 }
@@ -67,6 +69,7 @@ public class DatabaseWork {
                     String[] Foods = bill.getID().split(",");
                     String[] HoanThanh = bill.getHoanthanh().split(",");
                     String[] PhucVu = bill.getPhucVu().split(",");
+                    String[] SoLuong = bill.getSoLuong().split(",");
 
                     for (int i = 0; i < Foods.length; i++) {
                         int compare = Integer.parseInt(HoanThanh[i]) - Integer.parseInt(PhucVu[i]);
@@ -76,6 +79,8 @@ public class DatabaseWork {
                             serveItem.setBill(bill.getHoaDonSo());
                             serveItem.setFood(Integer.parseInt(Foods[i]));
                             serveItem.setQuantity(compare);
+                            serveItem.setServed(Integer.parseInt(PhucVu[i]));
+                            serveItem.setTotal(Integer.parseInt(SoLuong[i]));
                             serveItem.setRef(dataSnapshot.getRef());
 
                             String[] cmp = PhucVu;
@@ -89,7 +94,38 @@ public class DatabaseWork {
             }
         }
         return list;
-}
+    }
+
+    public List<Item_Status> GetListStatus(DataSnapshot snapshot, int table_id) {
+        List<Item_Status> list = new ArrayList<>();
+
+        if (snapshot.exists()) {
+            for (DataSnapshot ds : snapshot.getChildren()) {
+                String stt = ds.child("thanhToan").getValue().toString();
+                String table = ds.child("table").getValue().toString();
+                if (stt.equals("false") && table.equals(String.valueOf(table_id))) {
+                    
+                    HoaDon bill = ds.getValue(HoaDon.class);
+                    String[] Foods = bill.getID().split(",");
+                    String[] PhucVu = bill.getPhucVu().split(",");
+                    String[] SoLuong = bill.getSoLuong().split(",");
+                    int order_id = Integer.parseInt(ds.getKey().toString());
+
+                    for (int i = 0; i < Foods.length; i++) {
+                        Item_Status status = new Item_Status();
+                        status.setFood_id(Integer.parseInt(Foods[i]));
+                        status.setServed(Integer.parseInt(PhucVu[i]));
+                        status.setQuantity(Integer.parseInt(SoLuong[i]));
+                        status.setBill(order_id);
+
+                        list.add(status);
+                    }
+                }
+            }
+        }
+
+        return list;
+    }
 
 
     //lay id cua cac mon an trong menu cua 1 ngay nao do. //done // i check it and it work // cn = 1

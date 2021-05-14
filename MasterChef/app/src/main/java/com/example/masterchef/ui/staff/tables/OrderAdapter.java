@@ -31,7 +31,7 @@ import java.util.List;
 
 import static com.example.masterchef.MainActivity.server;
 
-public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
     Context contexts;
     ArrayList<String> listTitles;
@@ -44,7 +44,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
     List<Integer> Quantity_Foods;
 
 
-    public OptionAdapter(Context context, List<Integer> IDFoods){
+    public OrderAdapter(Context context, List<Integer> IDFoods){
         this.IDFoodInMenus = IDFoods;
         this.inflater = LayoutInflater.from(context);
         this.contexts = context;
@@ -58,7 +58,7 @@ public class OptionAdapter extends RecyclerView.Adapter<OptionAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.custom_adapter_staff_table_option, parent, false);
+        View view = inflater.inflate(R.layout.custom_adapter_staff_table_option_order, parent, false);
         return new ViewHolder(view);
     }
 

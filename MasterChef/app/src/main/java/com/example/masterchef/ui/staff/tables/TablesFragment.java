@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.masterchef.DatabaseWork;
 import com.example.masterchef.R;
 import com.example.masterchef.Tables;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,9 +29,6 @@ import java.util.List;
 public class TablesFragment extends Fragment {
 
     public RecyclerView dataList;
-
-    List<Integer> table_id = new ArrayList<>();
-    List<Integer> seats = new ArrayList<>();
     DatabaseWork databaseWork = new DatabaseWork();
     TablesAdapter adapter;
 
