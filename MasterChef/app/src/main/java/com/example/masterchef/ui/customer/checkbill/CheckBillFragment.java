@@ -92,9 +92,9 @@ public class CheckBillFragment extends Fragment {
                                     text_checkbill_discount.setText("Tiền giảm giá(" + discount + "%)");
 
                                     totalcost.setText(sum + " đ");
-                                    discount_price.setText(sum*discount/100 + " đ" );
-                                    VAT.setText((sum - sum*10/100)*10/100 + " đ");
-                                    billcost.setText(sum - (sum - sum*10/100)*10/100 + " đ");
+                                    discount_price.setText("-" + sum*discount/100 + " đ" );
+                                    VAT.setText((sum*discount/100 + sum)*10/100 + " đ");
+                                    billcost.setText(sum - (sum*discount/100) + (sum*discount/100 + sum)*10/100 + " đ");
 
                                     break;
                                 }
@@ -233,9 +233,9 @@ public class CheckBillFragment extends Fragment {
                                         }
 
                                         totalcost.setText(sum + " đ");
-                                        discount_price.setText(sum*discount/100 + " đ" );
-                                        VAT.setText((sum - sum*10/100)*10/100 + " đ");
-                                        billcost.setText(sum - (sum - sum*10/100)*10/100 + " đ");
+                                        discount_price.setText("-" + sum*discount/100 + " đ" );
+                                        VAT.setText((sum*discount/100 + sum)*10/100 + " đ");
+                                        billcost.setText(sum - (sum*discount/100) + (sum*discount/100 + sum)*10/100 + " đ");
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
