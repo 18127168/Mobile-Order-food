@@ -122,7 +122,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                         int timefinish=food.getTimeToFinish();
                         int price=food.getGiatien();
                         int iD=food.getID();
-                       String slnl=food.getSoluongnguyenlieu().toString();
+                         String slnl=food.getsoluongnguyenlieu().toString();
                         flag.setText(flagname);
                         Idnguyenlieu.setText(IdNguyenlieu);
                         tenmon.setText(Name);
@@ -271,7 +271,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
 
             }
         });
-        holder.btn_add.setOnClickListener(new View.OnClickListener() {
+        /*holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
@@ -315,7 +315,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                 });
 
             }
-        });
+        });*/
 
     }
     @Override

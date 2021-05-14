@@ -59,15 +59,15 @@ public class Adapter_weekdays extends RecyclerView.Adapter<Adapter_weekdays.Menu
                 List<Integer> listIDFoodInMenu = new ArrayList<>();
                 if(snapshot.exists()){
                     for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                        if (position == 6) {
+
                             if (postSnapshot.getKey().equals("" + (position + 2))) {
                                 List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
                                 for (int i = 0; i < menuofthisday.size(); i++)
                                     listIDFoodInMenu.add(menuofthisday.get(i));
                                 break;
                             }
-                            ;
-                        }
+
+
 
                     }
 
