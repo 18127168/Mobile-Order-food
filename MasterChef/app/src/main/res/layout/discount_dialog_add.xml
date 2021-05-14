@@ -1,47 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="325dp"
+    android:layout_height="375dp"
+    android:gravity="center">
     <EditText
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:layout_marginTop="5dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
         android:id="@+id/ma_discount"
         android:background="@drawable/button"
-        android:hint="Ma khuyen mai"
+        android:hint="Mã Khuyến Mãi"
         >
     </EditText>
     <EditText
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:layout_marginTop="7dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/motadiscount"
         android:background="@drawable/button"
-        android:hint="Mo ta"
+        android:hint="Phần Trăm Giảm"
         >
     </EditText>
     <EditText
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:layout_marginTop="7dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/ngaybatdaudiscount"
         android:background="@drawable/button"
-        android:hint="Ma khuyen mai"
+        android:hint="Ngày Bắt Đầu"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         >
     </EditText>
     <EditText
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:layout_marginTop="15dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:id="@+id/ngayketthucdiscount"
         android:background="@drawable/button"
-        android:hint="Ma khuyen mai"
+        android:hint="Ngày Kết Thúc"
         android:layout_marginBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         >
     </EditText>
     <LinearLayout
@@ -50,17 +68,23 @@
         android:orientation="horizontal"
         >
         <Button
+
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="dong y"
+            android:text="Đồng ý"
             android:id="@+id/btn_add_discount"
             >
 
         </Button>
         <Button
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="huy"
+            android:text="Hủy"
+            android:layout_marginLeft="30sp"
             android:id="@+id/btn_huy_add_discount"
             >
         </Button>

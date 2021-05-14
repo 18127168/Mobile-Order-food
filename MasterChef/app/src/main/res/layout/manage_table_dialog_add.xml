@@ -65,10 +65,12 @@
                 android:id="@+id/userAddTable"
                 android:background="@drawable/button"
                 android:hint="User"
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 >
             </EditText>
             <EditText
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
@@ -80,6 +82,7 @@
                 >
             </EditText>
             <EditText
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button"
@@ -92,6 +95,7 @@
             </EditText>
 
             <EditText
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:layout_marginTop="15dp"
             android:layout_width="match_parent"
