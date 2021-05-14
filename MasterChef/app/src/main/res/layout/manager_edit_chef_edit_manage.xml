@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="225dp"
+    android:layout_width="275dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:weightSum="7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:weightSum="8">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+
+            android:weightSum="2">
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Tài Khoản"
+                android:textSize="15dp"></TextView>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Mật Khẩu"
+                android:textSize="15dp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:weightSum="4">
+
+
+            <EditText
+                android:textColor="@color/black"
+                android:id="@+id/taikhoanChefManageEdit"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_weight="2"
+                android:background="@drawable/border">
+
+            </EditText>
+
+
+            <EditText
+                android:textColor="@color/black"
+                android:id="@+id/matkhauChefManageEdit"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2"
+                android:background="@drawable/border">
+
+            </EditText>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:textColor="@color/black"
+            android:id="@+id/dialog_add_ChefManage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="thêm"
+            android:textSize="15dp">
+        </Button>
+        <Button
+            android:textColor="@color/black"
+            android:id="@+id/dialog_delete_ChefManage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:text="Hủy"
+            android:textSize="15dp">
+
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

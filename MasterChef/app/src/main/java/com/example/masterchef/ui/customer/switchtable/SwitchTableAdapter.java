@@ -75,12 +75,6 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
                              }
                          }
 
-                         Date c = Calendar.getInstance().getTime();
-                         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                         String formattedDate = df.format(c);
-
-                         Log.e("Date", formattedDate);
-
                          List<SelectedFood.Food> ListFood = SelectedFood.Foods;
                          String listIDFood = "", listNumFood = "", listNoteFood = "", listNumFinishedFood = "", listNumServedFood = "";
                          for (int i = 0; i < ListFood.size(); i++) {
@@ -93,7 +87,11 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
                              }
                              listIDFood += ListFood.get(i).getIdFood();
                              listNumFood += ListFood.get(i).getQuantity();
-                             listNoteFood += ListFood.get(i).getNote();
+                             if (ListFood.get(i).getNote().equals("")){
+                                 listNoteFood += " ";
+                             } else {
+                                 listNoteFood += ListFood.get(i).getNote();
+                             }
                              listNumFinishedFood += "0";
                              listNumServedFood += "0";
                          }
@@ -102,17 +100,16 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
                          HoaDon hoaDon = new HoaDon();
 
                          hoaDon.setID(listIDFood);
-                         hoaDon.setDate(formattedDate);
                          hoaDon.setSoLuong(listNumFood);
                          hoaDon.setTable(tables.get(position).getId());
                          hoaDon.setNotes(listNoteFood);
                          hoaDon.setHoanthanh(listNumFinishedFood);
-                         hoaDon.setHoaDonSo(id);
+                         hoaDon.setHoaDonSo(-1);
                          hoaDon.setTrangthai(3);
                          hoaDon.setPhucVu(listNumServedFood);
 
                          DatabaseReference dtReferenceef = FirebaseDatabase.getInstance().getReference().child("User").child("HoaDon");
-                         dtReferenceef.push().setValue(hoaDon);
+                         dtReferenceef.child(id + "").setValue(hoaDon);
 
                          SelectedFood.clearSelectedFood();
                      }
@@ -131,7 +128,6 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgFood;
         TextView title, seat;
         Button switch_btn;
 

@@ -1,6 +1,7 @@
 package com.example.masterchef.ui.staff.tables;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,6 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
     List<Tables> tables = new ArrayList<>();
     View root;
     LayoutInflater inflater;
-
-
 
     public TablesAdapter(Context context, View v, List<Tables> tables){
         this.tables = tables;
@@ -51,8 +50,11 @@ public class TablesAdapter extends RecyclerView.Adapter<com.example.masterchef.u
             public void onClick(View view, int position, boolean isLongClick) {
 
                 AppCompatActivity staff_activity = (AppCompatActivity) root.getContext();
+                Bundle bundle = new Bundle();
+                bundle.putInt("table_id", tables.get(position).getId());
                 OptionFragment optionFragment = new OptionFragment();
-                staff_activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_staff, optionFragment).commit();
+                optionFragment.setArguments(bundle);
+                staff_activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_staff, optionFragment).addToBackStack(TablesFragment.class.getName()).commit();
             }
         });
     }

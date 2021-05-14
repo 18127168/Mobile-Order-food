@@ -1,4 +1,4 @@
-package com.example.masterchef.ui.chef;
+package com.example.masterchef.ui.Chef;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -44,11 +44,9 @@ public class FragmentChef extends Fragment {
                 holder.BanView = (TextView) v.findViewById(R.id.banViewHoaDonAdapter);
                 holder.HoaDonSoView = (TextView) v.findViewById(R.id.hoadonsoViewHoaDonAdapter);
                 holder.TinhtrangView = (TextView) v.findViewById(R.id.trangthaiViewHoaDonAdapter);
-                holder.NotesHoaDon = (TextView) v.findViewById(R.id.notesHoaDon);
                 v.setTag(holder);
                 holder.HoaDonSoView.setText("Hóa Đơn Số : "+model.getHoaDonSo());
                 holder.BanView.setText("Ban: " + model.getTable());
-                holder.NotesHoaDon.setText("Ghi chú: " + model.getNotes());
                 String trangthai;
                 if(model.getTrangthai() == 0) trangthai = "Đã Gọi";
                 else trangthai = "Đã Hoàn Thành";
@@ -78,6 +76,5 @@ public class FragmentChef extends Fragment {
         TextView BanView;
         TextView HoaDonSoView;
         TextView TinhtrangView;
-        TextView NotesHoaDon;
     }
 }

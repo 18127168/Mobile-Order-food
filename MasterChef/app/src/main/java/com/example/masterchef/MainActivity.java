@@ -17,9 +17,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class MainActivity extends AppCompatActivity {
     public static EditText user,pass,server;
     public static int IDTable;
+    public static boolean noHoaDon = true;
     public Button btnlogin;
     @SuppressLint("WrongViewCast")
     @Override
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         server = (EditText) findViewById(R.id.serverLogin);
         user = (EditText) findViewById(R.id.user);
         pass = (EditText) findViewById(R.id.pass);
-
         btnlogin = (Button) findViewById(R.id.button2);
         btnlogin.setOnClickListener(new View.OnClickListener(){
 

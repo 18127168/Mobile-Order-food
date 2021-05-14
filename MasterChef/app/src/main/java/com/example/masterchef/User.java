@@ -6,7 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
     public String user,pass,hoten,ngaysinh,cmnd,sdt,loai,dantoc,ngayvao,diachi;
-    int ban;
+    int ban,seats;
     public User() {
         this.user = "";
         this.pass = "";
@@ -19,22 +19,24 @@ public class User {
         this.ngayvao ="";
         this.diachi = "";
         this.ban = -1;
+        this.seats = -1;
     }
     public User(String user,String pass){ // quanly
         this.user = user;
         this.pass = pass;
         this.hoten ="";
+        this.seats = -1;
         this.ngaysinh = "";
         this.cmnd = "";
         this.sdt ="";
-        this.loai = "NhanVien";
+        this.loai = "QuanLy";
         this.dantoc = "";
         this.ngayvao ="";
         this.diachi = "";
         this.ban = -1;
     }
 
-    public User(String user,String pass,String hoten,String ngaysinh,String cmnd,String sdt,String loai,String dantoc,String ngayvao,String diachi,int ban){ // quanly
+    public User(String user,String pass,String hoten,String ngaysinh,String cmnd,String sdt,String loai,String dantoc,String ngayvao,String diachi,int ban,int seats){ // quanly
         this.user = user;
         this.pass = pass;
         this.hoten =hoten;
@@ -46,20 +48,36 @@ public class User {
         this.ngayvao =ngayvao;
         this.diachi = diachi;
         this.ban = ban;
+        this.seats = seats;
     }
-    public User(String user,String pass,int ban){ // khachhang
+    public User(String user,String pass,int ban,int seats){ // khachhang
         this.user = user;
         this.pass = pass;
         this.hoten ="";
         this.ngaysinh = "";
         this.cmnd = "";
         this.sdt ="";
-        this.loai = "QuanLy";
+        this.loai = "KhachHang";
         this.dantoc = "";
         this.ngayvao ="";
         this.diachi = "";
         this.ban = ban;
+        this.seats = seats;
+    }
 
+    public User(String user,String pass,String loai,int ban,int seats){ // khachhang
+        this.user = user;
+        this.pass = pass;
+        this.hoten ="";
+        this.ngaysinh = "";
+        this.cmnd = "";
+        this.sdt ="";
+        this.loai = loai;
+        this.dantoc = "";
+        this.ngayvao ="";
+        this.diachi = "";
+        this.ban = ban;
+        this.seats = seats;
     }
     public User(String user,String pass,String loai){
         this.user = user;
@@ -73,6 +91,15 @@ public class User {
         this.ngayvao ="";
         this.diachi = "";
         this.ban = -1;
+        this.seats = -1;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
     public String getUser() {

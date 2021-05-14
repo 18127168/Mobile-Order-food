@@ -25,7 +25,8 @@
             android:layout_height="37dp"
             android:gravity="center"
             android:text="Bàn: 1"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tinhtrang"
@@ -34,17 +35,20 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Tình trạng: Đã gọi"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/notes"
+        android:id="@+id/ngay"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
         android:paddingLeft="15sp"
-        android:text="TextView"
-        android:textSize="18sp" />
+        android:text="Ngay: "
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/list_cac_mon_an_cua_1_ban"

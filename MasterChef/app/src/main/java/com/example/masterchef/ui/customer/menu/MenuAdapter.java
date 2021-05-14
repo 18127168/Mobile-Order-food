@@ -8,22 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.masterchef.DatabaseWork;
 import com.example.masterchef.Food;
+import com.example.masterchef.Ingredient;
 import com.example.masterchef.R;
 import com.example.masterchef.SelectedFood;
-import com.example.masterchef.ui.staff.tables.OptionFragment;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -75,21 +71,32 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         });
 
         Food menuFood = databaseWork.GetFoodWithID(Integer.parseInt(IDFoodInMenus.get(position) + ""));
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataref = database.getReference(server.getText().toString());
-        Query userQuery = dataref.child("Food").orderByChild("ID");
+        Query userQuery = dataref.child("Ingredient").orderByChild("ID");
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listTitles.add(menuFood.getTenmon());
 
-                storeImage = FirebaseStorage.getInstance()
-                        .getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/")
-                        .child(menuFood.getFlagName());
-                Glide.with(contexts.getApplicationContext())
-                        .using(new FirebaseImageLoader())
-                        .load(storeImage)
-                        .into(holder.imgFood);
+                String detail = "Gồm các nguyên liệu: ";
+                boolean first = true;
+
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        if (menuFood.getIdnguyenlieu().contains(postSnapshot.getValue(Ingredient.class).getIdnguyenlieu() + "")) {
+                            if (!first){
+                                detail += ", ";
+                            }
+                            detail += postSnapshot.getValue(Ingredient.class).getTen();
+                            first = false;
+                        }
+                    }
+                }
+
+                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
+                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
                 holder.title.setText(menuFood.getTenmon());
                 holder.price.setText(menuFood.getGiatien() + " đ");
 
@@ -102,6 +109,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                     }
                 });
 
+                if (SelectedFood.checkExist(Integer.parseInt(IDFoodInMenus.get(position) + "")) != -1){
+                    holder.choose_btn.setBackgroundColor(contexts.getResources().getColor(R.color.my_red));
+                    holder.choose_btn.setText("Đã Chọn");
+                }
+
                 holder.dialog = new Dialog(contexts);
                 holder.dialog.setContentView(R.layout.custom_dialog_customer_fooddetails);
 
@@ -113,9 +125,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
                 Button closeButton = holder.dialog.findViewById(R.id.menu_closeDialog_btn);
                 ImageView detailImage = holder.dialog.findViewById(R.id.menu_fooddetail_image);
+                TextView detailIngredian = holder.dialog.findViewById(R.id.ingredient_dialog_textView);
+                TextView detailDiscription = holder.dialog.findViewById(R.id.discription_dialog_textView);
 
                 storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
                 Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(detailImage);
+                detailIngredian.setText(detail);
+                detailDiscription.setText(menuFood.getmoTa());
 
                 closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override

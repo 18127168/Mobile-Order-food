@@ -7,13 +7,45 @@
     android:layout_width="match_parent"
     android:weightSum="10"
     android:paddingTop="10dp">
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:gravity="center_horizontal"
-       android:text="Thêm Nhân viên"
-       >
-   </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingLeft="20sp"
+            android:textColor="@color/my_blue"
+            android:paddingTop="10sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="10sp"
+            android:text="Thêm Nhân viên"
+            android:layout_weight="2"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/AddBan"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100sp"
+            android:layout_marginLeft="100sp"
+            android:layout_weight="2"
+            android:background="@drawable/border"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:paddingLeft="20sp"
+            android:paddingTop="10sp"
+            android:paddingRight="20sp"
+            android:paddingBottom="10sp"
+            android:text="Thêm Bàn" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -26,6 +58,7 @@
         android:orientation="vertical"
         >
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -33,9 +66,11 @@
             android:id="@+id/text11"
             android:background="@drawable/button"
             android:hint="User"
+
             >
         </EditText>
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -46,6 +81,7 @@
             >
         </EditText>
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:background="@drawable/button"
             android:layout_width="match_parent"
@@ -55,17 +91,9 @@
             android:hint="SDT"
             >
         </EditText>
+
         <EditText
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:background="@drawable/button"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_height="60dp"
-            android:id="@+id/text1"
-            android:hint="ban"
-            >
-        </EditText>
-        <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:background="@drawable/button"
@@ -76,6 +104,7 @@
             >
         </EditText>
         <EditText
+            android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/button"
@@ -86,6 +115,7 @@
                 >
         </EditText>
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -96,6 +126,7 @@
             >
         </EditText>
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -106,16 +137,7 @@
             >
         </EditText>
         <EditText
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/text6"
-            android:gravity="center_vertical|center_horizontal"
-            android:background="@drawable/button"
-            android:hint="Loại"
-            >
-        </EditText>
-        <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -126,6 +148,7 @@
             >
         </EditText>
         <EditText
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -138,28 +161,32 @@
 
     </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        >
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <Button
 
+            android:textColor="@color/black"
+            android:id="@+id/btnd"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:id="@+id/btnd"
-            android:layout_marginLeft="20dp"
-            android:text="Đồng ý"
-            >
-        </Button>
+            android:layout_marginStart="0sp"
+            android:layout_marginLeft="0sp"
+            android:text="Đồng ý"></Button>
 
         <Button
+            android:textColor="@color/black"
             android:id="@+id/btnh"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="50sp"
+            android:layout_marginLeft="50sp"
             android:text="Hủy"></Button>
 
     </LinearLayout>

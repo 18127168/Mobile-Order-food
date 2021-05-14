@@ -45,6 +45,7 @@
         android:paddingLeft="20dp"/>
 
     <TextView
+        android:id="@+id/discription_dialog_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -64,6 +65,7 @@
         android:paddingLeft="20dp"/>
 
     <TextView
+        android:id="@+id/ingredient_dialog_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"

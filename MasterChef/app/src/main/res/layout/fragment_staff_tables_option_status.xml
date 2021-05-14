@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background ="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".StaffActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp">
+
+        <TextView
+            android:id="@+id/table_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="TABLE"
+            android:textColor="@color/my_blue"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/cf_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="STATUS"
+            android:textColor="@color/my_blue"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/status_recyclerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>
