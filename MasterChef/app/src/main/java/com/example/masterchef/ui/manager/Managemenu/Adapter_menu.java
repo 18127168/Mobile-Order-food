@@ -267,56 +267,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
 
                     }
                 });
-
-
             }
         });
-        /*holder.btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Food food = databaseWork.GetFoodWithID(Integer.parseInt(listIDFoodInMenu.get(position) + ""));
-                Dialog dialog=new Dialog(contexts);
-                dialog.setContentView(R.layout.manager_employ_add_menu_inthisday);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-                Button btnhuy=(Button)dialog.findViewById(R.id.btn_manager_huy_delte_food);
-                Button btndongy=(Button)dialog.findViewById(R.id.btn_manager_dongy_delte_food);
-                btnhuy.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                btndongy.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference dataref=database.getReference("User");
-                        Query userQuery = dataref.child("Menu").orderByKey();
-                        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                List<Integer> listIDFoodInMenu = new ArrayList<>();
-                                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                                    if(postSnapshot.getKey().equals(""+(position+2)))
-                                    {
-                                        List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
-                                        //dataref.child("Menu").child(""+(position+2)).child(""+(menuofthisday.size()-1)).setValue()
-                                    };
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-                    }
-                });
-
-            }
-        });*/
-
     }
     @Override
     public int getItemCount() {
@@ -328,7 +280,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
 
         private ImageView imgFood;
         TextView title,price;
-        ImageView btn_edit,btn_delete,btn_add;
+        ImageView btn_edit,btn_delete;
+
         public Menuviewholder(@NonNull View itemView){
             super(itemView);
             title = itemView.findViewById(R.id.menu_title);
@@ -336,7 +289,6 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
             price = itemView.findViewById(R.id.menu_price);
             btn_edit=itemView.findViewById(R.id.btn_edit_adapter_menu);
             btn_delete=itemView.findViewById(R.id.btn_delete_adapter_menu);
-            btn_add=itemView.findViewById(R.id.btn_add_menu_inthisday);
         }
 
     }

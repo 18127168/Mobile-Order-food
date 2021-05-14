@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="100dp">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-            >
-        <Button
+    android:layout_width="410dp"
+    android:layout_height="200dp"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:id="@+id/btn_manager_dongy_delte_food"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:text="Đồng ý"
-            >
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_manager_add_exist_food"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Món ăn sẵn có"
+            android:textStyle="bold"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/my_green">
         </Button>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="77dp"
-            android:id="@+id/btn_manager_huy_delte_food"
-            android:text="Hủy"></Button>
+            android:id="@+id/btn_manager_add_new_food"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/my_green"
+            android:textColor="@color/black"
+            android:text="Món ăn mới"
+            android:textStyle="bold"></Button>
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_manager_closeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Đóng"
+            android:textSize="14dp"
+            android:backgroundTint="@color/my_blue" />
 
 </LinearLayout>
