@@ -38,7 +38,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 //                SwichFragment swichFragment = new SwichFragment();
 //                swichFragment.setArguments(bundle);
 //                return swichFragment;
-                return new SwitchFragment(table_id);
+                return new SwitchTableFragment(table_id);
             default:
 //                OrderFragment orderFragment1 = new OrderFragment();
 //                orderFragment1.setArguments(bundle);

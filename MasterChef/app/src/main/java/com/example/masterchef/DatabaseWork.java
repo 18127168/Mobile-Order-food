@@ -103,7 +103,8 @@ public class DatabaseWork {
             for (DataSnapshot ds : snapshot.getChildren()) {
                 String stt = ds.child("thanhToan").getValue().toString();
                 String table = ds.child("table").getValue().toString();
-                if (stt.equals("false") && table.equals(String.valueOf(table_id))) {
+                String hdSo = ds.child("hoaDonSo").getValue().toString();
+                if (stt.equals("false") && table.equals(String.valueOf(table_id)) && !hdSo.equals("-1")) {
                     
                     HoaDon bill = ds.getValue(HoaDon.class);
                     String[] Foods = bill.getID().split(",");
