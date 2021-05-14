@@ -56,9 +56,10 @@ public class StatusFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_staff_tables_option_status, container, false);
-//        dataList = root.findViewById(R.id.option_recyclerCategory);
 
         dataList = root.findViewById(R.id.status_recyclerCategory);
+        tb_id = root.findViewById(R.id.table_id);
+        tb_id.setText("TABLE " + table_id);
 
 
         Query query = FirebaseDatabase.getInstance().getReference("User").child("HoaDon");

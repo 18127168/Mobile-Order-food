@@ -39,6 +39,12 @@ public class SwitchTableAdapter extends RecyclerView.Adapter<SwitchTableAdapter.
         this.inflater = LayoutInflater.from(context);
         this.table_id = tb_id;
         this.context = context;
+
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getId() == tb_id) {
+                tables.remove(i);
+            }
+        }
     }
 
     @NonNull
