@@ -13,25 +13,29 @@ public class SelectedFood extends Application {
         String note;
 
         public Food() {
-            IdFood = 0;
-            quantity = 0;
-            note = "";
+            this.IdFood = 0;
+            this.quantity = 0;
+            this.note = "";
         }
 
 
         public Food(int Food, int num) {
-            IdFood = Food;
-            quantity = num;
-            note = "";
+            this.IdFood = Food;
+            this.quantity = num;
+            this.note = "";
+        }
+
+        public Food(int Food, int num, String note){
+            this.IdFood = Food;
+            this.quantity = num;
+            this.note = note;
         }
 
         public int getQuantity() { return quantity; }
-
         public int getIdFood(){ return IdFood; }
-
         public String getNote() { return note; }
 
-        public void increaseQuantity() { this.quantity += 1; }
+        public void increaseQuantity(int num) { this.quantity += num; }
 
         public void decreaseQuantity() { if (this.quantity > 0)     this.quantity -= 1; }
     }
@@ -43,17 +47,24 @@ public class SelectedFood extends Application {
     }
 
     public static void addSelectedFood(int food) {
-        boolean duplicate = false;
+        int pos = checkExist(food);
 
-        for (int i = 0; i < Foods.size(); i++){
-            if (Foods.get(i).IdFood == food) {
-                Foods.get(i).quantity += 1;
-                duplicate = true;
-            }
-        }
-
-        if (!duplicate) {
+        if (pos != -1) {
+            Foods.get(pos).quantity += 1;
+        } else {
             Food NewFood = new Food(food, 1);
+            Foods.add(NewFood);
+        }
+    }
+
+    public static void addSelectedFoodWithNumAndNote(int food, int num, String note) {
+        int pos = checkExist(food);
+
+        if (pos != -1) {
+            Foods.get(pos).quantity += num;
+            Foods.get(pos).note = note;
+        } else {
+            Food NewFood = new Food(food, num, note);
             Foods.add(NewFood);
         }
     }
@@ -70,5 +81,12 @@ public class SelectedFood extends Application {
             if (Foods.get(i).IdFood == ID)
                 Foods.get(i).quantity = quantity;
         }
+    }
+
+    public static int checkExist(int food){
+        for (int i = 0; i < Foods.size(); i++)
+            if (Foods.get(i).IdFood == food)
+                return i;
+        return -1;
     }
 }

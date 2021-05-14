@@ -135,11 +135,11 @@ public class DatabaseWork {
         userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                        List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
-                        if (postSnapshot.getKey().equals("" + ThuMay)) {
-                            for (int i = 0; i < menuofthisday.size(); i++)
+                if(snapshot.exists()){
+                    for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                        if(postSnapshot.getKey().equals(""+ThuMay)){
+                            List<Integer> menuofthisday = (List<Integer>) postSnapshot.getValue();
+                            for(int i=0;i<menuofthisday.size();i++)
                                 result.add(menuofthisday.get(i));
 
                             break;
@@ -172,12 +172,11 @@ public class DatabaseWork {
                             result.setID(foodSearch.getID());
                             result.setFlagName(foodSearch.getFlagName());
                             result.setTenmon(foodSearch.getTenmon());
-                            result.setSoluongnguyenlieu(foodSearch.getSoluongnguyenlieu());
+                            result.setsoluongnguyenlieu(foodSearch.getsoluongnguyenlieu());
                             result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
                             result.setgiatien(foodSearch.getGiatien());
                             result.setTimeToFinish(foodSearch.getTimeToFinish());
                             result.setIdnguyenlieu(foodSearch.getIdnguyenlieu());
-                            result.setSoluongnguyenlieu(foodSearch.getSoluongnguyenlieu());
                             break;
                         }
                         ;
@@ -317,6 +316,4 @@ public class DatabaseWork {
             }
         });
     }
-    //
-
 }

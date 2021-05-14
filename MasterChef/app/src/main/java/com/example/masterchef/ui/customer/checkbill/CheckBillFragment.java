@@ -1,6 +1,7 @@
 package com.example.masterchef.ui.customer.checkbill;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
 import static com.example.masterchef.MainActivity.IDTable;
+import static com.example.masterchef.MainActivity.noHoaDon;
 import static com.example.masterchef.MainActivity.server;
 
 public class CheckBillFragment extends Fragment {
@@ -43,8 +45,6 @@ public class CheckBillFragment extends Fragment {
     List<Food> listFoods = new ArrayList<>();
     List<Integer> listNumberFoods = new ArrayList<>();
     List<Integer> listIDBills = new ArrayList<>();
-    boolean firstTime = true;
-    DatabaseWork databaseWork = new DatabaseWork();
 
     CheckBillAdapter adapter;
 
@@ -65,13 +65,13 @@ public class CheckBillFragment extends Fragment {
             public void onClick(View v) {
                 setCompleteForBill();
 
-                adapter.setEmptyListFoods();
-                adapter.notifyDataSetChanged();
-
                 totalcost.setText("0 đ");
                 discount_price.setText("0 đ");
                 VAT.setText("0 đ");
                 billcost.setText("0 đ");
+
+                adapter.setEmptyListFoods();
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -87,9 +87,8 @@ public class CheckBillFragment extends Fragment {
         userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 if(snapshot.exists()){
-
+                    noHoaDon = true;
                     listFoods = new ArrayList<>();
                     listNumberFoods = new ArrayList<>();
                     listIDBills = new ArrayList<>();
@@ -105,84 +104,77 @@ public class CheckBillFragment extends Fragment {
                     for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                         HoaDon hoadon = postSnapshot.getValue(HoaDon.class);
                         if( (hoadon.getTable() == IDTable) && hoadon.getThanhToan() == false){
+                            noHoaDon = false;
                             listIDBills.add(hoadon.getHoaDonSo());
-                            firstTime = false;
 
                             String[] listSplitIDFood = hoadon.getID().split(",");
                             String[] listSplitNumFood = hoadon.getSoLuong().split(",");
 
                             for (int i = 0; i < listSplitIDFood.length; i++){
-                                if ( listFoods.size() == 0){
-                                    Food tempFood = databaseWork.GetFoodWithID(Integer.parseInt(listSplitIDFood[i]));
-                                    int tempNumberFood = Integer.parseInt(listSplitNumFood[i]);
-
-                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference dataRef = database.getReference(server.getText().toString());
-                                    Query userQuery = dataRef.child("HoaDon").orderByChild("hoaDonSo");
-                                    userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            listFoods.add(tempFood);
-                                            listNumberFoods.add(tempNumberFood);
-
-                                            adapter.setFoods(listFoods, listNumberFoods);
-                                            adapter.notifyDataSetChanged();
-
-                                            int sum = 0;
-                                            for (int i = 0; i < listFoods.size(); i++){
-                                                sum += listFoods.get(i).getGiatien()*listNumberFoods.get(i);
-                                            }
-
-                                            totalcost.setText(Integer.toString(sum) + " đ");
-                                            discount_price.setText(Integer.toString(sum*10/100) + " đ" );
-                                            VAT.setText(Integer.toString((sum - sum*10/100)*10/100) + " đ");
-                                            billcost.setText(Integer.toString(sum - (sum - sum*10/100)*10/100) + " đ");
-                                        }
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                    });
-                                }
-                                else {
-                                    for (int j = 0; j < listFoods.size(); j++) {
-                                        if (listFoods.get(j).getID() == Integer.parseInt(listSplitIDFood[i])) {
-                                            listNumberFoods.set(j, listNumberFoods.get(i) + Integer.parseInt(listSplitNumFood[i]));
-                                        } else if (j == listFoods.size() - 1) {
-                                            Food tempFood = databaseWork.GetFoodWithID(Integer.parseInt(listSplitIDFood[i]));
-                                            int tempNumberFood = Integer.parseInt(listSplitNumFood[i]);
-
-                                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                            DatabaseReference dataRef = database.getReference(server.getText().toString());
-                                            Query userQuery = dataRef.child("HoaDon").orderByChild("hoaDonSo");
-                                            userQuery.addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                    listFoods.add(tempFood);
+                                int tempNumberFood = Integer.parseInt(listSplitNumFood[i]);
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference dataRef = database.getReference(server.getText().toString());
+                                Query userQuery = dataRef.child("Food").orderByChild("ID").equalTo(Integer.parseInt(listSplitIDFood[i]));
+                                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()) {
+                                            for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                                                if (!noHoaDon) {
+                                                    listFoods.add(postSnapshot.getValue(Food.class));
                                                     listNumberFoods.add(tempNumberFood);
-
-                                                    adapter.setFoods(listFoods, listNumberFoods);
-                                                    adapter.notifyDataSetChanged();
-
-                                                    int sum = 0;
-                                                    for (int i = 0; i < listFoods.size(); i++){ sum += listFoods.get(i).getGiatien()*listNumberFoods.get(i); }
-
-                                                    totalcost.setText(Integer.toString(sum) + " đ");
-                                                    discount_price.setText(Integer.toString(sum*10/100) + " đ" );
-                                                    VAT.setText(Integer.toString((sum - sum*10/100)*10/100) + " đ");
-                                                    billcost.setText(Integer.toString(sum - (sum - sum*10/100)*10/100) + " đ");
                                                 }
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                                }
-                                            });
-                                            break;
+                                            }
                                         }
                                     }
-                                }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+                                userQuery = dataRef.child("HoaDon").orderByChild("hoaDonSo");
+                                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        List<Integer> listTempPosRemove = new ArrayList<>();
+
+                                        for (int i = 0; i < listFoods.size() - 1; i++){
+                                            if (!listTempPosRemove.contains(i)) {
+                                                for (int j = i + 1; j < listFoods.size(); j++){
+                                                    if (listFoods.get(i).getID() == listFoods.get(j).getID()){
+                                                        listNumberFoods.set(i, listNumberFoods.get(i) + listNumberFoods.get(j));
+                                                        listTempPosRemove.add(j);
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        for (int i = 0; i < listTempPosRemove.size(); i++){
+                                            int k = listTempPosRemove.get(i);
+                                            listFoods.remove(k);
+                                        }
+
+                                        adapter.setFoods(listFoods, listNumberFoods);
+                                        adapter.notifyDataSetChanged();
+
+                                        int sum = 0;
+                                        for (int i = 0; i < listFoods.size(); i++){
+                                            sum += listFoods.get(i).getGiatien()*listNumberFoods.get(i);
+                                        }
+
+                                        totalcost.setText(Integer.toString(sum) + " đ");
+                                        discount_price.setText(Integer.toString(sum*10/100) + " đ" );
+                                        VAT.setText(Integer.toString((sum - sum*10/100)*10/100) + " đ");
+                                        billcost.setText(Integer.toString(sum - (sum - sum*10/100)*10/100) + " đ");
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
-                        };
+                        }
                     }
                 }
             }
@@ -198,7 +190,7 @@ public class CheckBillFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dataRef = database.getReference(server.getText().toString());
         Query userQuery = dataRef.child("HoaDon").orderByChild("hoaDonSo");
-        userQuery.addValueEventListener(new ValueEventListener() {
+        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

@@ -39,7 +39,6 @@ public class PickedFoodAdapter extends RecyclerView.Adapter<PickedFoodAdapter.Vi
     List<SelectedFood.Food> listIDsFoodInMenuWithQuantity;
     StorageReference storeImage;
     DatabaseWork databaseWork = new DatabaseWork();
-    String[] notes = {"","","","",""};
 
     public PickedFoodAdapter(Context context, List<SelectedFood.Food> listIDsFoodInMenuWithQuantity){
         this.inflater = LayoutInflater.from(context);
@@ -75,7 +74,7 @@ public class PickedFoodAdapter extends RecyclerView.Adapter<PickedFoodAdapter.Vi
                 holder.plusBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        listIDsFoodInMenuWithQuantity.get(position).increaseQuantity();
+                        listIDsFoodInMenuWithQuantity.get(position).increaseQuantity(1);
                         holder.number.setText(Integer.toString(listIDsFoodInMenuWithQuantity.get(position).getQuantity()));
                     }
                 });

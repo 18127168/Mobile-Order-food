@@ -83,13 +83,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listTitles.add(menuFood.getTenmon());
 
-                storeImage = FirebaseStorage.getInstance()
-                        .getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/")
-                        .child(menuFood.getFlagName());
-                Glide.with(contexts.getApplicationContext())
-                        .using(new FirebaseImageLoader())
-                        .load(storeImage)
-                        .into(holder.imgFood);
+                storeImage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://orderdoan-a172f.appspot.com/").child(menuFood.getFlagName());
+                Glide.with(contexts.getApplicationContext()).using(new FirebaseImageLoader()).load(storeImage).into(holder.imgFood);
                 holder.title.setText(menuFood.getTenmon());
                 holder.price.setText(menuFood.getGiatien() + " đ");
 
@@ -101,6 +96,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                         SelectedFood.addSelectedFood(Integer.parseInt(IDFoodInMenus.get(position) + ""));
                     }
                 });
+
+                if (SelectedFood.checkExist(Integer.parseInt(IDFoodInMenus.get(position) + "")) != -1){
+                    holder.choose_btn.setBackgroundColor(contexts.getResources().getColor(R.color.my_red));
+                    holder.choose_btn.setText("Đã Chọn");
+                }
 
                 holder.dialog = new Dialog(contexts);
                 holder.dialog.setContentView(R.layout.custom_dialog_customer_fooddetails);

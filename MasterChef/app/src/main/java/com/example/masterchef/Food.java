@@ -27,8 +27,8 @@ public class Food{
     }
     public void setIdnguyenlieu(String a){this.Idnguyenlieu = a;}
     public String getIdnguyenlieu(){return Idnguyenlieu;}
-    public void setSoluongnguyenlieu(String a){this.soluongnguyenlieu = a;}
-    public String getSoluongnguyenlieu(){return soluongnguyenlieu;}
+    public void setsoluongnguyenlieu(String a){this.soluongnguyenlieu = a;}
+    public String getsoluongnguyenlieu(){return soluongnguyenlieu;}
     public void setgiatien(int a){ giatien = a; }
     public int getGiatien(){return giatien;}
     public void setID(int a){ ID = a; }
