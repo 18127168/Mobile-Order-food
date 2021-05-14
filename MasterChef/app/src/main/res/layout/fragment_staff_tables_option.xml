@@ -6,54 +6,20 @@
     android:layout_height="match_parent"
     android:background ="@drawable/background"
     android:orientation="vertical"
-    tools:context=".ui.staff.tables.TablesFragment">
+    tools:context=".ui.staff.tables.OptionFragment">
 
-    <LinearLayout
-        android:id="@+id/option_layout"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/option_tab"
+        android:background="@android:color/transparent"
+        app:tabTextColor="@android:color/black"
+        app:tabSelectedTextColor="@android:color/holo_blue_dark"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="clip_horizontal"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="74dp">
-
-            <TextView
-                android:id="@+id/table_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:paddingTop="20dp"
-                android:text="TABLE"
-                android:textColor="@color/my_blue"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-
-            <Button
-                android:id="@+id/cf_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
-                android:drawableRight="@drawable/ic_staff_confirm"
-                android:text="Confirm" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/option_recyclerCategory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
-
-
-    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>
