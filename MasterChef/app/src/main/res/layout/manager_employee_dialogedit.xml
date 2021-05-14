@@ -25,6 +25,7 @@
             android:weightSum="8">
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -34,6 +35,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -43,6 +45,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -52,6 +55,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -62,6 +66,7 @@
 
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -71,6 +76,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -80,6 +86,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -98,6 +105,7 @@
             android:weightSum="8">
 
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -116,6 +124,7 @@
                 android:weightSum="24">
 
                 <EditText
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:id="@+id/ngaysinhedit"
                     android:layout_height="match_parent"
@@ -128,6 +137,7 @@
                     android:textSize="15dp"></EditText>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -139,6 +149,7 @@
                     android:textSize="15dp"></TextView>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -159,6 +170,7 @@
                 android:weightSum="24">
 
                 <EditText
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -171,6 +183,7 @@
                     android:id="@+id/loaiedit"></EditText>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -182,6 +195,7 @@
                     ></TextView>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/dantocedit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -202,6 +216,7 @@
                 android:weightSum="24">
 
                 <EditText
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -214,6 +229,7 @@
                     android:textSize="15dp"></EditText>
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
@@ -224,6 +240,7 @@
                     android:textSize="15dp"></TextView>
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/ngayvaoedit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -245,6 +262,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/diachiedit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -265,6 +283,7 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:textColor="@color/black"
                     android:id="@+id/taikhoanedit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -285,6 +304,7 @@
             android:weightSum="1">
 
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:id="@+id/matkhauedit"
                 android:layout_height="match_parent"
@@ -307,6 +327,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_add"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -317,6 +338,7 @@
             android:layout_gravity="center">
         </Button>
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_delete"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.manager.statistic.StatisticFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="12">
 
     <LinearLayout
+        android:layout_weight="1"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -24,7 +26,9 @@
             android:gravity="center"
             android:text="Thống Kê Trong Năm"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+            android:textColor="@color/black"/>
 
         <EditText
             android:id="@+id/Today"
@@ -42,13 +46,16 @@
             android:gravity="center"
             android:inputType="textPersonName"
             android:text="2021"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <ScrollView
+        android:layout_weight="11"
         android:layout_width="match_parent"
-        android:layout_height="593dp">
+        android:layout_height="0dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

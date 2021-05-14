@@ -25,6 +25,7 @@
             android:weightSum="4"
             >
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:textSize="15dp"
@@ -35,6 +36,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text="Password"
@@ -45,6 +47,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -55,6 +58,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:text="Số Chỗ Ngồi"
@@ -75,6 +79,7 @@
             >
 
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -85,6 +90,7 @@
                 android:layout_weight="1">
             </EditText>
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -96,6 +102,7 @@
                 android:layout_weight="1">
             </EditText>
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:gravity="center"
@@ -107,6 +114,7 @@
                 android:layout_weight="1">
             </EditText>
             <EditText
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
 
@@ -129,6 +137,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_add_Table"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -137,6 +146,7 @@
             android:layout_marginTop="50dp">
         </Button>
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_delete_Table"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

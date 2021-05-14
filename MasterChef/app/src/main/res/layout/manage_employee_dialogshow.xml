@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Thông tin chi tiết"
+        android:textColor="@color/black"
         >
     </TextView>
     <ScrollView
@@ -26,6 +27,7 @@
             android:orientation="vertical"
             >
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button"
                 android:layout_width="match_parent"
@@ -37,6 +39,7 @@
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/button"
@@ -47,6 +50,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/button"
@@ -57,6 +61,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -68,6 +73,7 @@
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/text5"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -77,6 +83,7 @@
                 android:hint="Họ tên"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -87,6 +94,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -97,6 +105,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -115,8 +124,10 @@
         android:layout_weight="2"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
+        android:textColor="@color/black"
         >
         <Button
+            android:textColor="@color/black"
             android:id="@+id/btnh"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

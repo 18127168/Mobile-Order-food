@@ -27,6 +27,7 @@
             android:weightSum="2">
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -36,6 +37,7 @@
                 android:textSize="15dp"></TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
@@ -55,6 +57,7 @@
 
 
             <EditText
+                android:textColor="@color/black"
                 android:id="@+id/taikhoanChefManageEdit"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -67,6 +70,7 @@
 
 
             <EditText
+                android:textColor="@color/black"
                 android:id="@+id/matkhauChefManageEdit"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -88,6 +92,7 @@
         android:layout_marginTop="30dp">
 
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_add_ChefManage"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -95,6 +100,7 @@
             android:textSize="15dp">
         </Button>
         <Button
+            android:textColor="@color/black"
             android:id="@+id/dialog_delete_ChefManage"
             android:layout_width="wrap_content"
             android:layout_height="50dp"

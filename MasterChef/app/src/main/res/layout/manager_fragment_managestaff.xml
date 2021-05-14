@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
     <TextView
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Danh sách nhân viên"
@@ -14,30 +15,7 @@
         android:textSize="30sp"
         >
     </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Họ tên người cần tìm"
-            android:layout_margin="2dp"
-            android:textSize="20sp"
-            android:paddingLeft="20dp"
-            >
-        </TextView>
-        <SearchView
-            android:id="@+id/search_barr"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_margin="2dp"
-            app:iconifiedByDefault="false"
-            app:queryHint="Search Name">
-        </SearchView>
-    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +23,7 @@
                         >
 
         <ImageView
+            app:tint="@color/black"
             android:id="@+id/btn_them"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
@@ -64,6 +43,7 @@
         >
 
         <TextView
+            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,12 +51,14 @@
             android:text="STT"></TextView>
 
         <TextView
+            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4.5"
             android:gravity="center_horizontal"
             android:text="Tên"></TextView>
         <TextView
+            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="match_parent"
@@ -84,6 +66,7 @@
             >
         </TextView>
         <TextView
+            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="3.5"
             android:layout_height="wrap_content"

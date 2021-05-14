@@ -82,7 +82,7 @@ public class Adapter extends ArrayAdapter<User> {
             public void onClick(View v) {
                 DataSnapshot snapshot;
                 User user1=userArrayList.remove(position);
-                Query query=FirebaseDatabase.getInstance().getReference("User").child("username").orderByChild("hoten").equalTo(user1.getHoten().toString());
+                Query query=FirebaseDatabase.getInstance().getReference("User").child("username").orderByChild("user").equalTo(user_);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -282,7 +282,7 @@ public class Adapter extends ArrayAdapter<User> {
                             userArrayList.get(position).setSeats(Integer.parseInt(Seat));
                             userArrayList.get(position).setBan(Integer.parseInt(Ban));
 
-                            Query query=FirebaseDatabase.getInstance().getReference("User").child("username").orderByChild("loai").equalTo(type);
+                            Query query=FirebaseDatabase.getInstance().getReference("User").child("username").orderByChild("user").equalTo(user_);
                             query.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -8,6 +8,7 @@
     android:weightSum="10"
     android:paddingTop="10dp">
     <TextView
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -26,6 +27,7 @@
             android:orientation="vertical"
             >
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/button"
                 android:layout_width="match_parent"
@@ -37,6 +39,7 @@
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/button"
@@ -47,6 +50,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/button"
@@ -57,6 +61,7 @@
                 >
             </TextView>
             <TextView
+                android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -68,6 +73,7 @@
             </TextView>
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/loaiTable"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -87,6 +93,7 @@
         android:layout_marginTop="20dp"
         >
         <Button
+            android:textColor="@color/black"
             android:id="@+id/btnh"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
