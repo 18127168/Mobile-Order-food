@@ -96,6 +96,31 @@ public class DatabaseWork {
         return list;
     }
 
+    public List<YeuCau> GetListRequest(DataSnapshot snapshot) {
+        List<YeuCau> list = new ArrayList<>();
+
+        if (snapshot.exists()) {
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                String status = dataSnapshot.child("status").getValue().toString();
+                if (status.equals("0")) {
+                    YeuCau res = new YeuCau();
+                    int table = Integer.parseInt(dataSnapshot.child("table").getValue().toString());
+                    int stt = Integer.parseInt(status);
+                    String date = dataSnapshot.child("date").getValue().toString();
+
+                    res.setdate(date);
+                    res.setStatus(stt);
+                    res.setTable(table);
+                    res.setRef(dataSnapshot.getRef());
+
+                    list.add(res);
+                }
+            }
+        }
+
+        return list;
+    }
+
     public List<Item_Status> GetListStatus(DataSnapshot snapshot, int table_id) {
         List<Item_Status> list = new ArrayList<>();
 

@@ -129,7 +129,7 @@ public class Adapter extends ArrayAdapter<User> {
                     pass.setText(pass_);
                     sdt.setText(sdt_);
                     user.setText(user_);
-                    loai.setEnabled(true);
+                    loai.setEnabled(false);
                     btnhuy.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

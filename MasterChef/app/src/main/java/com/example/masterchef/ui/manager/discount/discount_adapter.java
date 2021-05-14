@@ -47,7 +47,7 @@ public class discount_adapter extends RecyclerView.Adapter<discount_adapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
        holder.tv1.setText(list.get(position).getMakhuyenmai());
-       holder.tv2.setText(list.get(position).getNgaybatdau()+"-"+list.get(position).getNgayketthuc());
+       holder.tv2.setText(list.get(position).getNgaybatdau()+" --> "+list.get(position).getNgayketthuc());
        holder.tv3.setText(""+list.get(position).getMota()+"%");
        holder.img_delete.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -55,15 +55,13 @@ public class discount_adapter extends RecyclerView.Adapter<discount_adapter.View
                FirebaseDatabase database = FirebaseDatabase.getInstance();
                DatabaseReference dataref=database.getReference("User");
                Query userQuery = dataref.child("khuyenmai").orderByChild("makhuyenmai").equalTo(list.get(position).getMakhuyenmai());
-               userQuery.addValueEventListener(new ValueEventListener() {
+               userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                        for (DataSnapshot postSnapshot: snapshot.getChildren()){
                            postSnapshot.getRef().removeValue();
-
                        }
-                       //list.remove(position);
-                       //discount_adapter.this.notifyDataSetChanged();
+
                    }
 
                    @Override
