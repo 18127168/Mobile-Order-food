@@ -98,93 +98,67 @@ public class Adapter_weekdays extends RecyclerView.Adapter<Adapter_weekdays.Menu
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog=new Dialog(mcontext);
-                dialog.setContentView(R.layout.manager_employ_add_menu_inthisday);
-                dialog.setCanceledOnTouchOutside(false);
-                dialog.show();
-                Button addExist =(Button)dialog.findViewById(R.id.btn_manager_add_exist_food);
-                Button addNew =(Button)dialog.findViewById(R.id.btn_manager_add_new_food);
-                Button close = dialog.findViewById(R.id.btn_manager_closeDialog);
+                Dialog dialog2 =new Dialog(mcontext);
+                dialog2.setContentView(R.layout.manager_employ_add_menu_inthisday_exist);
+                dialog2.setCanceledOnTouchOutside(false);
+                Button close = dialog2.findViewById(R.id.btn_manager_closeDialog_exist);
+                dialog2.show();
 
-                addExist.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                        Dialog dialog2 =new Dialog(mcontext);
-                        dialog2.setContentView(R.layout.manager_employ_add_menu_inthisday_exist);
-                        dialog2.setCanceledOnTouchOutside(false);
-                        Button close = dialog2.findViewById(R.id.btn_manager_closeDialog_exist);
-                        dialog2.show();
-
-                        close.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog2.dismiss();
-                            }
-                        });
-
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference dataRef = database.getReference(server.getText().toString());
-                        Query userQuery = dataRef.child("Food");
-                        userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot snapshot) {
-                                if (snapshot.exists()){
-                                    List<Food> listFoods = new ArrayList<>();
-
-                                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                                        listFoods.add(postSnapshot.getValue(Food.class));
-                                    }
-
-                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference dataRef = database.getReference(server.getText().toString());
-                                    Query userQuery = dataRef.child("Menu").child((position + 2) + "");
-                                    userQuery.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot snapshot) {
-                                            if (snapshot.exists()){
-                                                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                                                    for (int i = 0; i < listFoods.size(); i++){
-                                                        if (listFoods.get(i).getID() == postSnapshot.getValue(Integer.class)){
-                                                            listFoods.remove(i);
-                                                        }
-                                                    }
-                                                }
-
-                                                Adapter_Food adapter = new Adapter_Food(mcontext, listFoods, position + 2);
-
-                                                GridLayoutManager gridLayoutManager = new GridLayoutManager(mcontext, 2, GridLayoutManager.VERTICAL, false);
-
-                                                RecyclerView dataList = dialog2.findViewById(R.id.menu_recyclerCategory);
-                                                dataList.setLayoutManager(gridLayoutManager);
-                                                dataList.setAdapter(adapter);
-                                            }
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-
-                                }
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                });
-                addNew.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.dismiss();
+                        dialog2.dismiss();
+                    }
+                });
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference dataRef = database.getReference(server.getText().toString());
+                Query userQuery = dataRef.child("Food");
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            List<Food> listFoods = new ArrayList<>();
+
+                            for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                                listFoods.add(postSnapshot.getValue(Food.class));
+                            }
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference dataRef = database.getReference(server.getText().toString());
+                            Query userQuery = dataRef.child("Menu").child((position + 2) + "");
+                            userQuery.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot snapshot) {
+                                    if (snapshot.exists()){
+                                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                                            for (int i = 0; i < listFoods.size(); i++){
+                                                if (listFoods.get(i).getID() == postSnapshot.getValue(Integer.class)){
+                                                    listFoods.remove(i);
+                                                }
+                                            }
+                                        }
+
+                                        Adapter_Food adapter = new Adapter_Food(mcontext, listFoods, position + 2);
+
+                                        GridLayoutManager gridLayoutManager = new GridLayoutManager(mcontext, 2, GridLayoutManager.VERTICAL, false);
+
+                                        RecyclerView dataList = dialog2.findViewById(R.id.menu_recyclerCategory);
+                                        dataList.setLayoutManager(gridLayoutManager);
+                                        dataList.setAdapter(adapter);
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
             }

@@ -112,7 +112,7 @@ public class OrderFragment extends Fragment {
                                         }
                                         listIDFood += SF.get(i);
                                         listNumFood += FQ.get(i);
-                                        listNoteFood += "";
+                                        listNoteFood += " ";
                                         listNumFinishedFood += "0";
                                         listNumServedFood += "0";
                                     }

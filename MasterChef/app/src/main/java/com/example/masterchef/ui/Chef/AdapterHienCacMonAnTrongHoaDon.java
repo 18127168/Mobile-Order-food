@@ -107,7 +107,7 @@ public class AdapterHienCacMonAnTrongHoaDon extends BaseAdapter {
                                 if(i!= ListHoanThanh.length-1)
                                     newStringHoanThanh += ",";
                             }
-                            refCurrent.child("Hoanthanh").setValue(newStringHoanThanh);
+                            refCurrent.child("hoanthanh").setValue(newStringHoanThanh);
 
                             if(checkBillFinish()){
                                 refCurrent.child("trangthai").setValue(1);

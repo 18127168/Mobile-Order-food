@@ -23,20 +23,12 @@
             android:id="@+id/Ban"
             android:layout_width="86dp"
             android:layout_height="37dp"
+            android:paddingLeft="10dp"
             android:gravity="center"
             android:text="Bàn: 1"
             android:textSize="20sp"
             android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/tinhtrang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Tình trạng: Đã gọi"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
 
     </LinearLayout>
 

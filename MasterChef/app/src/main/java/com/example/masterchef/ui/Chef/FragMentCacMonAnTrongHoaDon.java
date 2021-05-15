@@ -15,7 +15,7 @@ import static com.example.masterchef.R.layout.fragment_cac_mon_an_trong_hoa_don;
 
 public class FragMentCacMonAnTrongHoaDon extends Fragment {
     public ListView listView;
-    public TextView ban,tinhtrang,date;
+    public TextView ban,date;
     public DatabaseReference refCurrent;
     View compactactivity;
     public HoaDon data;
@@ -30,14 +30,9 @@ public class FragMentCacMonAnTrongHoaDon extends Fragment {
         compactactivity = root;
         listView = (ListView) root.findViewById(R.id.list_cac_mon_an_cua_1_ban);
         ban = (TextView) root.findViewById(R.id.Ban);
-        tinhtrang = (TextView) root.findViewById(R.id.tinhtrang);
         date = (TextView) root.findViewById(R.id.ngay);
         ban.setText("Bàn: "+data.getTable());
         date.setText("Ngày: " + data.getDate());
-        String trangthai;
-        if(data.getTrangthai() == 0) trangthai = "Đã Gọi";
-        else trangthai = "Đã Hoàn Thành";
-        tinhtrang.setText("Tinh trang: " + trangthai);
         String[] listIDMonAn = data.getID().split(",");
         String[] listSoLuong = data.getSoLuong().split(",");
         String[] listHoanThanh = data.getHoanthanh().split(",");
