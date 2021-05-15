@@ -26,10 +26,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.masterchef.DatabaseWork;
 import com.example.masterchef.Ingredient;
 import com.example.masterchef.R;
+import com.example.masterchef.ui.manager.statistic.ThongKe;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -39,9 +41,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Calendar;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
+import static com.example.masterchef.MainActivity.server;
 
 public class StockFragment extends Fragment {
 
@@ -112,7 +116,35 @@ public class StockFragment extends Fragment {
                         ingredient.setTen(name.getText().toString());
                         ingredient.setGia(Integer.parseInt(price.getText().toString()));
                         ingredient.setSoluongtonkho(Integer.parseInt(number.getText().toString()));
+                        Calendar cal = Calendar.getInstance();
+                        int i = cal.get(Calendar.MONTH)+1;
+                        String query1;
+                        if(i<10)  query1 = "0"+i+cal.get(Calendar.YEAR);
+                        else query1 =""+i+cal.get(Calendar.YEAR);
 
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference dataref = database.getReference(server.getText().toString());
+                        Query query2 = dataref.child("ThongKe").orderByKey().equalTo(query1);
+                        query2.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    ThongKe thongKe = null;
+                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                        thongKe = dataSnapshot.getValue(ThongKe.class);
+                                    }
+                                    thongKe.Chiphi += ingredient.getGia()*Integer.parseInt(number.getText().toString());
+
+                                    dataref.child("ThongKe").child(query1).child("Chiphi").setValue(thongKe.Chiphi);
+                                }
+                                else dataref.child("ThongKe").child(query1).child("Chiphi").setValue(ingredient.getGia()*Integer.parseInt(number.getText().toString()));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                         Query query = FirebaseDatabase.getInstance().getReference("User").child("Ingredient");
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override

@@ -154,6 +154,23 @@ public class DatabaseWork {
         return ingredient.getFlagName();
     }
 
+    public String AddFood(DataSnapshot snapshot, Food food) {
+        if (snapshot.exists()) {
+            int id = 0;
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                id = Integer.parseInt(dataSnapshot.getKey());
+            }
+            id++;
+
+            food.setID(id);
+            food.setFlagName("food" + id + ".jpg");
+            snapshot.getRef().child(id + "").setValue(food);
+
+            return food.getFlagName();
+        }
+        return "";
+    }
+
     public List<Item_Status> GetListStatus(DataSnapshot snapshot, int table_id) {
         List<Item_Status> list = new ArrayList<>();
 

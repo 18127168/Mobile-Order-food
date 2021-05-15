@@ -16,11 +16,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.masterchef.Ingredient;
 import com.example.masterchef.R;
+import com.example.masterchef.Tables;
+import com.example.masterchef.ui.manager.statistic.ThongKe;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Calendar;
 import java.util.List;
+
+import static com.example.masterchef.MainActivity.server;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
@@ -67,7 +78,35 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     public void onClick(View v) {
                         int tmp = LI.get(position).getSoluongtonkho() + Integer.parseInt(number.getText().toString());
                         LI.get(position).getRef().child("Soluongtonkho").setValue(tmp);
+                        Calendar cal = Calendar.getInstance();
+                        int i = cal.get(Calendar.MONTH)+1;
+                        String query1;
+                        if(i<10)  query1 = "0"+i+cal.get(Calendar.YEAR);
+                        else query1 =""+i+cal.get(Calendar.YEAR);
 
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference dataref = database.getReference(server.getText().toString());
+                        Query query = dataref.child("ThongKe").orderByKey().equalTo(query1);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    ThongKe thongKe = null;
+                                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                        thongKe = dataSnapshot.getValue(ThongKe.class);
+                                    }
+                                    thongKe.Chiphi += LI.get(position).getGia()*Integer.parseInt(number.getText().toString());
+
+                                    dataref.child("ThongKe").child(query1).child("Chiphi").setValue(thongKe.Chiphi);
+                                }
+                                else dataref.child("ThongKe").child(query1).child("Chiphi").setValue(LI.get(position).getGia()*Integer.parseInt(number.getText().toString()));
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                         dialog.dismiss();
                     }
                 });
