@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,19 +133,54 @@ public class CheckBillFragment extends Fragment {
         checkbill_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCompleteForBill();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference dataRef = database.getReference(server.getText().toString());
+                Query userQuery = dataRef.child("ThongKe");
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        setCompleteForBill();
 
-                totalcost.setText("0 đ");
-                discount_price.setText("0 đ");
-                VAT.setText("0 đ");
-                billcost.setText("0 đ");
+                        boolean exist = false;
 
-                sum = 0;
+                        DateFormat dateFormat = new SimpleDateFormat("MMYYYY");
+                        Date date = new Date();
 
-                adapter.setEmptyListFoods();
-                adapter.notifyDataSetChanged();
+                        if (snapshot.exists()){
+                            for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                                if (postSnapshot.getKey().equals(dateFormat.format(date))){
+                                    exist = true;
+                                    postSnapshot.getRef().child("DoanhThu").setValue(postSnapshot.child("DoanhThu").getValue(Integer.class) + (sum - (sum*discount/100) + (sum*discount/100 + sum)*10/100));
+                                }
+                            }
+                        }
 
-                dialog.show();
+                        if (!exist){
+                            DatabaseReference dtReferenceef = FirebaseDatabase.getInstance().getReference().child(server.getText().toString()).child("ThongKe");
+                            HashMap nObj =new HashMap();
+                            nObj.put("Chiphi", 0);
+                            nObj.put("DoanhThu", (sum - (sum*discount/100) + (sum*discount/100 + sum)*10/100));
+
+                            dtReferenceef.child(dateFormat.format(date)).setValue(nObj);
+                        }
+
+
+                        totalcost.setText("0 đ");
+                        discount_price.setText("0 đ");
+                        VAT.setText("0 đ");
+                        billcost.setText("0 đ");
+
+                        sum = 0;
+
+                        adapter.setEmptyListFoods();
+                        adapter.notifyDataSetChanged();
+
+                        dialog.show();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
             }
         });
 
