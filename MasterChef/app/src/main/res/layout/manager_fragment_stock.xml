@@ -9,8 +9,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_ingredient"
+            android:text="Add new"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
 
     </RelativeLayout>
 
