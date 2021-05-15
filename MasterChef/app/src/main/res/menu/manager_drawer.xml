@@ -5,28 +5,24 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_overview"
-            android:icon="@drawable/ic_navmenu_overview"
-            android:title="Tổng quan" />
-        <item
             android:id="@+id/nav_statistic"
             android:icon="@drawable/ic_navmenu_statistic"
             android:title="Thống kê" />
         <item
             android:id="@+id/nav_staff"
             android:icon="@drawable/ic_navmenu_staff"
-            android:title="Nhân viên" />
+            android:title="Quản lý tài khoản" />
         <item
             android:id="@+id/nav_stock"
             android:icon="@drawable/ic_navmenu_stock"
-            android:title="Kho" />
+            android:title="Quản lý Kho" />
         <item
             android:id="@+id/nav_menu_edit"
             android:icon="@drawable/ic_navmenu_menu"
-            android:title="Thực đơn" />
+            android:title="Quản lý thực đơn" />
         <item
             android:id="@+id/nav_promotion"
             android:icon="@drawable/ic_navmenu_promotion"
-            android:title="Khuyến mãi" />
+            android:title="Quản lý khuyến mãi" />
     </group>
 </menu>
