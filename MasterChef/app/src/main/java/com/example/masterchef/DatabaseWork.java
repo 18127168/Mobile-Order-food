@@ -121,6 +121,39 @@ public class DatabaseWork {
         return list;
     }
 
+    // aaaaa
+    public List<Ingredient> GetListIngredient(DataSnapshot snapshot) {
+        List<Ingredient> list = new ArrayList<>();
+
+        if (snapshot.exists()) {
+            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                Ingredient nl = dataSnapshot.getValue(Ingredient.class);
+                nl.setRef(dataSnapshot.getRef());
+                list.add(nl);
+            }
+        }
+
+        return list;
+    }
+
+    //
+    public String AddIngredient(DataSnapshot snapshot, Ingredient ingredient) {
+
+                if (snapshot.exists()) {
+                    int id = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        id = Integer.parseInt(dataSnapshot.getKey());
+                    }
+                    id++;
+
+                    ingredient.setIdnguyenlieu(id);
+                    ingredient.setFlagName("ingredient" + id + ".jpg");
+                    snapshot.getRef().child(id+"").setValue(ingredient);
+                }
+
+        return ingredient.getFlagName();
+    }
+
     public List<Item_Status> GetListStatus(DataSnapshot snapshot, int table_id) {
         List<Item_Status> list = new ArrayList<>();
 

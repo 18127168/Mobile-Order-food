@@ -1,9 +1,19 @@
 package com.example.masterchef;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class Ingredient {
     private String FlagName, Ten;
     private int IDNguyenLieu, Soluongtonkho, Gia;
+    private DatabaseReference ref;
 
+
+    public void setRef(DatabaseReference s) {
+        this.ref = s;
+    }
+    public DatabaseReference getRef() {
+        return this.ref;
+    }
 
     public void setIdnguyenlieu(int a){this.IDNguyenLieu = a;}
     public int getIdnguyenlieu(){return this.IDNguyenLieu;}
