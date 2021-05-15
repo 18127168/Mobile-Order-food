@@ -200,11 +200,11 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                 dialog.setContentView(R.layout.manager_employ_discount_delete);
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.show();
-                Button btnhuy=(Button)dialog.findViewById(R.id.btn_manager_dongy_delte_discount);
-                Button btndongy=(Button)dialog.findViewById(R.id.btn_manager_huy_delte_discount);
+                Button btndongy=(Button)dialog.findViewById(R.id.btn_manager_dongy_delte_discount);
+                Button btnhuy=(Button)dialog.findViewById(R.id.btn_manager_huy_delte_discount);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference dataref=database.getReference("User");
-                Query userQuery = dataref.child("Food").orderByChild("ID");
+                Query userQuery = dataref.child("Menu").orderByKey();
                 userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -227,7 +227,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.Menuviewhold
                                             }
                                             else if(i==position){
                                                 check=false;
-                                                Log.e("heeeee",""+dataSnapshot1.getValue(Integer.class));
+                                                //Log.e("heeeee",""+dataSnapshot1.getValue(Integer.class));
                                                 dataSnapshot1.getRef().removeValue();
                                                 listIDFoodInMenu.remove(position);
                                             }
