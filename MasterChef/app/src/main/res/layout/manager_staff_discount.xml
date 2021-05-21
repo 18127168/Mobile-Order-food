@@ -10,34 +10,34 @@
         android:textColorHint="@color/black"
         android:id="@+id/discount_tv1"
         android:text="Ma"
-        android:textSize="15dp"
+        android:textSize="16dp"
         android:gravity="center"
         android:layout_width="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:layout_height="match_parent"
         >
     </TextView>
+
     <TextView
+        android:id="@+id/discount_tv2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:text="ngay ap dung"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:id="@+id/discount_tv2"
-        android:text="ngay ap dung"
-        android:textSize="15dp"
-        android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_weight="3"
-        android:layout_height="match_parent"
-        >
-    </TextView>
+        android:textSize="16dp"></TextView>
+
     <TextView
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:id="@+id/discount_tv3"
         android:text="Mo ta"
-        android:textSize="15dp"
+        android:textSize="16dp"
         android:gravity="center"
         android:layout_width="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:layout_height="match_parent"
         >
     </TextView>

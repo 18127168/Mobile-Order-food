@@ -8,17 +8,20 @@
     android:gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:background="@color/design_default_color_secondary"
-            android:textSize="20dp"
+            android:background="@drawable/border"
             android:gravity="center"
-            android:paddingLeft="40dp"
+            android:textColor="@color/my_blue"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="10sp"
+            android:textSize="25dp"
+            android:layout_margin="10dp"
             android:textStyle="bold"
-            android:paddingRight="20dp"
-            android:text="Các món ăn có thể thêm"/>
+            android:paddingBottom="10sp"
+            android:text="Các món ăn có thể thêm"
+            ></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_recyclerCategory"

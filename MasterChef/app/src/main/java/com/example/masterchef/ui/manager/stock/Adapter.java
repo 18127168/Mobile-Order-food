@@ -77,7 +77,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     @Override
                     public void onClick(View v) {
                         int tmp = LI.get(position).getSoluongtonkho() + Integer.parseInt(number.getText().toString());
-                        LI.get(position).getRef().child("Soluongtonkho").setValue(tmp);
+                        LI.get(position).getRef().child("soluongtonkho").setValue(tmp);
                         Calendar cal = Calendar.getInstance();
                         int i = cal.get(Calendar.MONTH)+1;
                         String query1;
